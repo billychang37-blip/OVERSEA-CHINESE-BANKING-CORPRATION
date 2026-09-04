@@ -49,6 +49,7 @@ window.smartsupp||(function(d) {
         }} />
       </head>
       <body className="min-h-full flex flex-col font-sans overflow-x-hidden w-full">
+        <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
         {children}
       </body>
     </html>
