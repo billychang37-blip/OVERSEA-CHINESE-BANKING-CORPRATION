@@ -15,7 +15,7 @@ import Footer from "@/components/layout/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white selection:bg-ocbc-red/20">
+    <main className="min-h-screen bg-white selection:bg-ocbc-red/20 overflow-x-hidden w-full">
       <Navbar />
       <Hero />
       <TrustStrip />
@@ -33,3 +33,4 @@ export default function Home() {
     </main>
   );
 }
+

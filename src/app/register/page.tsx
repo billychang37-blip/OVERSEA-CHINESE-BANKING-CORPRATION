@@ -302,9 +302,7 @@ export default function RegisterPage() {
       }
 
       setStep("success");
-      setTimeout(() => {
-        window.location.href = "/dashboard";
-      }, 4000);
+      await supabase.auth.signOut();
     } catch (err: any) {
       setAuthError(err.message);
     } finally {
@@ -729,10 +727,9 @@ export default function RegisterPage() {
                 <p className="text-[15px] text-[#666666] mb-10 leading-relaxed">
                   For security and compliance purposes, your official login credentials have been securely dispatched to <strong className="text-[#333333] font-medium">{registeredEmail}</strong>. Please refer to this correspondence to access your account.
                 </p>
-                <Link href="/dashboard" className="bg-[#E81C24] hover:bg-[#c7131a] active:bg-[#a60e14] transition-colors text-white px-10 py-3.5 rounded-sm font-semibold shadow-sm w-full md:w-auto inline-block text-[15px]">
-                  Proceed to Dashboard
+                <Link href="/" className="bg-[#E81C24] hover:bg-[#c7131a] active:bg-[#a60e14] transition-colors text-white px-10 py-3.5 rounded-sm font-semibold shadow-sm w-full md:w-auto inline-block text-[15px]">
+                  Return to Home Page
                 </Link>
-                <div className="mt-4 text-[12px] text-gray-400">You will be redirected automatically...</div>
               </div>
             </div>
           )}
