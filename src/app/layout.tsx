@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import Script from 'next/script';
 import './globals.css';
 
 const inter = Inter({
@@ -35,20 +34,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} h-full antialiased scroll-smooth`}>
-      <body className="min-h-full flex flex-col font-sans overflow-x-hidden w-full">
-        {children}
-        <Script id="smartsupp" strategy="afterInteractive" dangerouslySetInnerHTML={{
+      <head>
+        <script type="text/javascript" dangerouslySetInnerHTML={{
           __html: `
-            var _smartsupp = _smartsupp || {};
-            _smartsupp.key = '6f996554f2b901c2cc0dca358ba3602086bbaad0';
-            window.smartsupp||(function(d) {
-              var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
-              s=d.getElementsByTagName('script')[0];c=d.createElement('script');
-              c.type='text/javascript';c.charset='utf-8';c.async=true;
-              c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
-            })(document);
+var _smartsupp = _smartsupp || {};
+_smartsupp.key = '6f996554f2b901c2cc0dca358ba3602086bbaad0';
+window.smartsupp||(function(d) {
+  var s,c,o=smartsupp=function(){ o._.push(arguments)};o._=[];
+  s=d.getElementsByTagName('script')[0];c=d.createElement('script');
+  c.type='text/javascript';c.charset='utf-8';c.async=true;
+  c.src='https://www.smartsuppchat.com/loader.js?';s.parentNode.insertBefore(c,s);
+})(document);
           `
         }} />
+      </head>
+      <body className="min-h-full flex flex-col font-sans overflow-x-hidden w-full">
+        {children}
       </body>
     </html>
   );
