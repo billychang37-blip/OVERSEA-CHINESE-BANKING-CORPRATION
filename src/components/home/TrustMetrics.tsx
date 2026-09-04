@@ -44,13 +44,13 @@ const features = [
 
 export default function TrustMetrics() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-12 md:py-24 bg-white relative overflow-hidden">
       {/* Light Background Gradients (Matching Hero) */}
       <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-[#EAF7FA] rounded-full blur-[150px] opacity-70 pointer-events-none -translate-y-1/2 translate-x-1/4" />
       <div className="absolute -left-40 -bottom-40 w-[600px] h-[600px] bg-[#FFEAD6] rounded-full blur-[120px] opacity-60 pointer-events-none" />
 
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 lg:gap-8 items-center">
           
           {/* Left Side: Massive Typography */}
           <motion.div 
@@ -67,7 +67,7 @@ export default function TrustMetrics() {
             <h2 className="text-[2.5rem] lg:text-[3.2rem] font-bold text-slate-900 leading-[1.1] tracking-tight mb-6">
               A Little <span className="text-ocbc-red">About Us</span>
             </h2>
-            <p className="text-[17px] text-gray-500 leading-relaxed mb-10">
+            <p className="text-[14px] md:text-[17px] text-gray-500 leading-relaxed mb-5 md:mb-10">
               At OCBC, we understand that financial success begins with trust. As your dedicated banking partner, we are committed to providing you with tailored financial solutions that empower your future. Our unwavering commitment to excellence, innovation, and security sets us apart in the world of banking.
             </p>
 
@@ -114,7 +114,7 @@ export default function TrustMetrics() {
                       <feature.icon className="w-5 h-5 text-ocbc-red" />
                     </div>
                     <div>
-                      <h3 className="text-[17px] font-bold text-slate-900 mb-1">{feature.title}</h3>
+                      <h3 className="text-[14px] md:text-[17px] font-bold text-slate-900 mb-1">{feature.title}</h3>
                       <p className="text-sm text-gray-500 leading-relaxed">{feature.description}</p>
                     </div>
                   </div>

@@ -24,14 +24,14 @@ const testimonials = [
 
 export default function Leadership() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-12 md:py-24 bg-white relative overflow-hidden">
       {/* Background Gradients (Matching Hero) */}
       <div className="absolute top-[10%] left-[-10%] w-[500px] h-[500px] bg-[#EAF7FA] rounded-full blur-[100px] opacity-60 pointer-events-none" />
 
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-16">
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -45,7 +45,7 @@ export default function Leadership() {
             <h2 className="text-[2.5rem] lg:text-[3.2rem] font-bold text-slate-900 leading-[1.1] tracking-tight mb-4">
               What Our <span className="text-ocbc-red">Clients Said</span>
             </h2>
-            <p className="text-[17px] text-gray-500 leading-relaxed">
+            <p className="text-[14px] md:text-[17px] text-gray-500 leading-relaxed">
               More Than 10M+ Happy Customers Trust Our Services. We believe that everyone can achieve financial wellness through education and smart financial choices.
             </p>
           </motion.div>

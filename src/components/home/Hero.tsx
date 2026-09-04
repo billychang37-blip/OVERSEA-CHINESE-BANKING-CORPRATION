@@ -21,7 +21,7 @@ export default function Hero() {
         <div className="absolute top-1/2 right-[-10%] w-[1200px] h-[1200px] bg-[#FFEAD6] rounded-full blur-[160px] opacity-90 -translate-y-1/2"></div>
         
         {/* The subtle grid tile on the right side */}
-        <div className="absolute right-[5%] top-[35%] w-[350px] h-[350px] opacity-60">
+        <div className="hidden lg:block absolute right-[5%] top-[35%] w-[350px] h-[350px] opacity-60">
            <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
               <defs>
                  <pattern id="grid" width="33.33" height="33.33" patternUnits="userSpaceOnUse">
@@ -66,7 +66,7 @@ export default function Hero() {
             </h1>
             
             {/* Subtitle - Airy, readable, sophisticated grey */}
-            <p className="text-[17px] lg:text-[18px] text-gray-500 mb-10 max-w-[500px] leading-relaxed">
+            <p className="text-[14px] md:text-[17px] lg:text-[18px] text-gray-500 mb-5 md:mb-10 max-w-[500px] leading-relaxed">
               OCBC provides tailor made services to cater for the needs of the diverse segments of the economy. Our unwavering commitment to excellence, innovation, and security sets us apart in the world of banking.
             </p>
 
@@ -75,18 +75,18 @@ export default function Hero() {
             {/* Trust Stats - Cleanly spaced avatars */}
             <div className="flex items-center space-x-5">
               <div className="flex -space-x-3">
-                <div className="w-12 h-12 rounded-full border-[2px] border-white bg-gray-200 overflow-hidden relative z-30 shadow-sm">
+                <div className="w-8 md:w-12 h-8 md:h-12 rounded-full border-[2px] border-white bg-gray-200 overflow-hidden relative z-30 shadow-sm">
                    <img src="https://i.pravatar.cc/100?img=11" alt="Customer" className="w-full h-full object-cover"/>
                 </div>
-                <div className="w-12 h-12 rounded-full border-[2px] border-white bg-gray-200 overflow-hidden relative z-20 shadow-sm">
+                <div className="w-8 md:w-12 h-8 md:h-12 rounded-full border-[2px] border-white bg-gray-200 overflow-hidden relative z-20 shadow-sm">
                    <img src="https://i.pravatar.cc/100?img=12" alt="Customer" className="w-full h-full object-cover"/>
                 </div>
-                <div className="w-12 h-12 rounded-full border-[2px] border-white bg-gray-200 overflow-hidden relative z-10 shadow-sm">
+                <div className="w-8 md:w-12 h-8 md:h-12 rounded-full border-[2px] border-white bg-gray-200 overflow-hidden relative z-10 shadow-sm">
                    <img src="https://i.pravatar.cc/100?img=5" alt="Customer" className="w-full h-full object-cover"/>
                 </div>
               </div>
               <div className="flex flex-col justify-center">
-                <div className="text-[22px] font-bold text-[#1e293b] leading-none tracking-tight mb-1">2.4M+</div>
+                <div className="text-[16px] md:text-[22px] font-bold text-[#1e293b] leading-none tracking-tight mb-1">2.4M+</div>
                 <div className="text-[13px] text-gray-500 font-medium flex items-center">
                   <span className="w-1.5 h-1.5 rounded-full bg-ocbc-red mr-2"></span>
                   Happy customers worldwide

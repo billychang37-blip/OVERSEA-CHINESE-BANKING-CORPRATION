@@ -92,7 +92,7 @@ export default function PartnersCarousel() {
               {duplicatedPartners.map((partner, idx) => (
                 <div key={idx} className="flex-none flex items-center space-x-3 opacity-60 hover:opacity-100 transition-opacity duration-300 cursor-pointer">
                   <partner.icon />
-                  <span className="text-[20px] font-bold text-slate-700 tracking-tight">
+                  <span className="text-[14px] md:text-[20px] font-bold text-slate-700 tracking-tight">
                     {partner.name}
                   </span>
                 </div>

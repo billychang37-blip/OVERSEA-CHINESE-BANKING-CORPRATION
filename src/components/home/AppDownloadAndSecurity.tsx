@@ -16,7 +16,7 @@ export default function AppDownloadAndSecurity() {
     <div className="w-full">
       
       {/* APP DOWNLOAD SECTION - Ennex Inspired Clean Layout */}
-      <section className="py-24 lg:py-32 bg-[#FAFAFA] relative overflow-hidden border-t border-gray-100">
+      <section className="py-12 md:py-24 lg:py-32 bg-[#FAFAFA] relative overflow-hidden border-t border-gray-100">
         
         {/* Signature OCBC UI Gradients - Sweet Mesh */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -34,7 +34,7 @@ export default function AppDownloadAndSecurity() {
         </div>
 
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-16 lg:gap-12 items-center">
             
             {/* Left Content - Phone Mockup with subtle premium glow */}
             <motion.div 
@@ -73,11 +73,11 @@ export default function AppDownloadAndSecurity() {
               </div>
 
               {/* Tightened headline for intentional line breaks */}
-              <h2 className="text-[2.2rem] lg:text-[2.8rem] font-bold text-[#1e293b] leading-[1.1] tracking-tight mb-6 max-w-[480px]">
+              <h2 className="text-[1.5rem] md:text-[2.2rem] lg:text-[2.8rem] font-bold text-[#1e293b] leading-[1.1] tracking-tight mb-6 max-w-[480px]">
                 Tailored Financial Solutions to Meet Your Needs
               </h2>
               
-              <p className="text-[16px] text-gray-500 leading-relaxed mb-12 max-w-xl">
+              <p className="text-[16px] text-gray-500 leading-relaxed mb-6 md:mb-12 max-w-xl">
                 Experience seamless, bank-level security right from your pocket. Download the OCBC Digital App to unlock a suite of powerful financial tools. Manage your accounts, execute instant global transfers, and track investments all in one place.
               </p>
               
@@ -85,22 +85,22 @@ export default function AppDownloadAndSecurity() {
               <div className="relative border-l-[1.5px] border-gray-200/80 ml-6 space-y-10 pb-6">
                 
                 {/* Node 1 */}
-                <div className="relative pl-12 group">
-                  <div className="absolute -left-[24px] top-0 w-12 h-12 bg-white border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.04)] rounded-[14px] flex items-center justify-center group-hover:border-ocbc-red/30 group-hover:shadow-[0_8px_25px_rgba(227,24,55,0.1)] transition-all duration-300">
+                <div className="relative pl-6 md:pl-12 group">
+                  <div className="absolute -left-[24px] top-0 w-8 md:w-12 h-8 md:h-12 bg-white border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.04)] rounded-[14px] flex items-center justify-center group-hover:border-ocbc-red/30 group-hover:shadow-[0_8px_25px_rgba(227,24,55,0.1)] transition-all duration-300">
                     <Globe className="w-5 h-5 text-ocbc-red group-hover:scale-110 transition-transform duration-300" strokeWidth={2} />
                   </div>
-                  <h3 className="text-[19px] font-bold text-slate-800 mb-1.5 tracking-tight">Seamless Global Transfers</h3>
+                  <h3 className="text-[14px] md:text-[19px] font-bold text-slate-800 mb-1.5 tracking-tight">Seamless Global Transfers</h3>
                   <p className="text-[15px] text-gray-500 leading-relaxed max-w-[420px]">
                     Send money across borders instantly. Our robust network ensures your funds arrive safely, with complete transparency on exchange rates.
                   </p>
                 </div>
 
                 {/* Node 2 */}
-                <div className="relative pl-12 group">
-                  <div className="absolute -left-[24px] top-0 w-12 h-12 bg-white border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.04)] rounded-[14px] flex items-center justify-center group-hover:border-ocbc-red/30 group-hover:shadow-[0_8px_25px_rgba(227,24,55,0.1)] transition-all duration-300">
+                <div className="relative pl-6 md:pl-12 group">
+                  <div className="absolute -left-[24px] top-0 w-8 md:w-12 h-8 md:h-12 bg-white border border-gray-100 shadow-[0_8px_20px_rgba(0,0,0,0.04)] rounded-[14px] flex items-center justify-center group-hover:border-ocbc-red/30 group-hover:shadow-[0_8px_25px_rgba(227,24,55,0.1)] transition-all duration-300">
                     <TrendingUp className="w-5 h-5 text-ocbc-red group-hover:scale-110 transition-transform duration-300" strokeWidth={2} />
                   </div>
-                  <h3 className="text-[19px] font-bold text-slate-800 mb-1.5 tracking-tight">Comprehensive Wealth Management</h3>
+                  <h3 className="text-[14px] md:text-[19px] font-bold text-slate-800 mb-1.5 tracking-tight">Comprehensive Wealth Management</h3>
                   <p className="text-[15px] text-gray-500 leading-relaxed max-w-[420px]">
                     Track your portfolios, explore new investment opportunities, and manage your assets securely from anywhere in the world.
                   </p>
@@ -137,7 +137,7 @@ export default function AppDownloadAndSecurity() {
       </section>
 
       {/* ANTI-SCAM EDUCATION SECTION */}
-      <section className="py-16 bg-[#FAFAFA] border-t border-gray-100 relative z-20">
+      <section className="py-8 md:py-16 bg-[#FAFAFA] border-t border-gray-100 relative z-20">
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8">
           
           <motion.div 
@@ -145,7 +145,7 @@ export default function AppDownloadAndSecurity() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="mb-10 text-center lg:text-left"
+            className="mb-5 md:mb-10 text-center lg:text-left"
           >
             <h2 className="text-[1.8rem] lg:text-[2.2rem] font-bold text-slate-900 leading-[1.1] tracking-tight">
               Stay one step <span className="text-ocbc-red">ahead of scams.</span>
@@ -162,7 +162,7 @@ export default function AppDownloadAndSecurity() {
                 transition={{ duration: 0.4, delay: i * 0.1 }}
                 className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:border-ocbc-red/30 hover:shadow-md hover:-translate-y-1 transition-all duration-300 group"
               >
-                <div className="w-12 h-12 bg-gray-50 rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-4 group-hover:scale-110 transition-transform duration-300">
+                <div className="w-8 md:w-12 h-8 md:h-12 bg-gray-50 rounded-full flex items-center justify-center shadow-sm border border-gray-100 mb-4 group-hover:scale-110 transition-transform duration-300">
                   <card.icon className="w-5 h-5 text-ocbc-red" strokeWidth={2} />
                 </div>
                 <h4 className="text-[15px] font-bold text-slate-900 mb-2">{card.title}</h4>

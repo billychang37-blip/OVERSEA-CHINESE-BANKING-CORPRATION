@@ -28,7 +28,7 @@ const accountTypes = [
 
 export default function AccountsAndCards() {
   return (
-    <section className="py-24 lg:py-32 relative overflow-hidden bg-white">
+    <section className="py-12 md:py-24 lg:py-32 relative overflow-hidden bg-white">
       
       {/* OCBC Primary Brand Gradients (Soft, Sweeping, Premium) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -39,7 +39,7 @@ export default function AccountsAndCards() {
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header - "Why Choose Us" */}
-        <div className="text-center max-w-3xl mx-auto mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-10 md:mb-20">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -54,7 +54,7 @@ export default function AccountsAndCards() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[17px] text-gray-500 leading-relaxed"
+            className="text-[14px] md:text-[17px] text-gray-500 leading-relaxed"
           >
             Whether you are managing personal wealth or scaling a global enterprise, we offer tailored accounts designed specifically for your financial journey.
           </motion.p>
@@ -81,7 +81,7 @@ export default function AccountsAndCards() {
 
               {/* Text Content */}
               <div className="relative z-10 flex-1 flex flex-col">
-                <h3 className="text-[22px] font-bold text-slate-900 mb-4 tracking-tight group-hover:text-ocbc-red transition-colors duration-300">
+                <h3 className="text-[16px] md:text-[22px] font-bold text-slate-900 mb-4 tracking-tight group-hover:text-ocbc-red transition-colors duration-300">
                   {account.title}
                 </h3>
                 <p className="text-[15px] text-gray-500 leading-relaxed mb-8 flex-1">

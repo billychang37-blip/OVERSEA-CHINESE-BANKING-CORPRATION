@@ -34,7 +34,7 @@ export default function InsightsAndConversion() {
     <div className="w-full">
       
       {/* FINANCIAL INSIGHTS */}
-      <section className="py-24 bg-white relative">
+      <section className="py-12 md:py-24 bg-white relative">
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
           <motion.div 
@@ -42,9 +42,9 @@ export default function InsightsAndConversion() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="flex flex-col md:flex-row md:items-end justify-between mb-12"
+            className="flex flex-col md:flex-row md:items-end justify-between mb-6 md:mb-12"
           >
-            <h2 className="text-[2rem] lg:text-[2.5rem] font-bold text-slate-900 leading-[1.1] tracking-tight">
+            <h2 className="text-[1.4rem] md:text-[2rem] lg:text-[2.5rem] font-bold text-slate-900 leading-[1.1] tracking-tight">
               Insights & Education
             </h2>
             <Link href="/insights" className="mt-4 md:mt-0 flex items-center space-x-2 text-ocbc-red font-bold hover:text-ocbc-red-dark transition-colors group">
@@ -83,14 +83,14 @@ export default function InsightsAndConversion() {
       </section>
 
       {/* CONVERSION SECTION (OPEN ACCOUNT) */}
-      <section className="py-16">
+      <section className="py-8 md:py-16">
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.7 }}
-            className="w-full rounded-[40px] bg-gradient-to-r from-[#111827] via-[#1f2937] to-[#111827] p-12 lg:p-20 relative overflow-hidden text-center text-white shadow-2xl"
+            className="w-full rounded-[40px] bg-gradient-to-r from-[#111827] via-[#1f2937] to-[#111827] p-6 md:p-12 lg:p-20 relative overflow-hidden text-center text-white shadow-2xl"
           >
             {/* Soft background glows */}
             <div className="absolute top-0 left-[-10%] w-[500px] h-[500px] bg-ocbc-red/20 rounded-full blur-[120px] pointer-events-none" />
@@ -101,7 +101,7 @@ export default function InsightsAndConversion() {
                 Open your account in minutes.
               </h2>
               
-              <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-12 text-gray-300 font-semibold">
+              <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-8 mb-6 md:mb-12 text-gray-300 font-semibold">
                 <div className="flex items-center"><span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center mr-2 text-xs">1</span> Apply</div>
                 <div className="hidden sm:block w-8 h-[1px] bg-white/20"></div>
                 <div className="flex items-center"><span className="w-6 h-6 rounded-full bg-white/10 flex items-center justify-center mr-2 text-xs">2</span> Verify</div>
@@ -110,7 +110,7 @@ export default function InsightsAndConversion() {
               </div>
 
               <div className="flex flex-col items-center space-y-6">
-                <Link href="/register" className="bg-ocbc-red text-white px-10 py-4 rounded-full font-bold text-lg shadow-[0_10px_25px_rgba(232,28,36,0.4)] hover:shadow-[0_15px_35px_rgba(232,28,36,0.6)] hover:-translate-y-1 transition-all flex items-center space-x-2">
+                <Link href="/register" className="bg-ocbc-red text-white px-5 md:px-10 py-4 rounded-full font-bold text-lg shadow-[0_10px_25px_rgba(232,28,36,0.4)] hover:shadow-[0_15px_35px_rgba(232,28,36,0.6)] hover:-translate-y-1 transition-all flex items-center space-x-2">
                   <span>Get Started</span>
                   <ArrowRight className="w-5 h-5" />
                 </Link>
@@ -124,7 +124,7 @@ export default function InsightsAndConversion() {
       </section>
 
       {/* SUPPORT SECTION */}
-      <section className="py-24 bg-white">
+      <section className="py-12 md:py-24 bg-white">
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8">
           
           <motion.div 
@@ -132,7 +132,7 @@ export default function InsightsAndConversion() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.6 }}
-            className="text-center mb-12"
+            className="text-center mb-6 md:mb-12"
           >
             <h2 className="text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight">
               We're here when you need us.

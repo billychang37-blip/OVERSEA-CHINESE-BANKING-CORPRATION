@@ -48,7 +48,7 @@ const businesses = [
 
 export default function CoreBusinesses() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-12 md:py-24 bg-white relative overflow-hidden">
       {/* Soft Background Gradients (Matching Hero) */}
       <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-gray-200 to-transparent" />
       <div className="absolute top-[20%] left-[-10%] w-[600px] h-[600px] bg-[#D8F4F9] rounded-full blur-[120px] opacity-50 pointer-events-none" />
@@ -62,7 +62,7 @@ export default function CoreBusinesses() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-2xl mx-auto mb-16"
+          className="text-center max-w-2xl mx-auto mb-8 md:mb-16"
         >
           <div className="inline-flex items-center space-x-2 bg-white text-ocbc-red px-3 py-1.5 rounded-full text-[12px] font-semibold mb-6 shadow-sm border border-gray-100">
             <span>Our Services</span>
@@ -70,7 +70,7 @@ export default function CoreBusinesses() {
           <h2 className="text-[2.5rem] lg:text-[3.2rem] font-bold text-slate-900 leading-[1.1] tracking-tight mb-4">
             How Can I <span className="text-ocbc-red">Help You?</span>
           </h2>
-          <p className="text-[17px] text-gray-500 leading-relaxed">
+          <p className="text-[14px] md:text-[17px] text-gray-500 leading-relaxed">
             At OCBC we're here to help you achieve your financial aspirations. Discover our services and reach out to our dedicated team to get started on your financial journey.
           </p>
         </motion.div>

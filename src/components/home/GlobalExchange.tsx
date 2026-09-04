@@ -19,7 +19,7 @@ const exchangeFeatures = [
 
 export default function GlobalExchange() {
   return (
-    <section className="py-24 lg:py-32 bg-white relative overflow-hidden">
+    <section className="py-12 md:py-24 lg:py-32 bg-white relative overflow-hidden">
       
       {/* OCBC Custom Background Flow (Gradients) */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -30,22 +30,22 @@ export default function GlobalExchange() {
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="mb-16 max-w-4xl">
+        <div className="mb-8 md:mb-16 max-w-4xl">
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-[2.2rem] lg:text-[3.2rem] font-bold text-[#1e293b] leading-[1.15] tracking-tight"
+            className="text-[1.5rem] md:text-[2.2rem] lg:text-[3.2rem] font-bold text-[#1e293b] leading-[1.15] tracking-tight"
           >
             Exchange currency across the globe live with lowest fees
           </motion.h2>
         </div>
 
         {/* Vertical Timeline - Sleek & Premium */}
-        <div className="relative mb-24 max-w-3xl">
+        <div className="relative mb-12 md:mb-24 max-w-3xl">
           
           {/* 1px Solid Thin Track perfectly centered through the nodes */}
-          {/* The node container is w-12 (48px), so the exact center is 24px. We position the 1px line at left-[23.5px] or left-[23px] for a 2px line */}
+          {/* The node container is w-8 md:w-12 (48px), so the exact center is 24px. We position the 1px line at left-[23.5px] or left-[23px] for a 2px line */}
           <div className="absolute left-[23px] top-[10px] bottom-[20px] w-[2px] bg-gradient-to-b from-gray-200 via-gray-100 to-transparent z-0"></div>
 
           <div className="space-y-12 relative z-10">
@@ -59,13 +59,13 @@ export default function GlobalExchange() {
                 className="flex items-start group"
               >
                 {/* Sleek Glowing Nodes replacing plain dots */}
-                <div className="shrink-0 w-12 flex justify-center mt-1.5 relative py-1">
+                <div className="shrink-0 w-8 md:w-12 flex justify-center mt-1.5 relative py-1">
                   <div className="w-3.5 h-3.5 rounded-full bg-ocbc-red relative z-10 ring-4 ring-white shadow-[0_0_15px_rgba(235,26,40,0.5)] group-hover:scale-125 transition-transform duration-500"></div>
                 </div>
                 
                 {/* Content */}
                 <div className="pt-0.5 pl-6">
-                  <h3 className="text-[20px] lg:text-[22px] font-bold text-slate-900 mb-2 tracking-tight group-hover:text-ocbc-red transition-colors duration-300">
+                  <h3 className="text-[14px] md:text-[20px] lg:text-[22px] font-bold text-slate-900 mb-2 tracking-tight group-hover:text-ocbc-red transition-colors duration-300">
                     {feature.title}
                   </h3>
                   <p className="text-[16px] text-gray-500 leading-relaxed">
@@ -83,7 +83,7 @@ export default function GlobalExchange() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-10%" }}
           transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative w-full max-w-5xl mx-auto mt-10"
+          className="relative w-full max-w-5xl mx-auto mt-5 md:mt-10"
         >
           {/* Map Image */}
           <img 

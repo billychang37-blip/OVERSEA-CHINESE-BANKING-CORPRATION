@@ -17,7 +17,7 @@ const locations = [
 
 export default function GlobalNetwork() {
   return (
-    <section className="py-16 lg:py-20 bg-[#0F172A] relative overflow-hidden text-white border-t border-white/5">
+    <section className="py-8 md:py-16 lg:py-20 bg-[#0F172A] relative overflow-hidden text-white border-t border-white/5">
       
       {/* Background Gradients - Premium Dark Theme */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -30,7 +30,7 @@ export default function GlobalNetwork() {
       
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-12 lg:gap-16 items-center">
           
           <motion.div 
             initial={{ opacity: 0, x: -20 }}
@@ -44,7 +44,7 @@ export default function GlobalNetwork() {
               <span>Global Reach</span>
             </div>
 
-            <h2 className="text-[2rem] lg:text-[2.8rem] font-bold leading-[1.1] tracking-tight mb-5">
+            <h2 className="text-[1.4rem] md:text-[2rem] lg:text-[2.8rem] font-bold leading-[1.1] tracking-tight mb-5">
               Asia connected.<br/>
               <span className="text-ocbc-red">The world within reach.</span>
             </h2>

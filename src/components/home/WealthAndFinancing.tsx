@@ -15,10 +15,10 @@ export default function WealthAndFinancing() {
     <div className="w-full">
       
       {/* FINANCING SECTION */}
-      <section className="py-24 bg-white relative">
+      <section className="py-12 md:py-24 bg-white relative">
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           
-          <div className="text-center mb-16">
+          <div className="text-center mb-8 md:mb-16">
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -30,7 +30,7 @@ export default function WealthAndFinancing() {
             </motion.h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-6 md:mb-12">
             {loans.map((loan, i) => (
               <motion.div 
                 key={i}
@@ -58,13 +58,13 @@ export default function WealthAndFinancing() {
       </section>
 
       {/* WEALTH SECTION */}
-      <section className="py-32 relative overflow-hidden">
+      <section className="py-16 md:py-32 relative overflow-hidden">
         {/* Champagne/Pink Gradient Background */}
         <div className="absolute inset-0 bg-gradient-to-br from-[#FFF5F5] via-[#FFF0F0] to-[#FDF4EF] z-0"></div>
         <div className="absolute top-[10%] left-[-10%] w-[800px] h-[800px] bg-[#FFE0E0] rounded-full blur-[150px] opacity-60 pointer-events-none z-0" />
 
         <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16 items-center">
             
             <motion.div 
               initial={{ opacity: 0, x: -30 }}
@@ -75,11 +75,11 @@ export default function WealthAndFinancing() {
               <h2 className="text-[2.5rem] lg:text-[3.5rem] font-bold text-slate-900 leading-[1.1] tracking-tight mb-6">
                 Grow what <br/><span className="text-ocbc-red">you've built.</span>
               </h2>
-              <p className="text-[17px] text-gray-600 leading-relaxed mb-8 max-w-[450px]">
+              <p className="text-[14px] md:text-[17px] text-gray-600 leading-relaxed mb-8 max-w-[450px]">
                 Access premium portfolio management, financial insights, and tailored wealth planning solutions designed to secure your financial legacy across generations.
               </p>
               
-              <ul className="space-y-4 mb-10">
+              <ul className="space-y-4 mb-5 md:mb-10">
                 {['Investments', 'Wealth Planning', 'Portfolio Management', 'Financial Insights'].map((item, i) => (
                   <li key={i} className="flex items-center space-x-3">
                     <div className="w-6 h-6 rounded-full bg-white shadow-sm flex items-center justify-center">

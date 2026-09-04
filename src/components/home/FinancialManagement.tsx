@@ -6,10 +6,10 @@ import Link from "next/link";
 
 export default function FinancialManagement() {
   return (
-    <section className="py-24 bg-white relative overflow-hidden">
+    <section className="py-12 md:py-24 bg-white relative overflow-hidden">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -34,10 +34,10 @@ export default function FinancialManagement() {
           className="max-w-4xl mx-auto bg-white rounded-[40px] shadow-[0_20px_60px_rgba(0,0,0,0.08)] border border-gray-100 p-8 lg:p-12"
         >
           {/* Dashboard Header */}
-          <div className="flex justify-between items-end mb-12 border-b border-gray-100 pb-8">
+          <div className="flex justify-between items-end mb-6 md:mb-12 border-b border-gray-100 pb-8">
             <div>
               <h3 className="text-sm font-bold text-gray-500 uppercase tracking-wide mb-2">Total Net Worth</h3>
-              <div className="text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
+              <div className="text-2xl md:text-4xl lg:text-5xl font-black text-slate-900 tracking-tight">
                 S$ 428,620<span className="text-gray-400 text-2xl lg:text-3xl">.00</span>
               </div>
             </div>
@@ -48,7 +48,7 @@ export default function FinancialManagement() {
           </div>
 
           {/* Metrics Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-5 md:mb-10">
             <div className="bg-blue-50 rounded-2xl p-6 border border-blue-100">
               <div className="flex items-center space-x-3 mb-4">
                 <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-600">

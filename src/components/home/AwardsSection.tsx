@@ -5,7 +5,7 @@ import { ChevronRight, Award } from "lucide-react";
 
 export default function AwardsSection() {
   return (
-    <section className="py-16 lg:py-20 relative overflow-hidden bg-[#FAFAFA]">
+    <section className="py-8 md:py-16 lg:py-20 relative overflow-hidden bg-[#FAFAFA]">
       
       {/* 
         Premium Textured & Gradient Background 
@@ -26,7 +26,7 @@ export default function AwardsSection() {
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Tighter Grid Layout */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-10 lg:gap-12 items-center">
           
           {/* Left Side - Typography & Deposit Insurance */}
           <div className="lg:col-span-5 relative">
@@ -48,7 +48,7 @@ export default function AwardsSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="text-[2rem] lg:text-[2.6rem] font-bold text-[#1e293b] leading-[1.1] tracking-tight mb-4"
+                className="text-[1.4rem] md:text-[2rem] lg:text-[2.6rem] font-bold text-[#1e293b] leading-[1.1] tracking-tight mb-4"
               >
                 Award-Winning <br/> Excellence
               </motion.h2>

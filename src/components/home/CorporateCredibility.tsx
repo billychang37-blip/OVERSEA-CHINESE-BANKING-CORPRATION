@@ -29,7 +29,7 @@ const ecosystem = [
 
 export default function CorporateCredibility() {
   return (
-    <section className="py-24 lg:py-32 bg-[#FAFAFA] relative overflow-hidden border-t border-gray-100">
+    <section className="py-12 md:py-24 lg:py-32 bg-[#FAFAFA] relative overflow-hidden border-t border-gray-100">
       
       {/* 
         OCBC UI GRADIENTS 
@@ -46,7 +46,7 @@ export default function CorporateCredibility() {
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Centered Typography - Pure, mature, and image-free */}
-        <div className="max-w-3xl mx-auto text-center mb-16 lg:mb-24">
+        <div className="max-w-3xl mx-auto text-center mb-8 md:mb-16 lg:mb-24">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -73,7 +73,7 @@ export default function CorporateCredibility() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-[17px] text-gray-500 leading-relaxed max-w-2xl mx-auto"
+            className="text-[14px] md:text-[17px] text-gray-500 leading-relaxed max-w-2xl mx-auto"
           >
             We do more than safeguard your capital. From structuring private wealth to scaling your enterprise globally, our institutional ecosystem is built to secure your legacy with uncompromising excellence.
           </motion.p>
@@ -88,14 +88,14 @@ export default function CorporateCredibility() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 mb-16"
+          className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6 lg:gap-8 mb-8 md:mb-16"
         >
           {ecosystem.map((item, i) => (
             <div key={i} className="bg-white/70 backdrop-blur-2xl border border-white shadow-[0_10px_40px_rgb(0,0,0,0.03)] hover:shadow-[0_20px_60px_rgb(0,0,0,0.08)] rounded-[32px] p-8 flex flex-col items-start group hover:-translate-y-2 transition-all duration-500">
               <div className="w-14 h-14 bg-gray-50 rounded-2xl flex items-center justify-center border border-gray-100 mb-8 group-hover:bg-ocbc-red group-hover:border-ocbc-red transition-colors duration-500 shadow-sm">
                 <item.icon className="w-6 h-6 text-slate-700 group-hover:text-white transition-colors duration-500" strokeWidth={1.5} />
               </div>
-              <h3 className="text-[18px] font-bold text-slate-800 leading-snug mb-3 tracking-tight">{item.name}</h3>
+              <h3 className="text-[14px] md:text-[18px] font-bold text-slate-800 leading-snug mb-3 tracking-tight">{item.name}</h3>
               <p className="text-[14px] text-gray-500 leading-relaxed font-medium">
                 {item.desc}
               </p>

@@ -21,7 +21,7 @@ const duplicatedCurrencies = [...currencies, ...currencies];
 
 export default function CurrencyCarousel() {
   return (
-    <section className="py-12 relative overflow-hidden bg-[#FAFAFA]">
+    <section className="py-6 md:py-12 relative overflow-hidden bg-[#FAFAFA]">
       
       {/* 
         Subtle Chinese Flag Watermark Background 
@@ -62,13 +62,13 @@ export default function CurrencyCarousel() {
             <Star className="w-4 h-4 fill-current" />
           </div>
 
-          <h2 className="text-[2rem] lg:text-[2.6rem] font-extrabold text-[#0A2540] tracking-tight mb-5">
+          <h2 className="text-[1.4rem] md:text-[2rem] lg:text-[2.6rem] font-extrabold text-[#0A2540] tracking-tight mb-5">
             Ability To Transfer Money
           </h2>
 
           {/* Centered thin divider detail */}
           <div className="flex items-center space-x-2">
-            <div className="w-12 h-1 bg-[#0A2540]"></div>
+            <div className="w-8 md:w-12 h-1 bg-[#0A2540]"></div>
             <div className="w-1.5 h-1 bg-gray-300"></div>
             <div className="w-8 h-1 bg-gray-300"></div>
           </div>
@@ -96,9 +96,9 @@ export default function CurrencyCarousel() {
             {duplicatedCurrencies.map((currency, idx) => (
               <div 
                 key={idx} 
-                className="flex-none bg-white rounded-xl px-12 py-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 cursor-pointer border border-gray-100 flex flex-col items-center justify-center min-w-[220px]"
+                className="flex-none bg-white rounded-xl px-6 md:px-12 py-5 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_15px_40px_rgb(0,0,0,0.08)] hover:-translate-y-1 transition-all duration-300 cursor-pointer border border-gray-100 flex flex-col items-center justify-center min-w-[220px]"
               >
-                <span className="text-[17px] font-bold text-[#0A2540] mb-1">{currency.country}</span>
+                <span className="text-[14px] md:text-[17px] font-bold text-[#0A2540] mb-1">{currency.country}</span>
                 <span className="text-[15px] text-[#4F6C91]">{currency.code} ({currency.symbol})</span>
               </div>
             ))}

@@ -45,7 +45,7 @@ const securityFeatures = [
 
 export default function SecurityHub() {
   return (
-    <section className="py-16 lg:py-20 bg-[#F8FAFC] relative overflow-hidden">
+    <section className="py-8 md:py-16 lg:py-20 bg-[#F8FAFC] relative overflow-hidden">
       
       {/* OCBC Custom Background Flow */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -56,7 +56,7 @@ export default function SecurityHub() {
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header Section */}
-        <div className="text-center max-w-3xl mx-auto mb-16 lg:mb-20">
+        <div className="text-center max-w-3xl mx-auto mb-8 md:mb-16 lg:mb-20">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -72,7 +72,7 @@ export default function SecurityHub() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-[2rem] lg:text-[2.6rem] font-bold text-[#1e293b] leading-[1.1] tracking-tight mb-5"
+            className="text-[1.4rem] md:text-[2rem] lg:text-[2.6rem] font-bold text-[#1e293b] leading-[1.1] tracking-tight mb-5"
           >
             We Prioritize Transaction Security
           </motion.h2>

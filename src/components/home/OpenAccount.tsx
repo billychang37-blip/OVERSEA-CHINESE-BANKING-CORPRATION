@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function OpenAccount() {
   return (
-    <section className="py-24 bg-white">
+    <section className="py-12 md:py-24 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-gradient-to-r from-gray-50 to-soft-peach rounded-[40px] overflow-hidden shadow-sm border border-gray-100 flex flex-col lg:flex-row items-center">
           
@@ -18,17 +18,17 @@ export default function OpenAccount() {
           </div>
 
           {/* Right Content */}
-          <div className="w-full lg:w-7/12 p-10 lg:p-16 relative">
+          <div className="w-full lg:w-7/12 p-5 md:p-10 lg:p-16 relative">
             <div className="absolute top-10 right-10 text-ocbc-red opacity-30">
                <Sparkles className="w-8 h-8" />
             </div>
 
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Open an Account in Minutes</h2>
-            <p className="text-gray-600 mb-10 max-w-lg">
+            <p className="text-gray-600 mb-5 md:mb-10 max-w-lg">
               Enjoy a seamless digital onboarding experience and start banking with OCBC today.
             </p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-10">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-5 md:mb-10">
               <div className="flex items-start">
                 <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center mr-3 flex-shrink-0 text-ocbc-red">
                   <Clock className="w-5 h-5" />
