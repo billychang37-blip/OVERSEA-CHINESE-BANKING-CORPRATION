@@ -1,0 +1,145 @@
+import { Play, Apple, ArrowRight } from "lucide-react";
+
+export default function Hero() {
+  const FourPointStar = ({ className }: { className?: string }) => (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M12 0 C12 9 15 12 24 12 C15 12 12 15 12 24 C12 15 9 12 0 12 C9 12 12 9 12 0 Z" />
+    </svg>
+  );
+
+  return (
+    <section className="relative w-full min-h-[100dvh] lg:min-h-[850px] xl:min-h-[950px] overflow-hidden bg-gradient-to-r from-white via-[#EAF7FA] to-[#FFF3EB] flex items-center pt-32 lg:pt-48 border-b border-gray-100">
+      
+      {/* Background Graphic Elements */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        
+        {/* Soft, ultra-smooth Cyan/Mint glow behind the text */}
+        <div className="absolute top-[35%] left-[25%] w-[900px] h-[900px] bg-[#D8F4F9] rounded-full blur-[140px] opacity-70 -translate-x-1/2 -translate-y-1/2"></div>
+        
+        {/* Warm, vibrant Peach glow dominating the right side */}
+        <div className="absolute top-1/2 right-[-10%] w-[1200px] h-[1200px] bg-[#FFEAD6] rounded-full blur-[160px] opacity-90 -translate-y-1/2"></div>
+        
+        {/* The subtle grid tile on the right side */}
+        <div className="absolute right-[5%] top-[35%] w-[350px] h-[350px] opacity-60">
+           <svg width="100%" height="100%" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                 <pattern id="grid" width="33.33" height="33.33" patternUnits="userSpaceOnUse">
+                    <path d="M 33.33 0 L 0 0 0 33.33" fill="none" stroke="#FDBA74" strokeWidth="0.8" />
+                 </pattern>
+              </defs>
+              <rect width="100" height="100" fill="url(#grid)" />
+           </svg>
+        </div>
+
+        {/* Decorative Red Stars positioned EXACTLY as in the reference UI */}
+        
+        {/* 1. Large star top right */}
+        <FourPointStar className="absolute top-[22%] right-[10%] xl:right-[15%] w-10 h-10 text-ocbc-red z-10 opacity-90" />
+        {/* 2. Medium star center left */}
+        <FourPointStar className="absolute top-[48%] xl:top-[46%] left-[45%] xl:left-[42%] w-7 h-7 text-ocbc-red z-10 opacity-90" />
+        {/* 3. New small star top left (safe zone) */}
+        <FourPointStar className="absolute top-[18%] left-[8%] w-5 h-5 text-ocbc-red z-10 opacity-70" />
+        {/* 4. New small star bottom center (safe zone) */}
+        <FourPointStar className="absolute bottom-[10%] left-[55%] w-6 h-6 text-ocbc-red z-10 opacity-60" />
+        {/* 5. New medium star far right edge */}
+        <FourPointStar className="absolute top-[65%] right-[4%] w-8 h-8 text-ocbc-red z-10 opacity-80" />
+      </div>
+
+      <div className="w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex flex-col justify-end">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 h-full relative">
+          
+          {/* Left Content - Elegantly spaced, Ennex-style typography */}
+          <div className="lg:col-span-6 pb-[45vh] lg:pb-32 z-20 pt-4 lg:self-end self-start">
+            
+            {/* Pill */}
+            <div className="inline-flex items-center space-x-2 bg-white text-ocbc-red px-3 py-1.5 rounded-full text-[12px] font-semibold mb-6 shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-gray-50">
+              <FourPointStar className="w-3.5 h-3.5" />
+              <span>Your World. Our Expertise.</span>
+            </div>
+            
+            {/* Headline - Scaled down, font-bold instead of black, very clean */}
+            <h1 className="text-[2.4rem] sm:text-[2.8rem] lg:text-[3.5rem] xl:text-[4.2rem] font-bold text-[#1e293b] leading-[1.1] mb-4 lg:mb-6 tracking-tight">
+              Modern Banking <br className="hidden sm:block" />
+              <span className="text-ocbc-red">Designed for</span> <br />
+              the Digital You
+            </h1>
+            
+            {/* Subtitle - Airy, readable, sophisticated grey */}
+            <p className="text-[17px] lg:text-[18px] text-gray-500 mb-10 max-w-[500px] leading-relaxed">
+              OCBC provides tailor made services to cater for the needs of the diverse segments of the economy. Our unwavering commitment to excellence, innovation, and security sets us apart in the world of banking.
+            </p>
+
+            {/* App Store Buttons - Refined and smaller */}
+            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-10 lg:mb-14">
+              <button className="flex items-center justify-center bg-white border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)] rounded-xl px-5 py-2.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
+                <div className="flex items-center space-x-3">
+                  <Play className="w-6 h-6 text-green-500 fill-green-500" />
+                  <div className="text-left">
+                    <div className="text-[10px] leading-none text-gray-400 font-semibold mb-1 uppercase tracking-wider">Get it on</div>
+                    <div className="text-[14px] font-bold leading-none tracking-tight text-gray-900">Google Play</div>
+                  </div>
+                </div>
+              </button>
+              <button className="flex items-center justify-center bg-white border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)] rounded-xl px-5 py-2.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
+                <div className="flex items-center space-x-3">
+                  <Apple className="w-6 h-6 text-black fill-black" />
+                  <div className="text-left">
+                    <div className="text-[10px] leading-none text-gray-400 font-semibold mb-1 uppercase tracking-wider">Download on the</div>
+                    <div className="text-[14px] font-bold leading-none tracking-tight text-gray-900">App Store</div>
+                  </div>
+                </div>
+              </button>
+            </div>
+
+            {/* Trust Stats - Cleanly spaced avatars */}
+            <div className="flex items-center space-x-5">
+              <div className="flex -space-x-3">
+                <div className="w-12 h-12 rounded-full border-[2px] border-white bg-gray-200 overflow-hidden relative z-30 shadow-sm">
+                   <img src="https://i.pravatar.cc/100?img=11" alt="Customer" className="w-full h-full object-cover"/>
+                </div>
+                <div className="w-12 h-12 rounded-full border-[2px] border-white bg-gray-200 overflow-hidden relative z-20 shadow-sm">
+                   <img src="https://i.pravatar.cc/100?img=12" alt="Customer" className="w-full h-full object-cover"/>
+                </div>
+                <div className="w-12 h-12 rounded-full border-[2px] border-white bg-gray-200 overflow-hidden relative z-10 shadow-sm">
+                   <img src="https://i.pravatar.cc/100?img=5" alt="Customer" className="w-full h-full object-cover"/>
+                </div>
+              </div>
+              <div className="flex flex-col justify-center">
+                <div className="text-[22px] font-bold text-[#1e293b] leading-none tracking-tight mb-1">2.4M+</div>
+                <div className="text-[13px] text-gray-500 font-medium flex items-center">
+                  <span className="w-1.5 h-1.5 rounded-full bg-ocbc-red mr-2"></span>
+                  Happy customers worldwide
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Content placeholder to keep grid balanced */}
+          <div className="hidden lg:block lg:col-span-6"></div>
+        </div>
+      </div>
+
+      {/* 
+        Right Content - ENNEX STYLE SAFE WRAPPER 
+        We drastically reduce her maximum height to ensure massive breathing room above her head.
+      */}
+      <div className="absolute right-0 bottom-0 w-full md:w-[70%] lg:w-[50%] h-[45vh] lg:h-[75%] pointer-events-none z-20 flex justify-end lg:justify-end items-end pr-0 lg:pr-12">
+        
+        {/* The Lady Image - Strictly constrained to 90% of the 75% wrapper */}
+        <img 
+          src="/woman-on-white-shirt.png"
+          alt="Woman holding OCBC cards"
+          className="max-h-[100%] lg:max-h-[90%] max-w-[90%] lg:max-w-full object-contain object-bottom drop-shadow-[0_20px_30px_rgba(0,0,0,0.12)] pointer-events-auto mx-auto lg:mx-0"
+        />
+        
+        {/* The Floating Get Started Button */}
+        <div className="absolute bottom-[8%] right-[5%] md:right-[10%] xl:right-[15%] z-30 pointer-events-auto">
+          <button className="flex items-center space-x-3 bg-ocbc-red text-white pl-5 pr-1.5 py-2 rounded-full shadow-[0_10px_20px_rgba(232,28,36,0.3)] hover:bg-ocbc-red-dark transition-all transform hover:-translate-y-1">
+            <span className="font-semibold text-[14px] lg:text-[15px] pr-2">Get Started</span>
+            <span className="bg-white text-ocbc-red rounded-full p-2"><ArrowRight className="w-4 h-4 stroke-[3]"/></span>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+}
