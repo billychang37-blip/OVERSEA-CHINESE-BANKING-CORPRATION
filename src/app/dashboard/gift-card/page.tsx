@@ -26,7 +26,7 @@ export default function GiftCardDepositPage() {
   };
 
   return (
-    <div className="px-10 pb-12 pt-6 w-full animate-in fade-in duration-500">
+    <div className="px-4 md:px-10 pb-12 pt-6 w-full animate-in fade-in duration-500">
       <div className="max-w-[1300px]">
         
         {/* Back Button */}
@@ -39,7 +39,7 @@ export default function GiftCardDepositPage() {
         </div>
 
         {/* Main Massive Card */}
-        <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative">
+        <div className="bg-white rounded-[2rem] p-5 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative">
           
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-10">
             
@@ -55,7 +55,7 @@ export default function GiftCardDepositPage() {
               </div>
 
               {/* Important Information Banner */}
-              <div className="bg-[#F8FBFF] border border-[#E5F0FF] rounded-2xl p-6 flex gap-4">
+              <div className="bg-[#F8FBFF] border border-[#E5F0FF] rounded-2xl p-4 md:p-6 flex gap-4">
                 <Info className="w-6 h-6 text-blue-600 shrink-0 mt-0.5" strokeWidth={2.5} />
                 <div>
                   <h3 className="text-[15px] font-bold text-gray-900 mb-1.5">Important Information</h3>

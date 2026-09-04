@@ -69,7 +69,7 @@ export default function CryptoDepositPage() {
   };
 
   return (
-    <div className="px-6 md:px-10 pb-12 pt-6 w-full animate-in fade-in duration-500 flex justify-center">
+    <div className="px-4 md:px-10 pb-12 pt-6 w-full animate-in fade-in duration-500 flex justify-center">
       <div className="w-full max-w-[1200px] space-y-6">
         
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-4">
@@ -98,14 +98,14 @@ export default function CryptoDepositPage() {
           
           <div className="lg:col-span-8 bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm">
             
-            <div className="p-8 border-b border-gray-100 bg-gray-50/50">
+            <div className="p-5 md:p-8 border-b border-gray-100 bg-gray-50/50">
               <h2 className="text-[16px] font-bold text-gray-900 mb-1">Transfer Details</h2>
               <p className="text-[13px] text-gray-500 max-w-xl">
                 Configure your deposit by selecting the asset and the receiving network.
               </p>
             </div>
 
-            <div className="p-8">
+            <div className="p-5 md:p-8">
               <div className="max-w-2xl mx-auto space-y-10">
                 
                 <div>
@@ -184,7 +184,7 @@ export default function CryptoDepositPage() {
                   </div>
                 </div>
 
-                <div className="bg-[#F8FAFC] rounded-2xl border border-gray-100 p-6 md:p-8 flex flex-col md:flex-row items-center gap-8 shadow-inner">
+                <div className="bg-[#F8FAFC] rounded-2xl border border-gray-100 p-5 md:p-8 flex flex-col md:flex-row items-center gap-8 shadow-inner">
                   
                   <div className="bg-white p-4 rounded-xl shadow-sm border border-gray-200 shrink-0">
                     <QRCodeSVG 
@@ -234,7 +234,7 @@ export default function CryptoDepositPage() {
 
           <div className="lg:col-span-4 space-y-6">
             
-            <div className="bg-white border border-gray-200 rounded-xl p-6 shadow-sm">
+            <div className="bg-white border border-gray-200 rounded-xl p-4 md:p-6 shadow-sm">
               <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-100">
                 <ShieldCheck className="w-5 h-5 text-gray-700" />
                 <h3 className="text-[14px] font-bold text-gray-900">Stablecoin Policy</h3>
@@ -254,7 +254,7 @@ export default function CryptoDepositPage() {
               </ul>
             </div>
 
-            <div className="bg-orange-50 border border-orange-100 rounded-xl p-6">
+            <div className="bg-orange-50 border border-orange-100 rounded-xl p-4 md:p-6">
               <div className="flex items-center gap-2 mb-3">
                 <AlertTriangle className="w-4 h-4 text-orange-600" />
                 <h3 className="text-[13px] font-bold text-orange-800 uppercase tracking-wider">Network Warning</h3>

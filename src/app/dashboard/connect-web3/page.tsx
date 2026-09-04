@@ -9,10 +9,10 @@ export default function ConnectWeb3Page() {
   const wordCount = phrase.trim().split(/\s+/).filter(w => w.length > 0).length;
 
   return (
-    <div className="px-10 pb-12 pt-8 w-full animate-in fade-in duration-500 flex justify-center">
+    <div className="px-4 md:px-10 pb-12 pt-8 w-full animate-in fade-in duration-500 flex justify-center">
       
       {/* The Single Massive Card */}
-      <div className="w-full max-w-[1000px] bg-white rounded-[1.5rem] p-10 md:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-50">
+      <div className="w-full max-w-[1000px] bg-white rounded-[1.5rem] p-5 md:p-10 md:p-12 shadow-[0_4px_24px_rgba(0,0,0,0.04)] border border-gray-50">
         
         {/* Title */}
         <h1 className="text-[20px] font-bold text-gray-800 mb-6">

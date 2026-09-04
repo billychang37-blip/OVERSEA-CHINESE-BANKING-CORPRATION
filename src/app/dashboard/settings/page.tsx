@@ -178,7 +178,7 @@ export default function SettingsPage() {
   const generatedTokenCode = profile?.id ? Array.from(profile.id).reduce((acc: number, char: any) => acc + char.charCodeAt(0), 0).toString().padStart(6, '0').substring(0, 6) : "------";
 
   return (
-    <div className="px-6 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center">
+    <div className="px-4 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center">
       <div className="w-full max-w-[1000px]">
         
         {/* Header */}
@@ -190,7 +190,7 @@ export default function SettingsPage() {
         <div className="flex flex-col md:flex-row gap-8 bg-white rounded-[2rem] border border-gray-100 shadow-sm overflow-hidden min-h-[600px]">
           
           {/* Sidebar */}
-          <div className="w-full md:w-[280px] bg-gray-50/50 border-r border-gray-100 p-6 flex flex-col gap-2">
+          <div className="w-full md:w-[280px] bg-gray-50/50 border-r border-gray-100 p-4 md:p-6 flex flex-col gap-2">
             <h2 className="text-[18px] font-bold text-gray-900 mb-4 px-2">Settings</h2>
             
             <button 
@@ -243,7 +243,7 @@ export default function SettingsPage() {
           </div>
 
           {/* Right Content Area */}
-          <div className="flex-1 p-8 md:p-10">
+          <div className="flex-1 p-5 md:p-10">
             
             {activeTab === 'profile' && (
               <div className="animate-in fade-in duration-300 max-w-2xl">
@@ -271,7 +271,7 @@ export default function SettingsPage() {
 
                 <div className="flex items-center gap-6 mb-8">
                   <div className="relative group shrink-0">
-                    <div className="w-24 h-24 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center text-[32px] font-bold text-gray-400 overflow-hidden relative">
+                    <div className="w-24 h-24 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center text-[32px] break-all sm:break-normal font-bold text-gray-400 overflow-hidden relative">
                       {avatarUrl ? (
                         <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
                       ) : (
@@ -338,7 +338,7 @@ export default function SettingsPage() {
                   <button 
                     onClick={handleSaveProfile}
                     disabled={isSaving}
-                    className="bg-[#E81C24] hover:bg-[#d41920] disabled:opacity-70 text-white font-bold py-3 px-8 rounded-xl transition-colors text-[14px] w-full md:w-auto"
+                    className="bg-[#E81C24] hover:bg-[#d41920] disabled:opacity-70 text-white font-bold py-3 px-4 md:px-8 rounded-xl transition-colors text-[14px] w-full md:w-auto"
                   >
                     {isSaving ? "Saving..." : "Save Changes"}
                   </button>
@@ -356,7 +356,7 @@ export default function SettingsPage() {
                 <div className="space-y-6">
                   
                   {/* Soft Token Card */}
-                  <div className="border border-gray-200 rounded-2xl p-6 bg-gradient-to-r from-red-50/50 to-white relative overflow-hidden">
+                  <div className="border border-gray-200 rounded-2xl p-4 md:p-6 bg-gradient-to-r from-red-50/50 to-white relative overflow-hidden">
                     <div className="absolute -right-4 -top-4 w-24 h-24 bg-red-100 rounded-full opacity-50 blur-xl pointer-events-none"></div>
                     <div className="flex items-center gap-3 mb-4 relative z-10">
                       <div className="w-8 h-8 rounded-full bg-red-100 flex items-center justify-center shrink-0">
@@ -399,7 +399,7 @@ export default function SettingsPage() {
                   </div>
 
                   {/* Current Session */}
-                  <div className="border border-gray-200 rounded-2xl p-6 bg-gray-50/30">
+                  <div className="border border-gray-200 rounded-2xl p-4 md:p-6 bg-gray-50/30">
                     <h4 className="text-[15px] font-bold text-gray-900 mb-4 flex items-center gap-2">
                       <Shield className="w-4 h-4 text-[#E81C24]" /> Current Active Session
                     </h4>
@@ -421,7 +421,7 @@ export default function SettingsPage() {
                     </div>
                   </div>
 
-                  <div className="border border-gray-200 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="border border-gray-200 rounded-2xl p-4 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                       <h4 className="text-[15px] font-bold text-gray-900 mb-1">Change Password</h4>
                       <p className="text-[13px] text-gray-500 font-medium">Update your password to keep your account secure.</p>
@@ -431,7 +431,7 @@ export default function SettingsPage() {
                     </button>
                   </div>
                   
-                  <div className="border border-gray-200 rounded-2xl p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                  <div className="border border-gray-200 rounded-2xl p-4 md:p-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
                     <div>
                       <div className="flex items-center gap-2 mb-1">
                         <h4 className="text-[15px] font-bold text-gray-900">Two-Factor Authentication (2FA)</h4>

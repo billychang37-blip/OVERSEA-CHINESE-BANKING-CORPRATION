@@ -51,11 +51,11 @@ export default function TransferSelectorPage() {
   }
 
   return (
-    <div className="px-6 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center">
+    <div className="px-4 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center">
       <div className="w-full max-w-[850px] flex flex-col gap-6">
         
         {/* Balance Card */}
-        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE8EB] rounded-[1.5rem] px-10 py-9 shadow-[0_2px_15px_rgba(232,28,36,0.03)] border border-red-50 relative overflow-hidden flex flex-col justify-center">
+        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE8EB] rounded-[1.5rem] px-4 md:px-10 py-9 shadow-[0_2px_15px_rgba(232,28,36,0.03)] border border-red-50 relative overflow-hidden flex flex-col justify-center">
           
           <div className="absolute -right-8 top-1/2 -translate-y-1/2 w-[280px] h-[280px] opacity-[0.04] pointer-events-none">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-[#E81C24]">
@@ -72,7 +72,7 @@ export default function TransferSelectorPage() {
                 onClick={() => setShowBalance(!showBalance)}
               />
             </div>
-            <div className="text-[34px] font-bold text-gray-900 tracking-tight leading-none mt-1">
+            <div className="text-[34px] break-all sm:break-normal font-bold text-gray-900 tracking-tight leading-none mt-1">
               <span className="mr-1">{currencySymbol}</span>
               {showBalance ? (profile?.total_assets ? Number(profile.total_assets).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '0.00') : '••••••••'}
             </div>

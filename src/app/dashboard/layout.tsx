@@ -3,12 +3,13 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter, usePathname } from "next/navigation";
-import { Bell, User, LogOut, ChevronDown, Search, Menu, Home, Briefcase, ArrowRightLeft, Landmark, Gift, Lock, Grid, FileText, MoreHorizontal, Settings, Send, ArrowUpCircle, PiggyBank, Moon, CreditCard } from "lucide-react";
+import { Bell, User, LogOut, ChevronDown, Search, Menu, X, Home, Briefcase, ArrowRightLeft, Landmark, Gift, Lock, Grid, FileText, MoreHorizontal, Settings, Send, ArrowUpCircle, PiggyBank, Moon, CreditCard } from "lucide-react";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [profile, setProfile] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
+  const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -75,7 +76,62 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="font-sans selection:bg-[#E81C24] selection:text-white bg-[#F4F6F8] min-h-screen flex flex-col md:flex-row overflow-hidden">
       
       {/* ========================================================================= */}
-      {/*                               DESKTOP SIDEBAR                             */}
+      
+        {/* ========================================================================= */}
+        {/*                               MOBILE SIDEBAR                              */}
+        {/* ========================================================================= */}
+        
+        {/* ========================================================================= */}
+        {/*                               MOBILE SIDEBAR                              */}
+        {/* ========================================================================= */}
+        {isMobileSidebarOpen && (
+          <div className="md:hidden fixed inset-0 z-[200]">
+            <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => setIsMobileSidebarOpen(false)}></div>
+            <aside className="absolute top-0 left-0 bottom-0 w-[280px] bg-white flex flex-col shadow-2xl animate-in slide-in-from-left duration-300">
+              <div className="h-20 flex items-center justify-between px-6 border-b border-gray-50 shrink-0">
+                <img src="/logo_main.png" alt="OCBC Logo" className="w-[120px] h-auto object-contain cursor-pointer" onClick={() => { router.push('/dashboard'); setIsMobileSidebarOpen(false); }} />
+                <button onClick={() => setIsMobileSidebarOpen(false)} className="p-2 -mr-2 text-gray-500 hover:text-gray-900 bg-gray-50 rounded-full">
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              <div className="flex-1 overflow-y-auto py-4 px-3 space-y-1 scrollbar-hide">
+                <div onClick={() => { router.push('/dashboard'); setIsMobileSidebarOpen(false); }} className={`flex items-center gap-4 px-4 py-3.5 rounded-xl cursor-pointer font-semibold transition-colors ${pathname === '/dashboard' ? 'bg-red-50 text-[#E81C24]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                  <Home className="w-5 h-5" /> <span className="text-[14px]">Dashboard</span>
+                </div>
+                <div onClick={() => { router.push('/dashboard/transfer'); setIsMobileSidebarOpen(false); }} className={`flex items-center gap-4 px-4 py-3.5 rounded-xl cursor-pointer font-semibold transition-colors ${pathname.includes('/transfer') ? 'bg-red-50 text-[#E81C24]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                  <Send className="w-5 h-5" /> <span className="text-[14px]">Transfers</span>
+                </div>
+                <div onClick={() => { router.push('/dashboard/deposit'); setIsMobileSidebarOpen(false); }} className={`flex items-center gap-4 px-4 py-3.5 rounded-xl cursor-pointer font-semibold transition-colors ${pathname.includes('/deposit') ? 'bg-red-50 text-[#E81C24]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                  <ArrowUpCircle className="w-5 h-5" /> <span className="text-[14px]">Deposit</span>
+                </div>
+                <div onClick={() => { router.push('/dashboard/transactions'); setIsMobileSidebarOpen(false); }} className={`flex items-center gap-4 px-4 py-3.5 rounded-xl cursor-pointer font-semibold transition-colors ${pathname.includes('/transactions') ? 'bg-red-50 text-[#E81C24]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                  <FileText className="w-5 h-5" /> <span className="text-[14px]">Transactions</span>
+                </div>
+                <div onClick={() => { router.push('/dashboard/savings'); setIsMobileSidebarOpen(false); }} className={`flex items-center gap-4 px-4 py-3.5 rounded-xl cursor-pointer font-semibold transition-colors ${pathname.includes('/savings') ? 'bg-red-50 text-[#E81C24]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                  <PiggyBank className="w-5 h-5" /> <span className="text-[14px]">Savings</span>
+                </div>
+                <div onClick={() => { router.push('/dashboard/loan'); setIsMobileSidebarOpen(false); }} className={`flex items-center gap-4 px-4 py-3.5 rounded-xl cursor-pointer font-semibold transition-colors ${pathname.includes('/loan') ? 'bg-red-50 text-[#E81C24]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                  <Landmark className="w-5 h-5" /> <span className="text-[14px]">Loans</span>
+                </div>
+                <div onClick={() => { router.push('/dashboard/gift-card'); setIsMobileSidebarOpen(false); }} className={`flex items-center gap-4 px-4 py-3.5 rounded-xl cursor-pointer font-semibold transition-colors ${pathname.includes('/gift-card') ? 'bg-red-50 text-[#E81C24]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                  <Gift className="w-5 h-5" /> <span className="text-[14px]">Gift Cards</span>
+                </div>
+                <div onClick={() => { router.push('/dashboard/kyc'); setIsMobileSidebarOpen(false); }} className={`flex items-center gap-4 px-4 py-3.5 rounded-xl cursor-pointer font-semibold transition-colors ${pathname.includes('/kyc') ? 'bg-red-50 text-[#E81C24]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                  <User className="w-5 h-5" /> <span className="text-[14px]">KYC Verification</span>
+                </div>
+                <div onClick={() => { router.push('/dashboard/settings'); setIsMobileSidebarOpen(false); }} className={`flex items-center gap-4 px-4 py-3.5 rounded-xl cursor-pointer font-semibold transition-colors ${pathname.includes('/settings') ? 'bg-red-50 text-[#E81C24]' : 'text-gray-600 hover:bg-gray-50'}`}>
+                  <Settings className="w-5 h-5" /> <span className="text-[14px]">Settings</span>
+                </div>
+              </div>
+              <div className="p-4 border-t border-gray-100">
+                <div onClick={handleLogout} className="flex items-center justify-center gap-3 w-full px-4 py-3 bg-red-50 text-[#E81C24] font-bold rounded-xl cursor-pointer hover:bg-[#E81C24] hover:text-white transition-colors">
+                  <LogOut className="w-5 h-5" /> <span>Log Out</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        )}
+{/*                               DESKTOP SIDEBAR                             */}
       {/* ========================================================================= */}
       <aside className="hidden md:flex w-[280px] bg-white border-r border-gray-100 flex-col h-screen shrink-0 shadow-[4px_0_24px_rgba(0,0,0,0.02)] relative z-20">
         <div className="h-28 flex items-center justify-between px-6 border-b border-gray-50">
@@ -174,7 +230,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
       <main className="flex-1 flex flex-col h-screen overflow-hidden relative">
         
         {/* Desktop Header */}
-        <header className="hidden md:flex px-10 h-24 items-center justify-between sticky top-0 z-[100] bg-[#F4F6F8]/90 backdrop-blur-md">
+        <header className="hidden md:flex px-4 md:px-10 h-24 items-center justify-between sticky top-0 z-[100] bg-[#F4F6F8]/90 backdrop-blur-md">
           {isDashboardHome ? (
             <div>
               <h1 className="text-2xl font-bold text-[#1a1a1a] tracking-tight">
@@ -283,7 +339,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         {/* Mobile Header */}
         <header className="md:hidden px-4 py-3 flex justify-between items-center bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
           <div className="flex items-center gap-3">
-            <Menu className="w-6 h-6 text-gray-700 cursor-pointer" />
+            <Menu className="w-6 h-6 text-gray-700 cursor-pointer" onClick={() => setIsMobileSidebarOpen(true)} />
             <img src="/logo_main.png" alt="OCBC" className="w-[100px] h-auto object-contain cursor-pointer" onClick={() => router.push('/dashboard')} />
           </div>
           <div className="flex items-center space-x-3.5">

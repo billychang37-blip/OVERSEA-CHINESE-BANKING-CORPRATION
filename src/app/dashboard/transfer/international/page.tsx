@@ -134,7 +134,7 @@ export default function InternationalTransferPage() {
 
   if (success) {
     return (
-      <div className="px-6 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center min-h-screen">
+      <div className="px-4 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center min-h-screen">
         <div className="w-full max-w-[600px] flex flex-col items-center justify-center pt-20">
           <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mb-6 border-8 border-green-50">
             <Check className="w-10 h-10 text-green-600" strokeWidth={3} />
@@ -145,7 +145,7 @@ export default function InternationalTransferPage() {
           </p>
           <button 
             onClick={() => router.push('/dashboard/transfer')}
-            className="px-8 py-3.5 bg-[#E81C24] text-white font-bold rounded-xl hover:bg-[#d41920] transition-colors"
+            className="px-4 md:px-8 py-3.5 bg-[#E81C24] text-white font-bold rounded-xl hover:bg-[#d41920] transition-colors"
           >
             Done
           </button>
@@ -155,7 +155,7 @@ export default function InternationalTransferPage() {
   }
 
   return (
-    <div className="px-6 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center">
+    <div className="px-4 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center">
       <div className="w-full max-w-[850px] flex flex-col gap-8">
         
         {/* Header */}
@@ -173,7 +173,7 @@ export default function InternationalTransferPage() {
         </div>
 
         {/* Balance Card */}
-        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE8EB] rounded-[1.5rem] px-10 py-9 shadow-[0_2px_15px_rgba(232,28,36,0.03)] border border-red-50 relative overflow-hidden flex flex-col justify-center">
+        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE8EB] rounded-[1.5rem] px-4 md:px-10 py-9 shadow-[0_2px_15px_rgba(232,28,36,0.03)] border border-red-50 relative overflow-hidden flex flex-col justify-center">
           <div className="absolute -right-8 top-1/2 -translate-y-1/2 w-[280px] h-[280px] opacity-[0.04] pointer-events-none">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-[#E81C24]">
               <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 80c-16.6 0-30-13.4-30-30s13.4-30 30-30 30 13.4 30 30-13.4 30-30 30z"/>
@@ -189,7 +189,7 @@ export default function InternationalTransferPage() {
                 onClick={() => setShowBalance(!showBalance)}
               />
             </div>
-            <div className="text-[34px] font-bold text-gray-900 tracking-tight leading-none mt-1">
+            <div className="text-[34px] break-all sm:break-normal font-bold text-gray-900 tracking-tight leading-none mt-1">
               <span className="mr-1">{currencySymbol}</span>
               {showBalance ? (profile?.wallet_balance ? Number(profile.wallet_balance).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '0.00') : '••••••••'}
             </div>
@@ -197,7 +197,7 @@ export default function InternationalTransferPage() {
         </div>
 
         {/* Transfer Form */}
-        <div className="bg-white rounded-[1.5rem] p-8 md:p-10 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-[1.5rem] p-5 md:p-10 shadow-sm border border-gray-100">
           <form onSubmit={handleSubmit} className="space-y-6">
             
             {/* Select Payment Source */}

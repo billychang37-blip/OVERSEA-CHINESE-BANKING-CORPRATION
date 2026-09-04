@@ -115,7 +115,7 @@ export default function DashboardPage() {
           
           <div className="mb-6">
             <div className="flex items-center space-x-2">
-               <span className="text-[28px] sm:text-[32px] font-bold text-gray-900 tracking-tight leading-none break-all max-w-[90%]">
+               <span className="text-[28px] sm:text-[32px] break-all sm:break-normal font-bold text-gray-900 tracking-tight leading-none break-all max-w-[90%]">
                  {currencySymbol}{showBalance ? (profile?.total_assets ? Number(profile.total_assets).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '0.00') : '*****'}
                </span>
                <button onClick={() => setShowBalance(!showBalance)} className="text-gray-400 hover:text-gray-600">
@@ -186,14 +186,14 @@ export default function DashboardPage() {
       </div>
 
       {/* DESKTOP DASHBOARD */}
-      <div className="hidden md:block px-10 pb-12 pt-8">
+      <div className="hidden md:block px-4 md:px-10 pb-12 pt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           
           {/* LEFT COLUMN */}
           <div className="lg:col-span-8 flex flex-col gap-8">
             
             {/* Soft Pink Balance Card */}
-            <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE5E8] rounded-3xl p-8 relative overflow-hidden shadow-sm border border-red-50">
+            <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE5E8] rounded-3xl p-5 md:p-8 relative overflow-hidden shadow-sm border border-red-50">
               <div className="absolute -bottom-8 -right-8 w-40 h-40 border-[20px] border-red-500/5 rounded-full"></div>
               
               <div className="relative z-10 mb-6">
@@ -201,7 +201,7 @@ export default function DashboardPage() {
                   <span className="text-[14px] font-medium">Total Balance</span>
                   <Eye className="w-4 h-4 cursor-pointer hover:text-gray-900 transition-colors" onClick={() => setShowBalance(!showBalance)} />
                 </div>
-                <div className="text-[40px] font-medium tracking-tight text-gray-900 mt-1 truncate pr-4">
+                <div className="text-[40px] break-all sm:break-normal font-medium tracking-tight text-gray-900 mt-1 truncate pr-4">
                   {currencySymbol} {showBalance ? (profile?.total_assets ? Number(profile.total_assets).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '0.00') : '••••••••'}
                 </div>
               </div>
@@ -219,7 +219,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Quick Actions */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 flex justify-between items-center px-8">
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100 flex justify-between items-center px-4 md:px-8">
               <div onClick={() => router.push('/dashboard/transfer')} className="flex flex-col items-center gap-2.5 group cursor-pointer">
                 <div className="w-12 h-12 flex items-center justify-center transition-transform group-hover:-translate-y-1">
                   <Send className="w-6 h-6 text-[#E81C24]" />
@@ -253,7 +253,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Left Recent Transactions */}
-            <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100">
+            <div className="bg-white rounded-2xl p-4 md:p-6 shadow-sm border border-gray-100">
               <div className="flex justify-between items-end mb-6 px-2">
                 <h2 className="text-[18px] font-bold text-[#1a1a1a]">Recent Transactions</h2>
                 <button className="text-[#E81C24] text-[13px] font-bold flex items-center hover:opacity-80 transition-opacity">
@@ -264,7 +264,7 @@ export default function DashboardPage() {
                 {transactions.length > 0 ? (
                   transactions.map(renderTransaction)
                 ) : (
-                  <div className="p-6 text-center text-gray-500 text-sm">No recent transactions.</div>
+                  <div className="p-4 md:p-6 text-center text-gray-500 text-sm">No recent transactions.</div>
                 )}
               </div>
             </div>
@@ -274,7 +274,7 @@ export default function DashboardPage() {
           <div className="lg:col-span-4 flex flex-col gap-8">
             
             {/* Expanded Promo Card */}
-            <div className="bg-gradient-to-b from-[#FFF0F2] to-[#FFE5E8] rounded-3xl p-8 shadow-sm border border-red-50 flex flex-col relative overflow-hidden h-[380px] group cursor-pointer hover:shadow-md transition-shadow">
+            <div className="bg-gradient-to-b from-[#FFF0F2] to-[#FFE5E8] rounded-3xl p-5 md:p-8 shadow-sm border border-red-50 flex flex-col relative overflow-hidden h-[380px] group cursor-pointer hover:shadow-md transition-shadow">
               
               <div className="relative z-20">
                 <h3 className="font-bold text-gray-900 mb-3 text-[22px] leading-tight">Elevate Your<br/>Spending.</h3>
@@ -293,7 +293,7 @@ export default function DashboardPage() {
             </div>
 
             {/* Quick Help / Support block */}
-            <div className="bg-white rounded-3xl p-6 shadow-sm border border-gray-100 flex items-start gap-4 cursor-pointer hover:border-red-100 transition-colors group">
+            <div className="bg-white rounded-3xl p-4 md:p-6 shadow-sm border border-gray-100 flex items-start gap-4 cursor-pointer hover:border-red-100 transition-colors group">
               <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center shrink-0 group-hover:bg-[#E81C24] transition-colors">
                 <PhoneCall className="w-5 h-5 text-[#E81C24] group-hover:text-white transition-colors" />
               </div>

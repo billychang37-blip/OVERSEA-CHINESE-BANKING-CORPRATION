@@ -21,7 +21,7 @@ export default function DepositPage() {
   const router = useRouter();
 
   return (
-    <div className="px-10 pb-12 pt-6 w-full animate-in fade-in duration-500 flex justify-center">
+    <div className="px-4 md:px-10 pb-12 pt-6 w-full animate-in fade-in duration-500 flex justify-center">
       <div className="w-full max-w-[1200px] space-y-6">
         
         {/* Back Button */}
@@ -44,7 +44,7 @@ export default function DepositPage() {
             {/* Bank Transfer (Recommended) */}
             <div 
               onClick={() => router.push('/dashboard/deposit/bank')}
-              className="bg-white rounded-2xl p-6 flex items-center justify-between cursor-pointer border-2 border-[#E81C24] shadow-[0_4px_20px_rgba(232,28,36,0.05)] hover:shadow-[0_4px_20px_rgba(232,28,36,0.1)] transition-all group"
+              className="bg-white rounded-2xl p-4 md:p-6 flex items-center justify-between cursor-pointer border-2 border-[#E81C24] shadow-[0_4px_20px_rgba(232,28,36,0.05)] hover:shadow-[0_4px_20px_rgba(232,28,36,0.1)] transition-all group"
             >
               <div className="flex items-center gap-5">
                 <div className="w-[52px] h-[52px] rounded-full bg-red-50 flex items-center justify-center shrink-0">
@@ -81,7 +81,7 @@ export default function DepositPage() {
             {/* Cryptocurrency */}
             <div 
               onClick={() => router.push('/dashboard/deposit/crypto')}
-              className="bg-white rounded-2xl p-6 flex items-center justify-between cursor-pointer border border-gray-100 hover:border-gray-300 hover:shadow-sm transition-all group"
+              className="bg-white rounded-2xl p-4 md:p-6 flex items-center justify-between cursor-pointer border border-gray-100 hover:border-gray-300 hover:shadow-sm transition-all group"
             >
               <div className="flex items-center gap-5">
                 <div className="w-[52px] h-[52px] rounded-full bg-[#F4F6F8] flex items-center justify-center shrink-0 relative">
@@ -121,7 +121,7 @@ export default function DepositPage() {
             {/* Gift Card */}
             <div 
               onClick={() => router.push('/dashboard/gift-card')}
-              className="bg-white rounded-2xl p-6 flex items-center justify-between cursor-pointer border border-gray-100 hover:border-gray-300 hover:shadow-sm transition-all group"
+              className="bg-white rounded-2xl p-4 md:p-6 flex items-center justify-between cursor-pointer border border-gray-100 hover:border-gray-300 hover:shadow-sm transition-all group"
             >
               <div className="flex items-center gap-5">
                 <div className="w-[52px] h-[52px] rounded-full bg-red-50 flex items-center justify-center shrink-0">
@@ -154,7 +154,7 @@ export default function DepositPage() {
         </div>
 
         {/* Bottom Security Banner */}
-        <div className="bg-[#FFF4F4] rounded-2xl p-6 border border-[#FFE5E8] flex items-center justify-between">
+        <div className="bg-[#FFF4F4] rounded-2xl p-4 md:p-6 border border-[#FFE5E8] flex items-center justify-between">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-red-100 shrink-0 shadow-sm">
               <ShieldCheck className="w-6 h-6 text-[#E81C24]" />

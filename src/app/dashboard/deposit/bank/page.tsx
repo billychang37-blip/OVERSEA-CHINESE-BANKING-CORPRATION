@@ -81,7 +81,7 @@ export default function BankTransferPage() {
   const accDetails = getBankAccountDetails();
 
   return (
-    <div className="px-6 md:px-10 pb-12 pt-6 w-full animate-in fade-in duration-500 flex justify-center">
+    <div className="px-4 md:px-10 pb-12 pt-6 w-full animate-in fade-in duration-500 flex justify-center">
       <div className="w-full max-w-[1200px] space-y-6">
         
         {/* Header Section */}
@@ -111,14 +111,14 @@ export default function BankTransferPage() {
           {/* Main Deposit Form / Instructions */}
           <div className="lg:col-span-8 bg-white border border-gray-200 rounded p-0 overflow-hidden shadow-sm">
             
-            <div className="p-8 border-b border-gray-100">
+            <div className="p-5 md:p-8 border-b border-gray-100">
               <h2 className="text-[18px] font-bold text-gray-900 mb-2">Transfer Instructions</h2>
               <p className="text-[14px] text-gray-600 leading-relaxed max-w-2xl">
                 Please transfer your funds to the account details provided below. We highly recommend copying the values exactly as they appear. Your account name must match the sender's name precisely to comply with AML regulations.
               </p>
             </div>
 
-            <div className="p-8 bg-[#FAFAFA]">
+            <div className="p-5 md:p-8 bg-[#FAFAFA]">
               <div className="space-y-0 border border-gray-200 rounded bg-white shadow-sm">
                 
                 {/* Bank Name */}
@@ -187,7 +187,7 @@ export default function BankTransferPage() {
           <div className="lg:col-span-4 space-y-6">
             
             {/* Policy & Terms */}
-            <div className="bg-white border border-gray-200 rounded p-6 shadow-sm">
+            <div className="bg-white border border-gray-200 rounded p-4 md:p-6 shadow-sm">
               <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-100">
                 <ShieldCheck className="w-5 h-5 text-gray-700" />
                 <h3 className="text-[15px] font-bold text-gray-900">Transfer Policy</h3>
@@ -210,7 +210,7 @@ export default function BankTransferPage() {
             </div>
 
             {/* Strict Notice */}
-            <div className="bg-gray-50 border border-gray-200 rounded p-6">
+            <div className="bg-gray-50 border border-gray-200 rounded p-4 md:p-6">
               <div className="flex items-center gap-2 mb-3">
                 <AlertTriangle className="w-5 h-5 text-gray-700" />
                 <h3 className="text-[14px] font-bold text-gray-900">Strict Compliance Notice</h3>

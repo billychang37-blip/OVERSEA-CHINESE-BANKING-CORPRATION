@@ -26,7 +26,7 @@ export default function KYCPage() {
   };
 
   return (
-    <div className="px-10 pb-12 pt-6 w-full animate-in fade-in duration-500">
+    <div className="px-4 md:px-10 pb-12 pt-6 w-full animate-in fade-in duration-500">
       <div className="max-w-[1300px]">
         
         {/* Back Button */}
@@ -39,7 +39,7 @@ export default function KYCPage() {
         </div>
 
         {/* Main Massive Card */}
-        <div className="bg-white rounded-[2rem] p-8 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative">
+        <div className="bg-white rounded-[2rem] p-5 md:p-10 shadow-[0_8px_30px_rgb(0,0,0,0.04)] relative">
           
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_400px] gap-10">
             
@@ -64,7 +64,7 @@ export default function KYCPage() {
               </div>
 
               {/* Why KYC is Important Banner */}
-              <div className="bg-[#FFF4F4] border border-[#FFE5E8] rounded-2xl p-6 flex gap-4">
+              <div className="bg-[#FFF4F4] border border-[#FFE5E8] rounded-2xl p-4 md:p-6 flex gap-4">
                 <AlertTriangle className="w-6 h-6 text-[#E81C24] shrink-0 mt-0.5" />
                 <div>
                   <h3 className="text-[15px] font-bold text-gray-900 mb-1.5">Why KYC is Important</h3>
@@ -143,7 +143,7 @@ export default function KYCPage() {
             <div className="space-y-5">
               
               {/* Important Notice */}
-              <div className="bg-[#FFF4F4] border border-[#FFE5E8] rounded-2xl p-6">
+              <div className="bg-[#FFF4F4] border border-[#FFE5E8] rounded-2xl p-4 md:p-6">
                 <div className="flex items-center gap-2 mb-4">
                   <AlertTriangle className="w-5 h-5 text-[#E81C24]" />
                   <h3 className="text-[15px] font-bold text-[#E81C24]">Important Notice</h3>
@@ -176,7 +176,7 @@ export default function KYCPage() {
               </div>
 
               {/* Your Information is Safe */}
-              <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
+              <div className="bg-white border border-gray-100 rounded-2xl p-4 md:p-6 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
                 <div className="flex items-center gap-2 mb-3">
                   <Lock className="w-5 h-5 text-gray-800" />
                   <h3 className="text-[15px] font-bold text-gray-900">Your Information is Safe</h3>
@@ -191,7 +191,7 @@ export default function KYCPage() {
               </div>
 
               {/* Need Help? */}
-              <div className="bg-white border border-gray-100 rounded-2xl p-6 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
+              <div className="bg-white border border-gray-100 rounded-2xl p-4 md:p-6 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
                 <div className="flex items-center gap-2 mb-3">
                   <Headphones className="w-5 h-5 text-gray-800" />
                   <h3 className="text-[15px] font-bold text-gray-900">Need Help?</h3>

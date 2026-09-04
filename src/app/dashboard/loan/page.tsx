@@ -59,11 +59,11 @@ export default function LoanPage() {
   };
 
   return (
-    <div className="px-10 pb-12 pt-8 w-full animate-in fade-in duration-500">
+    <div className="px-4 md:px-10 pb-12 pt-8 w-full animate-in fade-in duration-500">
       <div className="max-w-[1300px]">
         
         {/* Header */}
-        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE5E8] rounded-[2rem] p-8 md:p-10 mb-8 relative overflow-hidden flex flex-col justify-center">
+        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE5E8] rounded-[2rem] p-5 md:p-10 mb-8 relative overflow-hidden flex flex-col justify-center">
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-56 h-56 opacity-[0.03] pointer-events-none">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-[#E81C24]">
               <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 80c-16.6 0-30-13.4-30-30s13.4-30 30-30 30 13.4 30 30-13.4 30-30 30z"/>
@@ -81,7 +81,7 @@ export default function LoanPage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           <div className="lg:col-span-8">
-            <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-8 md:p-10">
+            <div className="bg-white rounded-[2rem] shadow-sm border border-gray-100 p-5 md:p-10">
               <h2 className="text-[20px] font-bold text-gray-900 mb-6">Loan Application</h2>
               
               <div className="mb-6">
@@ -142,7 +142,7 @@ export default function LoanPage() {
           </div>
 
           <div className="lg:col-span-4">
-            <div className="bg-gray-50 rounded-[2rem] p-8 border border-gray-100">
+            <div className="bg-gray-50 rounded-[2rem] p-5 md:p-8 border border-gray-100">
               <h3 className="text-[18px] font-bold text-gray-900 mb-6">Repayment Summary</h3>
               
               <div className="space-y-4 mb-6">

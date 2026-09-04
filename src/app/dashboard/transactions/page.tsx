@@ -47,7 +47,7 @@ export default function TransactionsPage() {
   const currencySymbol = profile?.currency === 'EUR' ? '‘' : profile?.currency === 'GBP' ? '£' : '$';
 
   const renderTransaction = (tx: any) => (
-    <div key={tx.id} className="flex items-center justify-between p-6 border-b border-gray-100 hover:bg-gray-50/80 transition-colors cursor-pointer last:border-0 group">
+    <div key={tx.id} className="flex items-center justify-between p-4 md:p-6 border-b border-gray-100 hover:bg-gray-50/80 transition-colors cursor-pointer last:border-0 group">
       <div className="flex items-center gap-5">
         <div className={`w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 ${
           tx.type === 'deposit' 
@@ -111,11 +111,11 @@ export default function TransactionsPage() {
   });
 
   return (
-    <div className="px-10 pb-12 pt-6 w-full animate-in fade-in duration-500 flex justify-center">
+    <div className="px-4 md:px-10 pb-12 pt-6 w-full animate-in fade-in duration-500 flex justify-center">
       <div className="w-full max-w-[1200px]">
         
         {/* Header */}
-        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE5E8] rounded-[2rem] p-8 md:p-10 mb-8 relative overflow-hidden flex flex-col justify-center">
+        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE5E8] rounded-[2rem] p-5 md:p-10 mb-8 relative overflow-hidden flex flex-col justify-center">
           <div className="absolute right-0 top-1/2 -translate-y-1/2 w-56 h-56 opacity-[0.03] pointer-events-none">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-[#E81C24]">
               <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 80c-16.6 0-30-13.4-30-30s13.4-30 30-30 30 13.4 30 30-13.4 30-30 30z"/>

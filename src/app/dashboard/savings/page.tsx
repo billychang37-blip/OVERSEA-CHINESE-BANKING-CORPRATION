@@ -58,14 +58,14 @@ export default function SavingsPage() {
   const estimatedProfit = numAmount > 0 ? (numAmount * (selectedRate / 100)) / 12 : 0;
 
   return (
-    <div className="px-6 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center min-h-screen">
+    <div className="px-4 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center min-h-screen">
       <div className="w-full max-w-[950px] flex flex-col gap-6">
         
         {/* Balance Card Container */}
         <div className="rounded-[1.5rem] shadow-[0_2px_15px_rgba(232,28,36,0.03)] border border-red-50 overflow-hidden flex flex-col">
           
           {/* Top Pink Half */}
-          <div className="bg-[#FFF0F2] px-10 py-9 relative overflow-hidden">
+          <div className="bg-[#FFF0F2] px-4 md:px-10 py-9 relative overflow-hidden">
             <div className="absolute -right-8 top-1/2 -translate-y-1/2 w-[280px] h-[280px] opacity-[0.04] pointer-events-none">
               <svg viewBox="0 0 100 100" className="w-full h-full fill-[#E81C24]">
                 <path d="M50 0C22.4 0 0 22.4 0 50s22.4 50 50 50 50-22.4 50-50S77.6 0 50 0zm0 80c-16.6 0-30-13.4-30-30s13.4-30 30-30 30 13.4 30 30-13.4 30-30 30z"/>
@@ -81,7 +81,7 @@ export default function SavingsPage() {
                   onClick={() => setShowBalance(!showBalance)}
                 />
               </div>
-              <div className="text-[34px] font-bold text-gray-900 tracking-tight leading-none mt-1">
+              <div className="text-[34px] break-all sm:break-normal font-bold text-gray-900 tracking-tight leading-none mt-1">
                 {showBalance ? formatCurrency(profile?.savings_balance || 0) : '••••••••'}
               </div>
             </div>
@@ -98,7 +98,7 @@ export default function SavingsPage() {
           </div>
 
           {/* Bottom White Half */}
-          <div className="bg-white px-10 py-6 flex flex-col md:flex-row md:items-center justify-between border-t border-red-50">
+          <div className="bg-white px-4 md:px-10 py-6 flex flex-col md:flex-row md:items-center justify-between border-t border-red-50">
             <div>
               <div className="flex items-center space-x-1 mb-1">
                 <span className="text-[13px] font-medium text-gray-500">Expected Profit (per month)</span>
@@ -128,7 +128,7 @@ export default function SavingsPage() {
         </div>
 
         {/* Main Content Box */}
-        <div className="bg-white rounded-[1.5rem] shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-gray-100 p-8 md:p-10 mb-10">
+        <div className="bg-white rounded-[1.5rem] shadow-[0_2px_15px_rgba(0,0,0,0.03)] border border-gray-100 p-5 md:p-10 mb-10">
           <h2 className="text-[22px] font-bold text-[#1a1a1a] tracking-tight">Create A Fixed Savings Pocket With Us!</h2>
           <p className="text-[14px] text-gray-500 mb-8 font-medium">Get a Monthly 7% - 17% Interest.</p>
 
