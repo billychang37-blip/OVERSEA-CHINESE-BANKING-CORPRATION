@@ -3,10 +3,7 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter, usePathname } from "next/navigation";
-import { 
-  Bell, User, LogOut, ChevronDown, Search, Menu, Home, Briefcase, 
-  ArrowRightLeft, Landmark, Gift, Lock, Grid, FileText, MoreHorizontal, Settings, Send, ArrowUpCircle, PiggyBank
-} from "lucide-react";
+import { Bell, User, LogOut, ChevronDown, Search, Menu, Home, Briefcase, ArrowRightLeft, Landmark, Gift, Lock, Grid, FileText, MoreHorizontal, Settings, Send, ArrowUpCircle, PiggyBank, Moon, CreditCard } from "lucide-react";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [profile, setProfile] = useState<any>(null);
@@ -284,48 +281,53 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         </header>
 
         {/* Mobile Header */}
-        <header className="md:hidden px-6 pt-12 pb-4 flex justify-between items-center bg-white border-b border-gray-100 sticky top-0 z-40">
-          <img src="/logo_main.png" alt="OCBC" className="w-[140px] h-auto object-contain cursor-pointer" onClick={() => router.push('/dashboard')} />
-          <div className="flex items-center space-x-4">
+        <header className="md:hidden px-4 py-3 flex justify-between items-center bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
+          <div className="flex items-center gap-3">
+            <Menu className="w-6 h-6 text-gray-700 cursor-pointer" />
+            <img src="/logo_main.png" alt="OCBC" className="w-[100px] h-auto object-contain cursor-pointer" onClick={() => router.push('/dashboard')} />
+          </div>
+          <div className="flex items-center space-x-3.5">
+            <Moon className="w-5 h-5 text-gray-400" />
             <div className="relative">
-              <Bell className="w-6 h-6 text-gray-700" />
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#E81C24] rounded-full flex items-center justify-center border-2 border-white">
-                <span className="text-[9px] font-bold text-white leading-none">1</span>
+              <Bell className="w-5 h-5 text-gray-700" />
+              <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#E81C24] rounded-full flex items-center justify-center border-[1.5px] border-white">
+                <span className="text-[8px] font-bold text-white leading-none">1</span>
               </div>
             </div>
-            <button onClick={handleLogout} className="w-9 h-9 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden">
-              <LogOut className="w-4 h-4 text-gray-600 ml-0.5" />
-            </button>
+            <div onClick={() => router.push('/dashboard/settings')} className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden border border-gray-200 cursor-pointer">
+               {profile?.avatar_url ? (
+                  <img src={profile.avatar_url} alt="Avatar" className="w-full h-full object-cover" />
+                ) : (
+                  <User className="w-4 h-4 opacity-80 text-gray-600" />
+                )}
+            </div>
           </div>
         </header>
 
         {/* Page Content (Scrollable) */}
-        <div className="flex-1 overflow-y-auto scrollbar-hide pb-24 md:pb-0 relative">
+        <div className="flex-1 overflow-y-auto scrollbar-hide pb-32 md:pb-0 bg-[#F8F9FA] md:bg-white relative">
           {children}
         </div>
 
         {/* Mobile Fixed Bottom Nav */}
-        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-100 px-6 py-2 pb-6 shadow-[0_-10px_20px_rgba(0,0,0,0.04)] flex justify-between items-center z-50">
-          <div onClick={() => router.push('/dashboard')} className="flex flex-col items-center justify-center relative cursor-pointer w-16">
-            <Home className="w-6 h-6 text-[#E81C24] mb-1" />
-            <span className="text-[10px] font-bold text-[#E81C24]">Home</span>
-            <div className="absolute -bottom-2 w-8 h-1 bg-[#E81C24] rounded-t-md"></div>
+        <nav className="md:hidden fixed bottom-0 left-0 right-0 bg-[#0F172A] px-6 py-3 flex justify-between items-center z-50">
+          <div onClick={() => router.push('/dashboard')} className="flex flex-col items-center justify-center relative cursor-pointer w-12">
+            <Home className="w-5 h-5 text-[#E81C24]" />
+            <div className="absolute -bottom-2.5 w-1 h-1 bg-[#E81C24] rounded-full"></div>
           </div>
-          <div className="flex flex-col items-center justify-center cursor-pointer opacity-50 w-16">
-            <Briefcase className="w-6 h-6 text-gray-600 mb-1" />
-            <span className="text-[10px] font-medium text-gray-600">Account</span>
+          <div className="flex flex-col items-center justify-center cursor-pointer text-gray-400 hover:text-white w-12 transition-colors">
+            <CreditCard className="w-5 h-5" />
           </div>
-          <div className="flex flex-col items-center justify-center cursor-pointer opacity-50 w-16">
-            <Send className="w-6 h-6 text-gray-600 mb-1" />
-            <span className="text-[10px] font-medium text-gray-600 whitespace-nowrap">Transfer</span>
+          <div onClick={() => router.push('/dashboard/transfer')} className="flex flex-col items-center justify-center cursor-pointer relative z-10 w-12">
+            <div className="w-11 h-11 bg-[#E81C24] rounded-full flex items-center justify-center -mt-6 border-[3px] border-[#0F172A] shadow-lg">
+               <ArrowRightLeft className="w-4 h-4 text-white" />
+            </div>
           </div>
-          <div onClick={() => router.push('/dashboard/deposit')} className="flex flex-col items-center justify-center cursor-pointer opacity-50 w-16">
-            <ArrowUpCircle className="w-6 h-6 text-gray-600 mb-1" />
-            <span className="text-[10px] font-medium text-gray-600">Deposit</span>
+          <div onClick={() => router.push('/dashboard/soft-token')} className="flex flex-col items-center justify-center cursor-pointer text-gray-400 hover:text-white w-12 transition-colors">
+            <Lock className="w-5 h-5" />
           </div>
-          <div className="flex flex-col items-center justify-center cursor-pointer opacity-50 w-16">
-            <Settings className="w-6 h-6 text-gray-600 mb-1" />
-            <span className="text-[10px] font-medium text-gray-600">Settings</span>
+          <div onClick={() => router.push('/dashboard/settings')} className="flex flex-col items-center justify-center cursor-pointer text-gray-400 hover:text-white w-12 transition-colors">
+            <User className="w-5 h-5" />
           </div>
         </nav>
 

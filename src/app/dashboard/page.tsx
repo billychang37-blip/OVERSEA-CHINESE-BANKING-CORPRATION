@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter } from "next/navigation";
 import { 
-  Eye, Send, ArrowUpCircle, ArrowRightLeft, Lock, MoreHorizontal, ChevronRight, Coffee, FileText, Info, PhoneCall, Settings, Landmark, ArrowDownToLine, ArrowUpRight
+  Eye, Send, ArrowUpCircle, ArrowRightLeft, Lock, MoreHorizontal, ChevronRight, Coffee, FileText, Info, PhoneCall, Settings, Landmark, ArrowDownToLine, ArrowUpRight, CreditCard
 } from "lucide-react";
 
 export default function DashboardPage() {
@@ -105,91 +105,84 @@ export default function DashboardPage() {
   return (
     <>
       {/* MOBILE DASHBOARD */}
-      <div className="md:hidden px-4 py-6">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-[#1a1a1a] tracking-tight">
-            Hello, {profile?.first_name || 'Amanda'}
-          </h1>
-          <p className="text-gray-500 text-sm font-medium mt-1">Good morning!</p>
-        </div>
-
-        {/* Red Balance Card */}
-        <div className="relative bg-gradient-to-br from-[#F0222B] to-[#D0151C] rounded-[24px] p-6 text-white overflow-hidden shadow-lg shadow-red-500/20 mb-8">
-          <div className="absolute -bottom-10 -right-10 w-48 h-48 border-[24px] border-white/10 rounded-full opacity-50"></div>
-          <div className="relative z-10 mb-8">
-            <div className="flex items-center space-x-2 text-white/90 mb-1">
-              <span className="text-[14px] font-medium">Total Balance</span>
-              <button onClick={() => setShowBalance(!showBalance)} className="hover:text-white transition-colors">
-                <Eye className="w-4 h-4" />
-              </button>
-            </div>
-            <div className="text-[36px] font-medium tracking-tight leading-none text-white mt-1 truncate pr-4">
-              {currencySymbol} {showBalance ? (profile?.total_assets ? Number(profile.total_assets).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '0.00') : '••••••••'}
+      <div className="md:hidden px-4 py-4">
+        {/* Sleek Light Balance Card matching EnnexCapital */}
+        <div className="relative bg-[#FFF4F5] border border-red-100 rounded-xl p-5 mb-6 overflow-hidden">
+          <div className="flex justify-between items-center mb-6">
+             <span className="text-[12px] font-semibold text-[#E81C24]">Account Balance</span>
+             <span onClick={() => router.push('/dashboard/transactions')} className="text-[12px] font-medium text-[#1A408C] cursor-pointer">Transactions</span>
+          </div>
+          
+          <div className="mb-6">
+            <div className="flex items-center space-x-2">
+               <span className="text-[28px] sm:text-[32px] font-bold text-gray-900 tracking-tight leading-none break-all max-w-[90%]">
+                 {currencySymbol}{showBalance ? (profile?.total_assets ? Number(profile.total_assets).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '0.00') : '*****'}
+               </span>
+               <button onClick={() => setShowBalance(!showBalance)} className="text-gray-400 hover:text-gray-600">
+                  <Eye className="w-4 h-4" />
+               </button>
             </div>
           </div>
 
-          <div className="relative z-10">
-            <div className="flex items-center space-x-1.5 text-white/90 mb-0.5">
-              <span className="text-[13px] font-medium">Available Balance</span>
-              <Info className="w-3.5 h-3.5" />
+          <div className="grid grid-cols-3 gap-2 pt-4 border-t border-red-100/60">
+            <div onClick={() => router.push('/dashboard/deposit')} className="flex flex-col items-center gap-1.5 cursor-pointer hover:opacity-80 transition-opacity">
+               <ArrowUpCircle className="w-5 h-5 text-[#1A408C]" />
+               <span className="text-[10px] font-medium text-gray-700">Add fund</span>
             </div>
-            <div className="text-[16px] font-bold text-white">
-              <span className="mr-1">{currencySymbol}</span>
-              {showBalance ? (profile?.wallet_balance ? Number(profile.wallet_balance).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '0.00') : '••••••••'}
+            <div onClick={() => router.push('/dashboard/transfer')} className="flex flex-col items-center gap-1.5 cursor-pointer hover:opacity-80 transition-opacity">
+               <Send className="w-5 h-5 text-[#1A408C]" />
+               <span className="text-[10px] font-medium text-gray-700">Transfer</span>
+            </div>
+            <div onClick={() => router.push('/dashboard/savings')} className="flex flex-col items-center gap-1.5 cursor-pointer hover:opacity-80 transition-opacity">
+               <Landmark className="w-5 h-5 text-[#1A408C]" />
+               <span className="text-[10px] font-medium text-gray-700">Saving</span>
             </div>
           </div>
         </div>
 
-        {/* Quick Actions */}
-        <div className="flex justify-between items-center mb-10 px-2">
-          <div onClick={() => router.push('/dashboard/transfer')} className="flex flex-col items-center gap-2 group cursor-pointer">
-            <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors">
-              <Send className="w-5 h-5 text-[#E81C24]" />
-            </div>
-            <span className="text-[11px] font-medium text-gray-700">Transfer</span>
-          </div>
-          <div onClick={() => router.push('/dashboard/deposit')} className="flex flex-col items-center gap-2 group cursor-pointer">
-            <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors">
-              <ArrowUpCircle className="w-5 h-5 text-[#E81C24]" />
-            </div>
-            <span className="text-[11px] font-medium text-gray-700">Add Funds</span>
-          </div>
-          <div onClick={() => router.push('/dashboard/transfer/internal')} className="flex flex-col items-center gap-2 group cursor-pointer">
-            <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors">
-              <ArrowRightLeft className="w-5 h-5 text-[#E81C24]" />
-            </div>
-            <span className="text-[11px] font-medium text-gray-700">Internal Transfer</span>
-          </div>
-          <div onClick={() => router.push('/dashboard/soft-token')} className="flex flex-col items-center gap-2 group cursor-pointer">
-            <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center group-hover:bg-red-100 transition-colors">
-              <Lock className="w-5 h-5 text-[#E81C24]" />
-            </div>
-            <span className="text-[11px] font-medium text-gray-700 whitespace-nowrap">Soft Token</span>
-          </div>
-          <div className="flex flex-col items-center gap-2 group cursor-pointer">
-            <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-gray-100 transition-colors">
-              <MoreHorizontal className="w-5 h-5 text-gray-600" />
-            </div>
-            <span className="text-[11px] font-medium text-gray-700">More</span>
-          </div>
+        {/* 3-Column Action Grid */}
+        <div className="grid grid-cols-3 gap-y-7 gap-x-2 mb-6 bg-transparent rounded-xl px-2">
+           {/* Internal Transfer */}
+           <div onClick={() => router.push('/dashboard/transfer/internal')} className="flex flex-col items-center gap-2 cursor-pointer hover:opacity-80">
+              <ArrowRightLeft className="w-6 h-6 text-[#1A408C]" />
+              <span className="text-[10px] font-medium text-gray-600 text-center">Internal transfer</span>
+           </div>
+           {/* Loan */}
+           <div onClick={() => router.push('/dashboard/loan')} className="flex flex-col items-center gap-2 cursor-pointer hover:opacity-80">
+              <Landmark className="w-6 h-6 text-[#1A408C]" />
+              <span className="text-[10px] font-medium text-gray-600 text-center">Loan</span>
+           </div>
+           {/* Deposit Gift Card */}
+           <div onClick={() => router.push('/dashboard/gift-card')} className="flex flex-col items-center gap-2 cursor-pointer hover:opacity-80">
+              <CreditCard className="w-6 h-6 text-[#1A408C]" />
+              <span className="text-[10px] font-medium text-gray-600 text-center">Deposit Gift Card</span>
+           </div>
+           
+           {/* Connect Web3 */}
+           <div onClick={() => router.push('/dashboard/connect-web3')} className="flex flex-col items-center gap-2 cursor-pointer hover:opacity-80">
+              <div className="w-6 h-6 text-[#1A408C] rounded flex items-center justify-center font-bold text-[14px]">
+                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              </div>
+              <span className="text-[10px] font-medium text-gray-600 text-center">Connect(Web3)</span>
+           </div>
+           {/* Soft Token */}
+           <div onClick={() => router.push('/dashboard/soft-token')} className="flex flex-col items-center gap-2 cursor-pointer hover:opacity-80">
+              <Lock className="w-6 h-6 text-[#1A408C]" />
+              <span className="text-[10px] font-medium text-gray-600 text-center">Soft token</span>
+           </div>
+           {/* User / Settings */}
+           <div onClick={() => router.push('/dashboard/settings')} className="flex flex-col items-center gap-2 cursor-pointer hover:opacity-80">
+              <Settings className="w-6 h-6 text-[#1A408C]" />
+              <span className="text-[10px] font-medium text-gray-600 text-center">Settings</span>
+           </div>
         </div>
 
-        {/* Recent Tx */}
-        <div className="mb-8">
-          <div className="flex justify-between items-end mb-4 px-2">
-            <h2 className="text-[18px] font-bold text-[#1a1a1a]">Recent Transactions</h2>
-            <button className="text-[#E81C24] text-[13px] font-semibold flex items-center hover:underline">
-              View All <ChevronRight className="w-4 h-4 ml-0.5" />
-            </button>
-          </div>
-          <div className="bg-white rounded-2xl border border-gray-100 overflow-hidden shadow-sm">
-            {transactions.length > 0 ? (
-              transactions.map(renderTransaction)
-            ) : (
-              <div className="p-6 text-center text-gray-500 text-sm">No recent transactions.</div>
-            )}
-          </div>
+        {/* Promo banner */}
+        <div className="bg-white rounded-lg p-3.5 flex justify-between items-center shadow-sm mb-6 cursor-pointer hover:bg-gray-50 transition-colors">
+          <span className="text-[12px] font-medium text-gray-800">Earn 7% weekly as you save</span>
+          <ChevronRight className="w-4 h-4 text-gray-400" />
         </div>
+
       </div>
 
       {/* DESKTOP DASHBOARD */}
