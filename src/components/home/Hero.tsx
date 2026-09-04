@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Play, Apple, ArrowRight } from "lucide-react";
 
 export default function Hero() {
@@ -8,7 +9,7 @@ export default function Hero() {
   );
 
   return (
-    <section className="relative w-full min-h-[100dvh] lg:min-h-[850px] xl:min-h-[950px] overflow-hidden bg-gradient-to-r from-white via-[#EAF7FA] to-[#FFF3EB] flex items-center pt-32 lg:pt-48 border-b border-gray-100">
+    <section className="relative w-full min-h-[100dvh] lg:min-h-[850px] xl:min-h-[950px] overflow-hidden bg-gradient-to-r from-white via-[#EAF7FA] to-[#FFF3EB] flex items-center pt-4 md:pt-10 lg:pt-16 border-b border-gray-100">
       
       {/* Background Graphic Elements */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -49,7 +50,7 @@ export default function Hero() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 h-full relative">
           
           {/* Left Content - Elegantly spaced, Ennex-style typography */}
-          <div className="lg:col-span-6 pb-[45vh] lg:pb-32 z-20 pt-4 lg:self-end self-start">
+          <div className="lg:col-span-6 pb-[30vh] md:pb-[45vh] lg:pb-32 z-20 pt-4 lg:self-end self-start">
             
             {/* Pill */}
             <div className="inline-flex items-center space-x-2 bg-white text-ocbc-red px-3 py-1.5 rounded-full text-[12px] font-semibold mb-6 shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-gray-50">
@@ -69,27 +70,7 @@ export default function Hero() {
               OCBC provides tailor made services to cater for the needs of the diverse segments of the economy. Our unwavering commitment to excellence, innovation, and security sets us apart in the world of banking.
             </p>
 
-            {/* App Store Buttons - Refined and smaller */}
-            <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-10 lg:mb-14">
-              <button className="flex items-center justify-center bg-white border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)] rounded-xl px-5 py-2.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
-                <div className="flex items-center space-x-3">
-                  <Play className="w-6 h-6 text-green-500 fill-green-500" />
-                  <div className="text-left">
-                    <div className="text-[10px] leading-none text-gray-400 font-semibold mb-1 uppercase tracking-wider">Get it on</div>
-                    <div className="text-[14px] font-bold leading-none tracking-tight text-gray-900">Google Play</div>
-                  </div>
-                </div>
-              </button>
-              <button className="flex items-center justify-center bg-white border border-gray-100 shadow-[0_4px_15px_rgba(0,0,0,0.03)] rounded-xl px-5 py-2.5 hover:shadow-[0_8px_20px_rgba(0,0,0,0.06)] hover:-translate-y-0.5 transition-all duration-300">
-                <div className="flex items-center space-x-3">
-                  <Apple className="w-6 h-6 text-black fill-black" />
-                  <div className="text-left">
-                    <div className="text-[10px] leading-none text-gray-400 font-semibold mb-1 uppercase tracking-wider">Download on the</div>
-                    <div className="text-[14px] font-bold leading-none tracking-tight text-gray-900">App Store</div>
-                  </div>
-                </div>
-              </button>
-            </div>
+
 
             {/* Trust Stats - Cleanly spaced avatars */}
             <div className="flex items-center space-x-5">
@@ -123,7 +104,7 @@ export default function Hero() {
         Right Content - ENNEX STYLE SAFE WRAPPER 
         We drastically reduce her maximum height to ensure massive breathing room above her head.
       */}
-      <div className="absolute right-0 bottom-0 w-full md:w-[70%] lg:w-[50%] h-[45vh] lg:h-[75%] pointer-events-none z-20 flex justify-end lg:justify-end items-end pr-0 lg:pr-12">
+      <div className="absolute right-0 bottom-0 w-full md:w-[70%] lg:w-[50%] h-[30vh] md:h-[45vh] lg:h-[65%] pointer-events-none z-20 flex justify-end lg:justify-end items-end pr-0 lg:pr-12">
         
         {/* The Lady Image - Strictly constrained to 90% of the 75% wrapper */}
         <img 
@@ -134,10 +115,10 @@ export default function Hero() {
         
         {/* The Floating Get Started Button */}
         <div className="absolute bottom-[8%] right-[5%] md:right-[10%] xl:right-[15%] z-30 pointer-events-auto">
-          <button className="flex items-center space-x-3 bg-ocbc-red text-white pl-5 pr-1.5 py-2 rounded-full shadow-[0_10px_20px_rgba(232,28,36,0.3)] hover:bg-ocbc-red-dark transition-all transform hover:-translate-y-1">
+          <Link href="/register" className="flex items-center space-x-3 bg-ocbc-red text-white pl-5 pr-1.5 py-2 rounded-full shadow-[0_10px_20px_rgba(232,28,36,0.3)] hover:bg-ocbc-red-dark transition-all transform hover:-translate-y-1">
             <span className="font-semibold text-[14px] lg:text-[15px] pr-2">Get Started</span>
             <span className="bg-white text-ocbc-red rounded-full p-2"><ArrowRight className="w-4 h-4 stroke-[3]"/></span>
-          </button>
+          </Link>
         </div>
       </div>
     </section>

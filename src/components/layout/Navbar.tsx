@@ -17,9 +17,9 @@ export default function Navbar() {
   ];
 
   return (
-    <div className="absolute top-0 z-50 w-full">
+    <div className="relative z-50 w-full bg-gradient-to-r from-white via-[#EAF7FA] to-[#FFF3EB]">
       {/* Utility Strip */}
-      <div className="bg-[#111827] text-gray-300 py-1.5 px-4 sm:px-6 lg:px-8 w-full">
+      <div className="hidden md:block bg-[#111827] text-gray-300 py-1.5 px-4 sm:px-6 lg:px-8 w-full">
         <div className="max-w-[1300px] mx-auto flex justify-between items-center text-[11px] lg:text-[12px] font-semibold tracking-wide">
           <div className="flex items-center space-x-6">
             <Link href="#" className="text-white">Personal Banking</Link>

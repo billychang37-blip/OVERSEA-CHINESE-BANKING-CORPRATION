@@ -63,7 +63,7 @@ export default function AppDownloadAndSecurity() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="lg:col-span-7 flex flex-col justify-center pl-0 lg:pl-10"
+              className="lg:col-span-12 flex flex-col justify-center max-w-4xl mx-auto"
             >
               
               {/* Small dot and label */}
