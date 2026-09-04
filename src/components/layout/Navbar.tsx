@@ -41,7 +41,7 @@ export default function Navbar() {
       
       <nav className="w-full bg-transparent">
       <div className="max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center h-24 lg:h-28">
+        <div className="flex justify-between items-center h-16 lg:h-24">
           
           {/* Logo & Text */}
           <div className="flex-shrink-0 flex items-center">
@@ -49,11 +49,11 @@ export default function Navbar() {
               <img
                 src="/logo_main.png"
                 alt="OCBC Logo"
-                className="h-10 xl:h-12 w-auto object-contain transition-transform group-hover:scale-105"
+                className="h-7 md:h-10 xl:h-12 w-auto object-contain transition-transform group-hover:scale-105"
               />
-              <div className="ml-3 pl-3 border-l-[1.5px] border-gray-300 flex flex-col justify-center h-10">
-                <span className="text-[12px] xl:text-[13px] font-bold text-[#111827] leading-[1.2] tracking-tight">Oversea Chinese</span>
-                <span className="text-[12px] xl:text-[13px] font-bold text-[#111827] leading-[1.2] tracking-tight">Banking Corporation</span>
+              <div className="ml-3 pl-3 border-l-[1.5px] border-gray-300 flex flex-col justify-center h-8 md:h-10">
+                <span className="text-[10px] md:text-[12px] xl:text-[13px] font-bold text-[#111827] leading-[1.2] tracking-tight">Oversea Chinese</span>
+                <span className="text-[10px] md:text-[12px] xl:text-[13px] font-bold text-[#111827] leading-[1.2] tracking-tight">Banking Corporation</span>
               </div>
             </Link>
           </div>
