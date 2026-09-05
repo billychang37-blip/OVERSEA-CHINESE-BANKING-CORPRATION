@@ -118,6 +118,14 @@ export default function Navbar() {
               </Link>
             ))}
           </div>
+          <div className="px-4 py-4 border-t border-gray-100 space-y-3">
+            <Link href="/login" onClick={() => setIsOpen(false)} className="block w-full text-center px-4 py-3 text-lg font-bold text-gray-900 border-2 border-gray-100 rounded-full hover:bg-gray-50">
+              Login
+            </Link>
+            <Link href="/register" onClick={() => setIsOpen(false)} className="block w-full text-center px-4 py-3 text-lg font-bold text-white bg-[#E81C24] rounded-full hover:bg-[#c7131a]">
+              Get Started
+            </Link>
+          </div>
         </div>
       )}
       </nav>

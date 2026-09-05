@@ -4,12 +4,14 @@ import { Lock, ChevronUp, ChevronDown } from "lucide-react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
+import { Eye, EyeOff } from "lucide-react";
 
 export default function LoginPage() {
   const [isAdvisoryExpanded, setIsAdvisoryExpanded] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [authError, setAuthError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
+  const [showPass, setShowPass] = useState(false);
 
   useEffect(() => {
     // Pre-fill user ID and PIN if remember me was used before
@@ -161,14 +163,19 @@ export default function LoginPage() {
 
               <div className="w-full mb-4">
                 <label htmlFor="pin" className="block text-[13px] text-gray-700 mb-2 font-medium">PIN</label>
-                <input 
-                  type="password" 
+                <div className="relative">
+                    <input 
+                  type={showPass ? "text" : "password"} 
                   id="pin"
                   name="pin"
                   className="w-full bg-white border border-[#D1D5DB] focus:border-[#E81C24] focus:ring-1 focus:ring-[#E81C24] rounded-md px-3 py-3 text-[16px] md:text-[15px] text-gray-900 placeholder-gray-400 outline-none shadow-sm transition-colors"
                   placeholder="••••••••"
                   required
                 />
+                    <button type="button" onClick={() => setShowPass(!showPass)} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 z-10">
+                      {showPass ? <EyeOff className="w-5 h-5" /> : <Eye className="w-5 h-5" />}
+                    </button>
+                  </div>
               </div>
 
               <div className="flex items-center mt-2 mb-8">

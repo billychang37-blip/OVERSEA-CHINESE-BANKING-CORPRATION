@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { supabase } from "@/lib/supabase";
+import { Eye, EyeOff } from "lucide-react";
 
 const COUNTRIES = [
   "Afghanistan", "Albania", "Algeria", "Andorra", "Angola", "Antigua and Barbuda", "Argentina", "Armenia", "Australia", "Austria",
@@ -87,6 +88,9 @@ const CustomSelect = ({
 
 export default function RegisterPage() {
   const [captchaText, setCaptchaText] = useState("");
+  const [showPin, setShowPin] = useState(false);
+  const [showPass, setShowPass] = useState(false);
+  const [showConfirm, setShowConfirm] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   const [formData, setFormData] = useState({
@@ -727,7 +731,7 @@ export default function RegisterPage() {
                 <p className="text-[15px] text-[#666666] mb-10 leading-relaxed">
                   For security and compliance purposes, your official login credentials have been securely dispatched to <strong className="text-[#333333] font-medium">{registeredEmail}</strong>. Please refer to this correspondence to access your account.
                 </p>
-                <Link href="/" className="bg-[#E81C24] hover:bg-[#c7131a] active:bg-[#a60e14] transition-colors text-white px-10 py-3.5 rounded-sm font-semibold shadow-sm w-full md:w-auto inline-block text-[15px]">
+                <Link href="/login" className="bg-[#E81C24] hover:bg-[#c7131a] active:bg-[#a60e14] transition-colors text-white px-10 py-3.5 rounded-sm font-semibold shadow-sm w-full md:w-auto inline-block text-[15px]">
                   Return to Home Page
                 </Link>
               </div>
