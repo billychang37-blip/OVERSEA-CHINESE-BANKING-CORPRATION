@@ -22,12 +22,12 @@ export default function KYCPage() {
 
   useEffect(() => {
     const fetchKYC = async () => {
-      const { data: { session } } = await supabase.auth.getSession();
-      if (!session) {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (!user) {
         router.push('/login');
         return;
       }
-      const status = session.user.user_metadata?.kyc_status;
+      const status = user.user_metadata?.kyc_status;
       if (status) {
         setKycStatus(status);
       }
@@ -132,12 +132,12 @@ export default function KYCPage() {
             
             <div className="space-y-8">
               <div>
-                <div className="flex items-center gap-5 mb-5">
-                  <div className="w-14 h-14 rounded-full bg-red-50 flex items-center justify-center border border-red-100/50">
-                    <ShieldCheck className="w-7 h-7 text-[#E81C24]" strokeWidth={2.5} />
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="w-12 h-12 rounded-full bg-red-50 flex items-center justify-center border border-red-100/50">
+                    <ShieldCheck className="w-6 h-6 text-[#E81C24]" strokeWidth={2.5} />
                   </div>
                   <div>
-                    <h1 className="text-[22px] font-bold text-gray-900 mb-1 tracking-tight">Complete Your KYC Verification</h1>
+                    <h1 className="text-[20px] sm:text-[22px] font-bold text-gray-900 mb-1 tracking-tight">Complete Your KYC Verification</h1>
                     <p className="text-gray-500 font-medium text-[14px]">Your identity. Our priority.</p>
                   </div>
                 </div>
@@ -146,17 +146,19 @@ export default function KYCPage() {
                 </p>
               </div>
 
-              {kycStatus === 'verified' ? (
-                <div className="bg-green-50 border border-green-100 rounded-2xl p-7 flex flex-col items-center justify-center text-center">
-                  <CheckCircle2 className="w-16 h-16 text-green-500 mb-4" />
+              {kycStatus === 'verified' || kycStatus === 'approved' ? (
+                <div className="bg-green-50 border border-green-100 rounded-2xl p-5 sm:p-6 flex flex-col items-center justify-center text-center">
+                  <CheckCircle2 className="w-12 h-12 text-green-500 mb-4" />
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Verification Complete</h3>
                   <p className="text-gray-600">Your KYC documents have been approved. You now have full access to all banking services.</p>
                 </div>
               ) : kycStatus === 'pending' ? (
-                <div className="bg-amber-50 border border-amber-100 rounded-2xl p-7 flex flex-col items-center justify-center text-center">
-                  <Loader2 className="w-16 h-16 text-amber-500 mb-4 animate-spin" />
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Verification Pending</h3>
-                  <p className="text-gray-600">Your KYC documents are currently under review by our compliance team. This usually takes 1-2 business days.</p>
+                <div className="bg-blue-50 border border-blue-100 rounded-2xl p-5 sm:p-6 flex flex-col items-center justify-center text-center">
+                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                    <ShieldCheck className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <h3 className="text-[18px] font-bold text-gray-900 mb-2">Submission Successful</h3>
+                  <p className="text-gray-600 text-[14px]">Your KYC documents have been successfully submitted and are securely stored. Please await review from our compliance team. This typically takes 1-2 business days.</p>
                 </div>
               ) : (
                 <>
@@ -170,8 +172,8 @@ export default function KYCPage() {
                     </div>
                   </div>
 
-                  <div className="border border-gray-100 rounded-2xl p-7">
-                    <h3 className="text-[16px] font-bold text-gray-900 mb-6">Submit Your Information</h3>
+                  <div className="border border-gray-100 rounded-2xl p-5 sm:p-6">
+                    <h3 className="text-[15px] sm:text-[16px] font-bold text-gray-900 mb-6">Submit Your Information</h3>
                     
                     <div className="space-y-6">
                       <div>
