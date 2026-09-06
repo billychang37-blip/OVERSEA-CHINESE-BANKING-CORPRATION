@@ -59,7 +59,7 @@ export default function DepositPage() {
                   </div>
                   <p className="text-[13px] text-gray-500 mb-3 font-medium">Add money via mobile or internet banking</p>
                   
-                  <div className="flex items-center gap-5">
+                  <div className="flex flex-wrap items-center gap-3 md:gap-5 mt-2">
                     <div className="flex items-center gap-1.5">
                       <Zap className="w-3.5 h-3.5 text-gray-400" />
                       <span className="text-[11.5px] text-gray-600 font-semibold">Instant Credit</span>
@@ -99,7 +99,7 @@ export default function DepositPage() {
                   <h3 className="text-[16px] font-bold text-gray-900 mb-0.5">Cryptocurrency</h3>
                   <p className="text-[13px] text-gray-500 mb-3 font-medium">Fund account using crypto (USDT, USDC, BUSD and more)</p>
                   
-                  <div className="flex items-center gap-5">
+                  <div className="flex flex-wrap items-center gap-3 md:gap-5 mt-2">
                     <div className="flex items-center gap-1.5">
                       <Zap className="w-3.5 h-3.5 text-gray-400" />
                       <span className="text-[11.5px] text-gray-600 font-semibold">Fast Settlement</span>
@@ -131,7 +131,7 @@ export default function DepositPage() {
                   <h3 className="text-[16px] font-bold text-gray-900 mb-0.5">Gift Card</h3>
                   <p className="text-[13px] text-gray-500 mb-3 font-medium">Instantly deposit using gift cards</p>
                   
-                  <div className="flex items-center gap-5">
+                  <div className="flex flex-wrap items-center gap-3 md:gap-5 mt-2">
                     <div className="flex items-center gap-1.5">
                       <Zap className="w-3.5 h-3.5 text-gray-400" />
                       <span className="text-[11.5px] text-gray-600 font-semibold">Instant Credit</span>
@@ -154,8 +154,8 @@ export default function DepositPage() {
         </div>
 
         {/* Bottom Security Banner */}
-        <div className="bg-[#FFF4F4] rounded-2xl p-4 md:p-6 border border-[#FFE5E8] flex items-center justify-between">
-          <div className="flex items-center gap-4">
+        <div className="bg-[#FFF4F4] rounded-2xl p-4 md:p-6 border border-[#FFE5E8] flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-0">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4">
             <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center border border-red-100 shrink-0 shadow-sm">
               <ShieldCheck className="w-6 h-6 text-[#E81C24]" />
             </div>
@@ -166,7 +166,7 @@ export default function DepositPage() {
               </p>
             </div>
           </div>
-          <button className="flex items-center gap-1.5 text-[13px] font-bold text-[#E81C24] hover:gap-2 transition-all whitespace-nowrap shrink-0">
+          <button className="flex items-center gap-1.5 text-[13px] font-bold text-[#E81C24] hover:gap-2 transition-all whitespace-nowrap shrink-0 mt-2 md:mt-0">
             Learn more about security <ShieldCheck className="w-4 h-4" />
           </button>
         </div>

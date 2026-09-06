@@ -122,45 +122,45 @@ export default function BankTransferPage() {
               <div className="space-y-0 border border-gray-200 rounded bg-white shadow-sm">
                 
                 {/* Bank Name */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between p-5 border-b border-gray-200 group">
-                  <span className="text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-2 md:mb-0">Receiving Bank</span>
-                  <div className="flex items-center justify-end">
-                    <span className="font-medium text-[15px] text-gray-900">{accDetails.bankName}</span>
+                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 md:p-5 border-b border-gray-200 group gap-1">
+                  <span className="text-[12px] md:text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-1 md:mb-0">Receiving Bank</span>
+                  <div className="flex items-start md:items-center justify-between md:justify-end w-full md:w-auto mt-1 md:mt-0">
+                    <span className="font-medium text-[14px] md:text-[15px] text-gray-900 text-left md:text-left md:text-right break-words pr-3 max-w-[85%] md:max-w-md">{accDetails.bankName}</span>
                     <CopyButton text={accDetails.bankName} id="bankName" />
                   </div>
                 </div>
 
                 {/* Bank Address */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between p-5 border-b border-gray-200 group">
-                  <span className="text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-2 md:mb-0">Bank Address</span>
-                  <div className="flex items-center justify-end">
-                    <span className="font-medium text-[15px] text-gray-900 text-right">{accDetails.bankAddress}</span>
+                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 md:p-5 border-b border-gray-200 group gap-1">
+                  <span className="text-[12px] md:text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-1 md:mb-0">Bank Address</span>
+                  <div className="flex items-start md:items-center justify-between md:justify-end w-full md:w-auto mt-1 md:mt-0">
+                    <span className="font-medium text-[15px] text-gray-900 text-left md:text-right">{accDetails.bankAddress}</span>
                     <CopyButton text={accDetails.bankAddress} id="bankAddress" />
                   </div>
                 </div>
                 
                 {/* Beneficiary Name */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between p-5 border-b border-gray-200 group">
-                  <span className="text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-2 md:mb-0">Beneficiary Name</span>
-                  <div className="flex items-center justify-end">
-                    <span className="font-bold text-[15px] text-gray-900">{accDetails.accountName}</span>
+                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 md:p-5 border-b border-gray-200 group gap-1">
+                  <span className="text-[12px] md:text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-1 md:mb-0">Beneficiary Name</span>
+                  <div className="flex items-start md:items-center justify-between md:justify-end w-full md:w-auto mt-1 md:mt-0">
+                    <span className="font-bold text-[14px] md:text-[15px] text-gray-900 text-left md:text-left md:text-right break-words pr-3 max-w-[85%] md:max-w-md">{accDetails.accountName}</span>
                     <CopyButton text={accDetails.accountName} id="accName" />
                   </div>
                 </div>
 
                 {/* Beneficiary Address */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between p-5 border-b border-gray-200 group">
-                  <span className="text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-2 md:mb-0">Beneficiary Address</span>
-                  <div className="flex items-center justify-end">
-                    <span className="font-medium text-[15px] text-gray-900 text-right max-w-sm">{accDetails.userAddress}</span>
+                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 md:p-5 border-b border-gray-200 group gap-1">
+                  <span className="text-[12px] md:text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-1 md:mb-0">Beneficiary Address</span>
+                  <div className="flex items-start md:items-center justify-between md:justify-end w-full md:w-auto mt-1 md:mt-0">
+                    <span className="font-medium text-[15px] text-gray-900 text-left md:text-right max-w-sm">{accDetails.userAddress}</span>
                     <CopyButton text={accDetails.userAddress} id="accAddress" />
                   </div>
                 </div>
                 
                 {/* Account Number */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between p-5 border-b border-gray-200 bg-gray-50/50 group">
-                  <span className="text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-2 md:mb-0">Account Number</span>
-                  <div className="flex items-center justify-end">
+                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 md:p-5 border-b border-gray-200 bg-gray-50/50 group gap-1">
+                  <span className="text-[12px] md:text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-1 md:mb-0">Account Number</span>
+                  <div className="flex items-start md:items-center justify-between md:justify-end w-full md:w-auto mt-1 md:mt-0">
                     <span className="font-bold text-[18px] text-gray-900 font-mono tracking-widest">
                       {accDetails.accountNumber}
                     </span>
@@ -169,9 +169,9 @@ export default function BankTransferPage() {
                 </div>
                 
                 {/* SWIFT */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between p-5 bg-gray-50/50 rounded-b group">
-                  <span className="text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-2 md:mb-0">SWIFT / BIC Code</span>
-                  <div className="flex items-center justify-end">
+                <div className="flex flex-col md:flex-row md:items-center justify-between p-4 md:p-5 bg-gray-50/50 rounded-b group gap-1">
+                  <span className="text-[12px] md:text-[13px] text-gray-500 font-semibold uppercase tracking-wider mb-1 md:mb-0">SWIFT / BIC Code</span>
+                  <div className="flex items-start md:items-center justify-between md:justify-end w-full md:w-auto mt-1 md:mt-0">
                     <span className="font-bold text-[16px] text-gray-900 font-mono tracking-widest">
                       {accDetails.swiftCode}
                     </span>
