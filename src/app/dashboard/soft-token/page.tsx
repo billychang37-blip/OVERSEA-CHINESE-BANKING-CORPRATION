@@ -168,7 +168,7 @@ export default function SoftTokenPage() {
       <div className="px-4 md:px-10 pb-20 pt-8 w-full animate-in fade-in duration-500 flex justify-center min-h-screen">
         <div className="w-full max-w-[900px] flex flex-col gap-8 pt-8">
           
-          <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE5E8] rounded-[2rem] p-5 md:p-10 md:p-12 relative overflow-hidden shadow-[0_8px_30px_rgb(232,28,36,0.08)] border border-red-50">
+          <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE5E8] rounded-[2rem] p-5 sm:p-8 md:p-10 lg:p-12 relative overflow-hidden shadow-[0_8px_30px_rgb(232,28,36,0.08)] border border-red-50">
             <div className="absolute right-0 top-1/2 -translate-y-1/2 w-64 h-64 opacity-[0.03] pointer-events-none">
               <svg viewBox="0 0 100 100" className="w-full h-full fill-[#E81C24]">
                 <path d="M50 0 C22.4 0 0 22.4 0 50 C0 77.6 22.4 100 50 100 C77.6 100 100 77.6 100 50 C100 22.4 77.6 0 50 0 Z M50 90 C27.9 90 10 72.1 10 50 C10 27.9 27.9 10 50 10 C72.1 10 90 27.9 90 50 C90 72.1 72.1 90 50 90 Z"/>
@@ -182,14 +182,14 @@ export default function SoftTokenPage() {
                   <CheckCircle2 className="w-4 h-4" />
                   <span className="text-[11px] font-bold uppercase tracking-widest">Active Status</span>
                 </div>
-                <h2 className="text-[32px] break-all sm:break-normal md:text-[42px] break-all sm:break-normal font-bold text-gray-900 mb-4 tracking-tight leading-tight">Soft Token<br/>Activated</h2>
+                <h2 className="text-[28px] md:text-[42px] font-bold text-gray-900 mb-4 tracking-tight leading-tight">Soft Token<br/>Activated</h2>
                 <p className="text-gray-600 text-[15px] leading-relaxed max-w-md mx-auto md:mx-0 font-medium">
                   Your Soft Token is fully active. This token provides an additional layer of security and is seamlessly integrated for authorizing your outgoing transfers.
                 </p>
               </div>
               
               <div className="w-full md:w-auto">
-                <div className="bg-white border border-red-100 shadow-[0_10px_40px_rgba(232,28,36,0.06)] rounded-2xl p-5 md:p-8 relative overflow-hidden group">
+                <div className="bg-white border border-red-100 shadow-[0_10px_40px_rgba(232,28,36,0.06)] rounded-2xl p-4 sm:p-6 md:p-8 relative overflow-hidden group">
                   <div className="flex items-center justify-center mb-6">
                     <div className="w-14 h-14 bg-red-50 rounded-full flex items-center justify-center">
                       <ShieldCheck className="w-7 h-7 text-[#E81C24]" />
@@ -199,7 +199,7 @@ export default function SoftTokenPage() {
                   <p className="text-gray-500 text-[12px] font-bold mb-3 uppercase tracking-widest text-center">Your Soft Token ID</p>
                   
                   <div className="bg-gray-50 border border-gray-200 rounded-xl px-6 py-4 flex items-center justify-between gap-4">
-                    <span className="text-[32px] break-all sm:break-normal font-mono font-bold tracking-[0.2em] text-gray-900">
+                    <span className="text-[24px] sm:text-[32px] font-mono font-bold tracking-[0.2em] text-gray-900">
                       {code.substring(0,3)}-{code.substring(3,6)}
                     </span>
                     <button 
@@ -263,7 +263,7 @@ export default function SoftTokenPage() {
       <div className="w-full max-w-[1000px] flex flex-col gap-6">
         
         {/* Header Hero */}
-        <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-[2rem] p-5 md:p-10 md:p-12 text-white relative overflow-hidden">
+        <div className="bg-gradient-to-br from-[#1a1a1a] to-[#0a0a0a] rounded-[2rem] p-5 sm:p-8 md:p-10 lg:p-12 text-white relative overflow-hidden">
           <div className="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-red-600/20 to-transparent pointer-events-none mix-blend-overlay"></div>
           <div className="absolute -right-20 -top-20 w-96 h-96 bg-[#E81C24] blur-[100px] opacity-30 rounded-full pointer-events-none"></div>
           
@@ -272,7 +272,7 @@ export default function SoftTokenPage() {
               <ShieldCheck className="w-4 h-4 text-red-400" />
               <span className="text-[13px] font-medium text-red-100">Advanced Account Security</span>
             </div>
-            <h1 className="text-[36px] break-all sm:break-normal md:text-[42px] break-all sm:break-normal font-bold mb-4 tracking-tight leading-tight">
+            <h1 className="text-[28px] sm:text-[36px] md:text-[42px] font-bold mb-4 tracking-tight leading-tight">
               Activate your <span className="text-[#E81C24]">Soft Token</span>
             </h1>
             <p className="text-gray-300 text-[16px] leading-relaxed max-w-xl">
@@ -283,7 +283,7 @@ export default function SoftTokenPage() {
         </div>
 
         {/* Main Content Area */}
-        <div className="bg-white rounded-[2rem] p-5 md:p-8 md:p-12 shadow-sm border border-gray-100">
+        <div className="bg-white rounded-[2rem] p-4 sm:p-6 md:p-8 md:p-12 shadow-sm border border-gray-100">
           
           {/* Features Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
