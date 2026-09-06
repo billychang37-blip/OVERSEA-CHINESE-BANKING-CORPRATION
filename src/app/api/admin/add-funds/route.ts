@@ -239,7 +239,13 @@ Terms of Use  |  Privacy & Security  |  FAQs  |  Contact Us
         `;
       }
 
-      const emailHtml = `
+      const emailHtml = `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body style="margin: 0; padding: 0; background-color: #f6f9fc;">
         <div style="font-family: Arial, Helvetica, sans-serif; max-width: 600px; margin: 0 auto; color: #333333; font-size: 14px; line-height: 1.5;">
           <div style="border: 1px solid #dcdcdc; padding: 35px 35px 20px 35px; background-color: #ffffff;">
             
@@ -294,6 +300,9 @@ Terms of Use  |  Privacy & Security  |  FAQs  |  Contact Us
             </div>
           </div>
         </div>
+</div>
+</body>
+</html>
       `;
 
       try {

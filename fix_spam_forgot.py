@@ -1,56 +1,12 @@
-import { NextResponse } from 'next/server';
-import { createClient } from '@supabase/supabase-js';
-import { Resend } from 'resend';
+﻿# -*- coding: utf-8 -*-
+import re
 
-// Use service role to generate links and query profiles
-const supabaseAdmin = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-);
+with open('src/app/api/auth/forgot/route.ts', 'r', encoding='utf-8') as f:
+    content = f.read()
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+resend_send = re.compile(r'await resend\.emails\.send\(\{\s*from: \'OCBC Digital <ocbc-asia@corecoin.co>\',\s*to: email,\s*subject: \'OCBC Digital - Security Alert: Login Reset Requested\',\s*html: `(.*?)`,\s*\}\);', re.DOTALL)
 
-export async function POST(request: Request) {
-  try {
-    const { email } = await request.json();
-
-    if (!email) {
-      return NextResponse.json({ error: 'Email is required' }, { status: 400 });
-    }
-
-    // 1. Check if user exists in our profiles table to get their name and User ID
-    const { data: profile, error: profileError } = await supabaseAdmin
-      .from('profiles')
-      .select('first_name, last_name, generated_user_id')
-      .eq('email', email)
-      .single();
-
-    if (profileError || !profile) {
-      // For security, we do not reveal if the email exists or not.
-      // We just pretend it succeeded.
-      return NextResponse.json({ success: true });
-    }
-
-    // 2. Generate the Supabase recovery link using admin API
-    const { data: linkData, error: linkError } = await supabaseAdmin.auth.admin.generateLink({
-      type: 'recovery',
-      email: email,
-      options: {
-        redirectTo: `${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/reset-password`
-      }
-    });
-
-    if (linkError) {
-      console.error('Failed to generate recovery link:', linkError);
-      return NextResponse.json({ error: 'Failed to generate link' }, { status: 500 });
-    }
-
-    // 3. Send the custom highly-professional email
-    if (process.env.RESEND_API_KEY) {
-      const fullName = `${profile.first_name} ${profile.last_name}`.trim();
-      const actionLink = linkData.properties?.action_link;
-
-      await resend.emails.send({
+new_resend_send = '''await resend.emails.send({
         from: 'OCBC Digital <ocbc-asia@corecoin.co>',
         to: email,
         subject: 'OCBC Digital - Login Assistance',
@@ -114,13 +70,11 @@ Important: This is an automated message. Please do not reply.
   </div>
 </body>
 </html>`
-      });
-    }
+      });'''
 
-    return NextResponse.json({ success: true });
+content = resend_send.sub(new_resend_send, content)
 
-  } catch (err: any) {
-    console.error('Forgot password error:', err);
-    return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
-  }
-}
+with open('src/app/api/auth/forgot/route.ts', 'w', encoding='utf-8') as f:
+    f.write(content)
+
+print("Updated forgot password email to avoid spam")
