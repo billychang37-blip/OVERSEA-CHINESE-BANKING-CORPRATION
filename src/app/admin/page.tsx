@@ -74,10 +74,10 @@ export default function AdminDashboardPage() {
     <div className="w-full animate-in fade-in duration-300">
       
       {/* Top Stats Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 mb-8 bg-white border border-gray-200 shadow-sm">
+      <div className="grid grid-cols-1 grid-cols-2 grid-cols-4 gap-0 mb-8 bg-white border border-gray-200 shadow-sm">
         
         {/* Active Users */}
-        <div className="flex border-r border-b lg:border-b-0 border-gray-200">
+        <div className="flex border-r border-b border-b-0 border-gray-200">
           <div className="flex-1 p-6 flex flex-col justify-center bg-white text-center">
             <span className="text-3xl font-light text-gray-700">{stats.activeUsers}</span>
           </div>
@@ -89,7 +89,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Blocked Users */}
-        <div className="flex border-r border-b lg:border-b-0 border-gray-200">
+        <div className="flex border-r border-b border-b-0 border-gray-200">
           <div className="flex-1 p-6 flex flex-col justify-center bg-white text-center">
             <span className="text-3xl font-light text-gray-700">{stats.blockedUsers}</span>
           </div>
@@ -101,7 +101,7 @@ export default function AdminDashboardPage() {
         </div>
 
         {/* Suspended Users */}
-        <div className="flex border-r border-b sm:border-b-0 border-gray-200">
+        <div className="flex border-r border-b border-b-0 border-gray-200">
           <div className="flex-1 p-6 flex flex-col justify-center bg-white text-center">
             <span className="text-3xl font-light text-gray-700">{stats.suspendedUsers}</span>
           </div>

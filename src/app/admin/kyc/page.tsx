@@ -14,15 +14,16 @@ export default function AdminKycPage() {
   }, []);
 
   const fetchRequests = async () => {
-    // We join with profiles to get the user name and email
-    const { data: txs, error } = await supabase
-      .from('transactions')
-      .select('id, user_id, status, description, created_at, profiles!inner(first_name, last_name, email)')
-      .eq('type', 'kyc_request')
-      .order('created_at', { ascending: false });
-
-    if (txs && !error) {
-      setRequests(txs);
+    try {
+      const res = await fetch('/api/admin/kyc');
+      if (res.ok) {
+        const data = await res.json();
+        if (data.requests) {
+          setRequests(data.requests);
+        }
+      }
+    } catch (err) {
+      console.error(err);
     }
     setLoading(false);
   };

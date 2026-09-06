@@ -107,7 +107,7 @@ export default function AdminAddFundsPage() {
           <a href="/admin/deposits" className="text-[#3498db] text-xs font-bold hover:underline">Go to Manage Deposits</a>
         </div>
         
-        <form onSubmit={handleAddFunds} className="p-6 md:p-8 space-y-6">
+        <form onSubmit={handleAddFunds} className="p-6 p-8 space-y-6">
           
           <div className="flex flex-col mb-4">
             <label className="text-sm font-bold text-gray-700 mb-2">Fund Type: <span className="text-red-500">*</span></label>
