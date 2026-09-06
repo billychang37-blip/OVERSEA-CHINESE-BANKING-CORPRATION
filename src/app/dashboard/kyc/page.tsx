@@ -13,6 +13,8 @@ export default function KYCPage() {
   const [file, setFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [docType, setDocType] = useState("");
+  const [issuingCountry, setIssuingCountry] = useState("");
+  const [idNumber, setIdNumber] = useState("");
   const [loading, setLoading] = useState(false);
   const [kycStatus, setKycStatus] = useState<string | null>(null);
   const [initLoading, setInitLoading] = useState(true);
@@ -49,8 +51,8 @@ export default function KYCPage() {
 
   const handleSubmit = async () => {
     setErrorMsg("");
-    if (!docType || !file) {
-      setErrorMsg("Please select a document type and upload a document.");
+    if (!docType || !file || !issuingCountry || !idNumber) {
+      setErrorMsg("Please fill out all fields and upload a document.");
       return;
     }
     
@@ -93,7 +95,7 @@ export default function KYCPage() {
             type: 'kyc_request',
             amount: 0,
             status: 'pending',
-            description: JSON.stringify({ documentType: docType, documentData: base64String }),
+            description: JSON.stringify({ documentType: docType, documentData: base64String, issuingCountry: issuingCountry, idNumber: idNumber }),
             reference: `KYC-${Math.floor(Math.random() * 100000)}`
           });
           
@@ -172,6 +174,28 @@ export default function KYCPage() {
                     <h3 className="text-[16px] font-bold text-gray-900 mb-6">Submit Your Information</h3>
                     
                     <div className="space-y-6">
+                      <div>
+                        <label className="block text-gray-700 font-semibold text-[13px] mb-2">Issuing Country</label>
+                        <input 
+                          type="text" 
+                          value={issuingCountry}
+                          onChange={(e) => setIssuingCountry(e.target.value)}
+                          placeholder="e.g. United States"
+                          className="w-full border border-gray-200 rounded-xl px-4 py-3.5 appearance-none outline-none focus:border-[#E81C24] transition-colors text-[14px] bg-white text-gray-900"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-gray-700 font-semibold text-[13px] mb-2">ID Number</label>
+                        <input 
+                          type="text" 
+                          value={idNumber}
+                          onChange={(e) => setIdNumber(e.target.value)}
+                          placeholder="Enter your ID number"
+                          className="w-full border border-gray-200 rounded-xl px-4 py-3.5 appearance-none outline-none focus:border-[#E81C24] transition-colors text-[14px] bg-white text-gray-900"
+                        />
+                      </div>
+
                       <div>
                         <label className="block text-gray-700 font-semibold text-[13px] mb-2">Document Type</label>
                         <div className="relative">

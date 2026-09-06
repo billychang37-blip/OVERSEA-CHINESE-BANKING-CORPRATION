@@ -1,13 +1,17 @@
 ﻿"use client";
 
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
-import { CheckCircle, XCircle, Search, FileText, Image as ImageIcon } from "lucide-react";
+import { Trash2, Edit, Box, Download, X } from "lucide-react";
+import Link from "next/link";
 
 export default function AdminKycPage() {
   const [requests, setRequests] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [processing, setProcessing] = useState<string | null>(null);
+  const [imageModal, setImageModal] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     fetchRequests();
@@ -51,95 +55,163 @@ export default function AdminKycPage() {
     setProcessing(null);
   };
 
-  if (loading) return <div className="p-10">Loading KYC requests...</div>;
+  const downloadImage = (base64: string, name: string) => {
+    const link = document.createElement('a');
+    link.href = base64;
+    link.download = `KYC_${name.replace(/\s+/g, '_')}.jpg`;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
+  if (loading) return <div className="p-10 text-center font-bold">Loading KYC requests...</div>;
 
   return (
-    <div className="p-8">
-      <div className="flex justify-between items-center mb-8">
-        <div>
-          <h1 className="text-2xl font-bold text-gray-800">KYC Applications</h1>
-          <p className="text-gray-500">Review user identity verification requests</p>
-        </div>
+    <div className="p-6 bg-white min-h-full font-sans">
+      
+      {/* Top Tabs */}
+      <div className="flex border-b border-gray-300 mb-6 pb-1">
+        <button className="px-4 py-2 text-[13px] font-bold text-gray-700 bg-white border border-gray-300 border-b-0 uppercase tracking-wide">
+          Manage KYC
+        </button>
+        <button className="px-4 py-2 text-[13px] font-bold text-white bg-[#1a8cff] uppercase tracking-wide ml-1">
+          KYC Upload
+        </button>
       </div>
 
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left">
+      <h1 className="text-lg font-bold text-gray-900 mb-6 uppercase tracking-wider">MANAGE KYC -</h1>
+
+      {/* Main Panel Wrapper */}
+      <div className="border border-gray-300 rounded shadow-sm bg-white overflow-hidden">
+        
+        {/* Blue Header */}
+        <div className="bg-[#1a8cff] px-4 py-3 flex items-center text-white border-b-[4px] border-black">
+          <Box className="w-5 h-5 mr-3" />
+          <h2 className="text-sm font-bold tracking-widest uppercase">Manage KYC</h2>
+        </div>
+
+        {/* Table */}
+        <div className="overflow-x-auto w-full">
+          <table className="w-full text-left border-collapse text-[13px]">
             <thead>
-              <tr className="bg-gray-50 text-gray-600 text-sm">
-                <th className="py-4 px-6 font-semibold">User</th>
-                <th className="py-4 px-6 font-semibold">Document Type</th>
-                <th className="py-4 px-6 font-semibold">Document Preview</th>
-                <th className="py-4 px-6 font-semibold">Date Submitted</th>
-                <th className="py-4 px-6 font-semibold">Status</th>
-                <th className="py-4 px-6 font-semibold text-right">Actions</th>
+              <tr className="bg-[#f0f0f0] text-gray-800 uppercase tracking-wider border-b border-gray-300 font-bold">
+                <th className="py-2 px-3 border-r border-gray-300 w-12 text-center">#</th>
+                <th className="py-2 px-3 border-r border-gray-300">Username</th>
+                <th className="py-2 px-3 border-r border-gray-300">Issuing Country</th>
+                <th className="py-2 px-3 border-r border-gray-300">Card Type</th>
+                <th className="py-2 px-3 border-r border-gray-300">ID Number</th>
+                <th className="py-2 px-3 border-r border-gray-300">Status</th>
+                <th className="py-2 px-3"></th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-gray-100">
+            <tbody>
               {requests.length === 0 ? (
-                <tr><td colSpan={6} className="py-10 text-center text-gray-500">No KYC requests found.</td></tr>
+                <tr>
+                  <td colSpan={7} className="py-6 text-center text-gray-500 font-bold">No records found.</td>
+                </tr>
               ) : (
-                requests.map((req) => {
-                  let docType = "Unknown";
+                requests.map((req, index) => {
+                  let docType = "N/A";
                   let docData = "";
+                  let country = "N/A";
+                  let idNum = "N/A";
+                  
                   try {
                     const parsed = JSON.parse(req.description);
-                    docType = parsed.documentType;
-                    docData = parsed.documentData;
+                    docType = parsed.documentType || "N/A";
+                    docData = parsed.documentData || "";
+                    country = parsed.issuingCountry || "N/A";
+                    idNum = parsed.idNumber || "N/A";
                   } catch (e) {}
+
+                  const username = `${req.profiles?.first_name} ${req.profiles?.last_name}`.trim();
                   
                   return (
-                    <tr key={req.id} className="hover:bg-gray-50/50 transition-colors">
-                      <td className="py-4 px-6">
-                        <div className="font-semibold text-gray-900">{req.profiles?.first_name} {req.profiles?.last_name}</div>
-                        <div className="text-sm text-gray-500">{req.profiles?.email}</div>
+                    <tr key={req.id} className="border-b border-gray-200 hover:bg-gray-50">
+                      
+                      <td className="py-2 px-3 border-r border-gray-200 text-center">
+                        <div className="flex items-center justify-center gap-2">
+                          <span>{index + 1}</span>
+                          <Trash2 className="w-4 h-4 text-gray-600 cursor-not-allowed opacity-50" />
+                        </div>
                       </td>
-                      <td className="py-4 px-6 text-sm text-gray-600 capitalize">
-                        {docType.replace('_', ' ')}
+                      
+                      <td className="py-2 px-3 border-r border-gray-200">
+                        <div className="flex items-center gap-2">
+                          <Edit className="w-4 h-4 text-gray-600" />
+                          <Link href={`/admin/members/${req.user_id}`} className="text-blue-600 hover:underline font-bold">
+                            {username || req.profiles?.email || 'User'}
+                          </Link>
+                        </div>
                       </td>
-                      <td className="py-4 px-6">
-                        {docData ? (
-                          <div className="w-16 h-12 rounded border bg-gray-100 overflow-hidden cursor-pointer" onClick={() => window.open(docData)}>
-                            <img src={docData} className="w-full h-full object-cover" alt="Document" />
-                          </div>
-                        ) : (
-                          <div className="text-gray-400 text-sm flex items-center gap-1"><ImageIcon className="w-4 h-4"/> No Image</div>
-                        )}
+
+                      <td className="py-2 px-3 border-r border-gray-200 text-gray-700">{country}</td>
+                      
+                      <td className="py-2 px-3 border-r border-gray-200 text-gray-700 capitalize">
+                        {docType === 'id' ? 'National ID Card' : docType.replace('_', ' ')}
                       </td>
-                      <td className="py-4 px-6 text-sm text-gray-500">
-                        {new Date(req.created_at).toLocaleDateString()}
+                      
+                      <td className="py-2 px-3 border-r border-gray-200 text-gray-700 font-mono">
+                        {idNum}
                       </td>
-                      <td className="py-4 px-6">
-                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
-                          req.status === 'pending' ? 'bg-amber-100 text-amber-700' :
-                          req.status === 'completed' ? 'bg-green-100 text-green-700' :
-                          'bg-red-100 text-red-700'
-                        }`}>
-                          {req.status === 'completed' ? 'Approved' : req.status === 'failed' ? 'Rejected' : 'Pending'}
-                        </span>
-                      </td>
-                      <td className="py-4 px-6">
-                        {req.status === 'pending' && (
-                          <div className="flex justify-end gap-2">
+
+                      <td className="py-2 px-3 border-r border-gray-200">
+                        <div className="flex items-center gap-4">
+                          {docData ? (
                             <button 
-                              onClick={() => handleAction(req.id, req.user_id, 'approve')}
-                              disabled={processing === req.id}
-                              className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors disabled:opacity-50"
-                              title="Approve"
+                              onClick={() => setImageModal(docData)}
+                              className="text-blue-600 hover:underline font-bold text-[12px]"
                             >
-                              <CheckCircle className="w-5 h-5" />
+                              View Image
                             </button>
-                            <button 
-                              onClick={() => handleAction(req.id, req.user_id, 'reject')}
-                              disabled={processing === req.id}
-                              className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
-                              title="Reject"
-                            >
-                              <XCircle className="w-5 h-5" />
-                            </button>
-                          </div>
-                        )}
+                          ) : (
+                            <span className="text-gray-400 text-[12px]">No Image</span>
+                          )}
+                          
+                          {req.status === 'completed' ? (
+                            <span className="bg-green-500 text-white font-bold px-2 py-0.5 rounded text-[11px] uppercase tracking-wider">
+                              Approved
+                            </span>
+                          ) : req.status === 'failed' ? (
+                            <span className="bg-red-500 text-white font-bold px-2 py-0.5 rounded text-[11px] uppercase tracking-wider">
+                              Rejected
+                            </span>
+                          ) : (
+                            <span className="bg-amber-500 text-white font-bold px-2 py-0.5 rounded text-[11px] uppercase tracking-wider">
+                              Pending
+                            </span>
+                          )}
+                        </div>
                       </td>
+
+                      <td className="py-2 px-3">
+                        <div className="flex items-center gap-3 font-bold text-[13px]">
+                          {req.status === 'pending' ? (
+                            <>
+                              <button 
+                                onClick={() => handleAction(req.id, req.user_id, 'approve')}
+                                disabled={processing === req.id}
+                                className="text-green-600 hover:underline disabled:opacity-50"
+                              >
+                                Approve
+                              </button>
+                              <button 
+                                onClick={() => handleAction(req.id, req.user_id, 'reject')}
+                                disabled={processing === req.id}
+                                className="text-blue-600 hover:underline disabled:opacity-50"
+                              >
+                                Reject
+                              </button>
+                            </>
+                          ) : (
+                            <>
+                              <span className="text-gray-300 cursor-not-allowed">Approve</span>
+                              <span className="text-gray-300 cursor-not-allowed">Reject</span>
+                            </>
+                          )}
+                        </div>
+                      </td>
+                      
                     </tr>
                   )
                 })
@@ -148,6 +220,33 @@ export default function AdminKycPage() {
           </table>
         </div>
       </div>
+      
+      {/* Image Modal */}
+      {imageModal && (
+        <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-lg p-4 max-w-4xl w-full max-h-[90vh] flex flex-col relative">
+            <button 
+              onClick={() => setImageModal(null)} 
+              className="absolute -top-4 -right-4 bg-red-600 text-white rounded-full p-2 shadow-lg hover:bg-red-700 transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="flex justify-between items-center mb-4">
+              <h3 className="text-xl font-bold text-gray-900">Document Preview</h3>
+              <button 
+                onClick={() => downloadImage(imageModal, 'document')}
+                className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg font-bold hover:bg-blue-700 transition-colors"
+              >
+                <Download className="w-5 h-5" /> Download
+              </button>
+            </div>
+            <div className="flex-1 overflow-auto bg-gray-100 rounded border border-gray-200 flex items-center justify-center min-h-[400px]">
+              <img src={imageModal} alt="Document" className="max-w-full max-h-[70vh] object-contain" />
+            </div>
+          </div>
+        </div>
+      )}
+      
     </div>
   );
 }

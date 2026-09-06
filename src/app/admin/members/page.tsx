@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
 
@@ -66,9 +67,9 @@ export default function AdminMembersPage() {
                       </span>
                     </td>
                     <td className="p-3 text-sm">
-                      <button className="bg-[#3498db] text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-[#2980b9] transition-colors">
+                      <Link href={`/admin/members/${user.id}`} className="inline-block bg-[#3498db] text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-[#2980b9] transition-colors">
                         View Details
-                      </button>
+                      </Link>
                     </td>
                   </tr>
                 ))
