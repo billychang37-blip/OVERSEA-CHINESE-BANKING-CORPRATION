@@ -55,7 +55,7 @@ export default function TransferSelectorPage() {
       <div className="w-full max-w-[850px] flex flex-col gap-6">
         
         {/* Balance Card */}
-        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE8EB] rounded-[1.5rem] px-4 md:px-10 py-9 shadow-[0_2px_15px_rgba(232,28,36,0.03)] border border-red-50 relative overflow-hidden flex flex-col justify-center">
+        <div className="bg-gradient-to-br from-[#FFF0F2] to-[#FFE8EB] rounded-[1.5rem] px-4 md:px-10 py-6 md:py-9 shadow-[0_2px_15px_rgba(232,28,36,0.03)] border border-red-50 relative overflow-hidden flex flex-col justify-center">
           
           <div className="absolute -right-8 top-1/2 -translate-y-1/2 w-[280px] h-[280px] opacity-[0.04] pointer-events-none">
             <svg viewBox="0 0 100 100" className="w-full h-full fill-[#E81C24]">
@@ -72,7 +72,7 @@ export default function TransferSelectorPage() {
                 onClick={() => setShowBalance(!showBalance)}
               />
             </div>
-            <div className="text-[34px] break-all sm:break-normal font-bold text-gray-900 tracking-tight leading-none mt-1">
+            <div className="text-[28px] sm:text-[34px] break-all sm:break-normal font-bold text-gray-900 tracking-tight leading-none mt-1">
               <span className="mr-1">{currencySymbol}</span>
               {showBalance ? (profile?.total_assets ? Number(profile.total_assets).toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) : '0.00') : '••••••••'}
             </div>
@@ -110,7 +110,7 @@ export default function TransferSelectorPage() {
           
           <div 
             onClick={() => router.push('/dashboard/transfer/internal')}
-            className="flex items-center justify-between px-6 py-5 hover:bg-gray-50/50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 group"
+            className="flex items-center justify-between p-4 md:px-6 md:py-5 hover:bg-gray-50/50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 group"
           >
             <div className="flex items-center space-x-4">
               <div className="w-[42px] h-[42px] bg-[#FFF0F2] rounded-full flex items-center justify-center shrink-0">
@@ -119,18 +119,18 @@ export default function TransferSelectorPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-[15px] font-semibold text-gray-900 mb-[2px]">Internal Transfer</h3>
-                <p className="text-[13px] text-gray-500">Transfer to OCBC Account or other OCBC users instantly with 0% charge fee</p>
+                <h3 className="text-[14.5px] md:text-[15px] font-semibold text-gray-900 mb-[2px]">Internal Transfer</h3>
+                <p className="text-[12px] md:text-[13px] text-gray-500">Transfer to OCBC Account or other OCBC users instantly with 0% charge fee</p>
               </div>
             </div>
-            <div className="flex items-center text-[#E81C24] text-[13.5px] font-semibold shrink-0 pl-4 group-hover:pr-1 transition-all">
+            <div className="flex items-center text-[#E81C24] text-[13px] md:text-[13.5px] font-semibold shrink-0 pl-3 md:pl-4 group-hover:pr-1 transition-all flex flex-col md:flex-row items-end md:items-center">
               Proceed <ChevronRight className="w-4 h-4 ml-1 opacity-80" strokeWidth={2.5} />
             </div>
           </div>
 
           <div 
             onClick={() => router.push('/dashboard/transfer/domestic')}
-            className="flex items-center justify-between px-6 py-5 hover:bg-gray-50/50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 group"
+            className="flex items-center justify-between p-4 md:px-6 md:py-5 hover:bg-gray-50/50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 group"
           >
             <div className="flex items-center space-x-4">
               <div className="w-[42px] h-[42px] bg-[#FFF0F2] rounded-full flex items-center justify-center shrink-0">
@@ -139,18 +139,18 @@ export default function TransferSelectorPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-[15px] font-semibold text-gray-900 mb-[2px]">Domestic Transfer</h3>
-                <p className="text-[13px] text-gray-500">Transfer to any bank in Singapore</p>
+                <h3 className="text-[14.5px] md:text-[15px] font-semibold text-gray-900 mb-[2px]">Domestic Transfer</h3>
+                <p className="text-[12px] md:text-[13px] text-gray-500">Transfer to any bank in Singapore</p>
               </div>
             </div>
-            <div className="flex items-center text-[#E81C24] text-[13.5px] font-semibold shrink-0 pl-4 group-hover:pr-1 transition-all">
+            <div className="flex items-center text-[#E81C24] text-[13px] md:text-[13.5px] font-semibold shrink-0 pl-3 md:pl-4 group-hover:pr-1 transition-all flex flex-col md:flex-row items-end md:items-center">
               View Payments <ChevronRight className="w-4 h-4 ml-1 opacity-80" strokeWidth={2.5} />
             </div>
           </div>
 
           <div 
             onClick={() => router.push('/dashboard/transfer/international')}
-            className="flex items-center justify-between px-6 py-5 hover:bg-gray-50/50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 group"
+            className="flex items-center justify-between p-4 md:px-6 md:py-5 hover:bg-gray-50/50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 group"
           >
             <div className="flex items-center space-x-4">
               <div className="w-[42px] h-[42px] bg-[#FFF0F2] rounded-full flex items-center justify-center shrink-0">
@@ -159,18 +159,18 @@ export default function TransferSelectorPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-[15px] font-semibold text-gray-900 mb-[2px]">International Transfer</h3>
-                <p className="text-[13px] text-gray-500">Make transfer to any Global Bank</p>
+                <h3 className="text-[14.5px] md:text-[15px] font-semibold text-gray-900 mb-[2px]">International Transfer</h3>
+                <p className="text-[12px] md:text-[13px] text-gray-500">Make transfer to any Global Bank</p>
               </div>
             </div>
-            <div className="flex items-center text-[#E81C24] text-[13.5px] font-semibold shrink-0 pl-4 group-hover:pr-1 transition-all">
+            <div className="flex items-center text-[#E81C24] text-[13px] md:text-[13.5px] font-semibold shrink-0 pl-3 md:pl-4 group-hover:pr-1 transition-all flex flex-col md:flex-row items-end md:items-center">
               View Orders <ChevronRight className="w-4 h-4 ml-1 opacity-80" strokeWidth={2.5} />
             </div>
           </div>
 
           <div 
             onClick={() => router.push('/dashboard/transfer/crypto')}
-            className="flex items-center justify-between px-6 py-5 hover:bg-gray-50/50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 group"
+            className="flex items-center justify-between p-4 md:px-6 md:py-5 hover:bg-gray-50/50 cursor-pointer transition-colors border-b border-gray-100 last:border-b-0 group"
           >
             <div className="flex items-center space-x-4">
               <div className="w-[42px] h-[42px] bg-[#FFF0F2] rounded-full flex items-center justify-center shrink-0">
@@ -179,11 +179,11 @@ export default function TransferSelectorPage() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-[15px] font-semibold text-gray-900 mb-[2px]">Cryptocurrency Transfer</h3>
-                <p className="text-[13px] text-gray-500">Securely transfer cryptocurrency with ease and confidence</p>
+                <h3 className="text-[14.5px] md:text-[15px] font-semibold text-gray-900 mb-[2px]">Cryptocurrency Transfer</h3>
+                <p className="text-[12px] md:text-[13px] text-gray-500">Securely transfer cryptocurrency with ease and confidence</p>
               </div>
             </div>
-            <div className="flex items-center text-[#E81C24] text-[13.5px] font-semibold shrink-0 pl-4 group-hover:pr-1 transition-all">
+            <div className="flex items-center text-[#E81C24] text-[13px] md:text-[13.5px] font-semibold shrink-0 pl-3 md:pl-4 group-hover:pr-1 transition-all flex flex-col md:flex-row items-end md:items-center">
               History <ChevronRight className="w-4 h-4 ml-1 opacity-80" strokeWidth={2.5} />
             </div>
           </div>
@@ -193,15 +193,15 @@ export default function TransferSelectorPage() {
         {/* Recent History */}
         <div 
           onClick={() => router.push('/dashboard/transactions')}
-          className="bg-white rounded-[1.25rem] shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-gray-100 px-6 py-5 flex items-center justify-between hover:bg-gray-50/50 cursor-pointer transition-colors group"
+          className="bg-white rounded-[1.25rem] shadow-[0_2px_10px_rgba(0,0,0,0.02)] border border-gray-100 p-4 md:px-6 md:py-5 flex items-center justify-between hover:bg-gray-50/50 cursor-pointer transition-colors group"
         >
           <div className="flex items-center space-x-4">
             <div className="w-[42px] h-[42px] bg-gray-50 rounded-full flex items-center justify-center shrink-0">
               <FileText className="w-5 h-5 text-gray-600" strokeWidth={2} />
             </div>
-            <h3 className="text-[15px] font-semibold text-gray-900">Recent History</h3>
+            <h3 className="text-[14.5px] md:text-[15px] font-semibold text-gray-900">Recent History</h3>
           </div>
-          <div className="flex items-center text-gray-900 text-[13.5px] font-bold shrink-0 pl-4 group-hover:pr-1 transition-all">
+          <div className="flex items-center text-gray-900 text-[13px] md:text-[13.5px] font-bold shrink-0 pl-3 md:pl-4 group-hover:pr-1 transition-all flex flex-col md:flex-row items-end md:items-center">
             View All <ChevronRight className="w-4 h-4 ml-1 opacity-80" strokeWidth={2.5} />
           </div>
         </div>

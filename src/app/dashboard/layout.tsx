@@ -3,13 +3,15 @@
 import { useEffect, useState } from "react";
 import { supabase } from "@/lib/supabase";
 import { useRouter, usePathname } from "next/navigation";
-import { Bell, User, LogOut, ChevronDown, Search, Menu, X, Home, Briefcase, ArrowRightLeft, Landmark, Gift, Lock, Grid, FileText, MoreHorizontal, Settings, Send, ArrowUpCircle, PiggyBank, Moon, CreditCard } from "lucide-react";
+import { Bell, User, LogOut, ChevronDown, Search, Menu, X, Home, Briefcase, ArrowRightLeft, Landmark, Gift, Lock, Grid, FileText, MoreHorizontal, Settings, Send, ArrowUpCircle, PiggyBank, Moon, CreditCard, ArrowLeft, Sun, Check } from "lucide-react";
 
 export default function DashboardLayout({ children }: { children: React.ReactNode }) {
   const [profile, setProfile] = useState<any>(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isProfileDropdownOpen, setIsProfileDropdownOpen] = useState(false);
   const [isMobileSidebarOpen, setIsMobileSidebarOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+  const [isNotifOpen, setIsNotifOpen] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
 
@@ -51,6 +53,12 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     if (pathname.includes('/dashboard/transactions')) return { title: 'Transaction History', sub: 'View your recent activity' };
     if (pathname.includes('/dashboard/settings')) return { title: 'Settings', sub: 'Manage your preferences' };
     return { title: 'Dashboard', sub: 'Manage your account' };
+  };
+
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    if (!isDarkMode) document.documentElement.classList.add('dark');
+    else document.documentElement.classList.remove('dark');
   };
 
   const handleLogout = async () => {
@@ -239,8 +247,13 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
               <p className="text-gray-500 text-sm font-medium mt-0.5">Good morning!</p>
             </div>
           ) : (
-            <div className="flex items-center gap-2 text-gray-500 font-semibold text-[13px] tracking-wide cursor-pointer hover:text-gray-700 transition-colors">
-              DASHBOARD OVERVIEW <ChevronDown className="w-4 h-4" />
+            <div className="flex items-center gap-4 text-gray-500 font-semibold text-[13px] tracking-wide">
+              <div onClick={() => router.back()} className="flex items-center gap-1.5 cursor-pointer hover:text-[#E81C24] transition-colors bg-white px-3 py-1.5 rounded-full shadow-sm border border-gray-100">
+                 <ArrowLeft className="w-4 h-4" /> Back
+              </div>
+              <span className="cursor-pointer hover:text-gray-700 transition-colors flex items-center gap-1.5 hidden md:flex">
+                DASHBOARD OVERVIEW <ChevronDown className="w-4 h-4" />
+              </span>
             </div>
           )}
           
@@ -253,11 +266,35 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
                 className="bg-white border-none rounded-full py-2.5 pl-10 pr-6 text-[13px] w-64 shadow-sm focus:ring-2 focus:ring-[#E81C24] outline-none text-gray-700"
               />
             </div>
-            <div className="relative cursor-pointer hover:opacity-80 transition-opacity">
-              <Bell className="w-6 h-6 text-gray-600" />
-              <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#E81C24] rounded-full flex items-center justify-center border-2 border-[#F4F6F8]">
-                <span className="text-[9px] font-bold text-white leading-none">1</span>
+            <div className="relative flex items-center gap-4">
+              <div onClick={toggleDarkMode} className="cursor-pointer hover:text-[#E81C24] transition-colors">
+                {isDarkMode ? <Sun className="w-5 h-5 text-orange-400" /> : <Moon className="w-5 h-5 text-gray-400" />}
               </div>
+              <div className="relative cursor-pointer hover:opacity-80 transition-opacity" onClick={() => setIsNotifOpen(!isNotifOpen)}>
+                <Bell className="w-6 h-6 text-gray-600" />
+                <div className="absolute -top-1 -right-1 w-4 h-4 bg-[#E81C24] rounded-full flex items-center justify-center border-2 border-[#F4F6F8]">
+                  <span className="text-[9px] font-bold text-white leading-none">1</span>
+                </div>
+              </div>
+              {isNotifOpen && (
+                <div className="absolute top-full right-0 mt-3 w-72 bg-white border border-gray-100 shadow-xl rounded-2xl overflow-hidden z-50">
+                  <div className="p-3 border-b border-gray-100 bg-gray-50 flex items-center justify-between">
+                    <span className="text-[13px] font-bold text-gray-900">Notifications</span>
+                    <span className="text-[11px] font-semibold text-[#E81C24] cursor-pointer">Mark all as read</span>
+                  </div>
+                  <div className="p-3 space-y-3">
+                    <div className="flex gap-3">
+                      <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center shrink-0">
+                        <Check className="w-4 h-4 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-[12.5px] font-semibold text-gray-900">Login Successful</p>
+                        <p className="text-[11.5px] text-gray-500 mt-0.5">You just logged into your account from a new device.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
             <div className="relative" id="profile-dropdown-container">
               <div 
@@ -340,15 +377,39 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <header className="md:hidden px-4 py-3 flex justify-between items-center bg-white sticky top-0 z-40 border-b border-gray-100 shadow-sm">
           <div className="flex items-center gap-3">
             <Menu className="w-6 h-6 text-gray-700 cursor-pointer" onClick={() => setIsMobileSidebarOpen(true)} />
+            {!isDashboardHome && (
+              <ArrowLeft className="w-5 h-5 text-gray-500 cursor-pointer hover:text-[#E81C24]" onClick={() => router.back()} />
+            )}
             <img src="/logo_main.png" alt="OCBC" className="w-[100px] h-auto object-contain cursor-pointer" onClick={() => router.push('/dashboard')} />
           </div>
           <div className="flex items-center space-x-3.5">
-            <Moon className="w-5 h-5 text-gray-400" />
-            <div className="relative">
+            <div onClick={toggleDarkMode} className="cursor-pointer">
+              {isDarkMode ? <Sun className="w-5 h-5 text-orange-400" /> : <Moon className="w-5 h-5 text-gray-400" />}
+            </div>
+            <div className="relative cursor-pointer" onClick={() => setIsNotifOpen(!isNotifOpen)}>
               <Bell className="w-5 h-5 text-gray-700" />
               <div className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-[#E81C24] rounded-full flex items-center justify-center border-[1.5px] border-white">
                 <span className="text-[8px] font-bold text-white leading-none">1</span>
               </div>
+              {isNotifOpen && (
+                <div className="absolute top-full right-0 mt-3 w-72 bg-white border border-gray-100 shadow-xl rounded-2xl overflow-hidden z-50 fixed md:absolute">
+                  <div className="p-3 border-b border-gray-100 bg-gray-50 flex items-center justify-between">
+                    <span className="text-[13px] font-bold text-gray-900">Notifications</span>
+                    <span className="text-[11px] font-semibold text-[#E81C24] cursor-pointer">Mark all as read</span>
+                  </div>
+                  <div className="p-3 space-y-3">
+                    <div className="flex gap-3">
+                      <div className="w-8 h-8 rounded-full bg-green-50 flex items-center justify-center shrink-0">
+                        <Check className="w-4 h-4 text-green-600" />
+                      </div>
+                      <div>
+                        <p className="text-[12.5px] font-semibold text-gray-900">Login Successful</p>
+                        <p className="text-[11.5px] text-gray-500 mt-0.5">You just logged into your account from a new device.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
             <div onClick={() => router.push('/dashboard/settings')} className="w-7 h-7 bg-gray-100 rounded-full flex items-center justify-center overflow-hidden border border-gray-200 cursor-pointer">
                {profile?.avatar_url ? (
