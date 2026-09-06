@@ -66,7 +66,7 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
   if (loading) return <div className="h-screen w-full flex items-center justify-center">Loading admin panel...</div>;
 
   return (
-    <div className="flex h-screen bg-gray-100 font-sans">
+    <div className="flex h-screen bg-gray-100 font-sans min-w-[1024px]">
       
       {/* Sidebar - Desktop */}
       <aside className="hidden md:flex flex-col w-64 bg-[#2A2A2A] text-gray-300 h-full shadow-xl overflow-y-auto">

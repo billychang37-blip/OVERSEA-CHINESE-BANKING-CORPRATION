@@ -11,7 +11,7 @@ export default function AdminTransfersPage() {
     const { data, error } = await supabase
       .from('transactions')
       .select('*, profiles(first_name, last_name, email, wallet_balance)')
-      .in('type', ['transfer', 'crypto_transfer'])
+      .in('type', ['transfer', 'domestic_transfer', 'international_transfer', 'internal_transfer', 'crypto_transfer', 'crypto_withdrawal'])
       .order('created_at', { ascending: false });
       
     if (data && !error) {

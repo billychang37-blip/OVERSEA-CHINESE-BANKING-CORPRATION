@@ -1,107 +1,147 @@
-"use client";
+﻿"use client";
 
 import { useState, useEffect } from "react";
 import { supabase } from "@/lib/supabase";
+import { CheckCircle, XCircle, Search, FileText, Image as ImageIcon } from "lucide-react";
 
 export default function AdminKycPage() {
-  const [users, setUsers] = useState<any[]>([]);
+  const [requests, setRequests] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
+  const [processing, setProcessing] = useState<string | null>(null);
 
-  const fetchUsers = async () => {
-    const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
+  useEffect(() => {
+    fetchRequests();
+  }, []);
+
+  const fetchRequests = async () => {
+    // We join with profiles to get the user name and email
+    const { data: txs, error } = await supabase
+      .from('transactions')
+      .select('id, user_id, status, description, created_at, profiles!inner(first_name, last_name, email)')
+      .eq('type', 'kyc_request')
       .order('created_at', { ascending: false });
-    if (data && !error) {
-      // Filter out users who haven't uploaded anything or have empty kyc_status
-      // For now, let's just show all for the skeleton
-      setUsers(data);
+
+    if (txs && !error) {
+      setRequests(txs);
     }
     setLoading(false);
   };
 
-  useEffect(() => {
-    fetchUsers();
-  }, []);
-
-  const handleUpdateStatus = async (userId: string, newStatus: string) => {
-    const { error } = await supabase
-      .from('profiles')
-      .update({ kyc_status: newStatus })
-      .eq('id', userId);
-      
-    if (!error) {
-      alert(`KYC status updated to ${newStatus}`);
-      fetchUsers();
-    } else {
-      alert(`Error updating status: ${error.message}`);
+  const handleAction = async (transactionId: string, userId: string, action: 'approve' | 'reject') => {
+    if (!window.confirm(`Are you sure you want to ${action} this KYC request?`)) return;
+    
+    setProcessing(transactionId);
+    
+    try {
+      const res = await fetch('/api/admin/kyc', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ transactionId, userId, action })
+      });
+      if (res.ok) {
+        fetchRequests();
+      } else {
+        alert("Action failed.");
+      }
+    } catch (err) {
+      alert("Error processing action.");
     }
+    
+    setProcessing(null);
   };
 
-  if (loading) return <div>Loading KYC submissions...</div>;
+  if (loading) return <div className="p-10">Loading KYC requests...</div>;
 
   return (
-    <div className="w-full animate-in fade-in duration-300">
-      <div className="bg-white border border-gray-300 rounded shadow-sm overflow-hidden mb-8">
-        <div className="bg-[#3498db] text-white px-4 py-3 border-b-4 border-black">
-          <h3 className="font-bold tracking-widest text-sm uppercase">Manage KYC Applications</h3>
+    <div className="p-8">
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-2xl font-bold text-gray-800">KYC Applications</h1>
+          <p className="text-gray-500">Review user identity verification requests</p>
         </div>
-        
+      </div>
+
+      <div className="bg-white rounded-xl shadow-sm overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse">
+          <table className="w-full text-left">
             <thead>
-              <tr className="bg-[#EAEAEA] border-b border-gray-300 text-xs uppercase tracking-widest text-gray-700">
-                <th className="p-3 border-r border-white font-bold">User</th>
-                <th className="p-3 border-r border-white font-bold">ID Document</th>
-                <th className="p-3 border-r border-white font-bold">Current Status</th>
-                <th className="p-3 font-bold">Action</th>
+              <tr className="bg-gray-50 text-gray-600 text-sm">
+                <th className="py-4 px-6 font-semibold">User</th>
+                <th className="py-4 px-6 font-semibold">Document Type</th>
+                <th className="py-4 px-6 font-semibold">Document Preview</th>
+                <th className="py-4 px-6 font-semibold">Date Submitted</th>
+                <th className="py-4 px-6 font-semibold">Status</th>
+                <th className="py-4 px-6 font-semibold text-right">Actions</th>
               </tr>
             </thead>
-            <tbody>
-              {users.length === 0 ? (
-                <tr>
-                  <td colSpan={4} className="p-6 text-center text-gray-500 text-sm">No KYC applications found.</td>
-                </tr>
+            <tbody className="divide-y divide-gray-100">
+              {requests.length === 0 ? (
+                <tr><td colSpan={6} className="py-10 text-center text-gray-500">No KYC requests found.</td></tr>
               ) : (
-                users.map(user => (
-                  <tr key={user.id} className="border-b border-gray-200 hover:bg-gray-50">
-                    <td className="p-3 text-sm font-medium border-r border-gray-100">
-                      {user.first_name} {user.last_name} <br/>
-                      <span className="text-gray-500 text-xs">{user.email}</span>
-                    </td>
-                    <td className="p-3 text-sm border-r border-gray-100">
-                      {user.id_document_url ? (
-                        <a href={user.id_document_url} target="_blank" rel="noopener noreferrer" className="text-blue-500 hover:underline">View Document</a>
-                      ) : (
-                        <span className="text-gray-400 italic">Not Uploaded</span>
-                      )}
-                    </td>
-                    <td className="p-3 text-sm border-r border-gray-100">
-                      <span className={`px-2 py-1 rounded text-xs font-bold ${
-                        user.kyc_status === 'approved' ? 'bg-green-100 text-green-700' : 
-                        user.kyc_status === 'rejected' ? 'bg-red-100 text-red-700' : 'bg-yellow-100 text-yellow-700'
-                      }`}>
-                        {user.kyc_status || 'pending'}
-                      </span>
-                    </td>
-                    <td className="p-3 text-sm">
-                      <div className="flex gap-2">
-                        <button 
-                          onClick={() => handleUpdateStatus(user.id, 'approved')}
-                          className="bg-[#2ecc71] text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-[#27ae60] transition-colors"
-                        >
-                          Approve
-                        </button>
-                        <button 
-                          onClick={() => handleUpdateStatus(user.id, 'rejected')}
-                          className="bg-[#e74c3c] text-white px-3 py-1.5 rounded text-xs font-bold hover:bg-[#c0392b] transition-colors"
-                        >
-                          Reject
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                ))
+                requests.map((req) => {
+                  let docType = "Unknown";
+                  let docData = "";
+                  try {
+                    const parsed = JSON.parse(req.description);
+                    docType = parsed.documentType;
+                    docData = parsed.documentData;
+                  } catch (e) {}
+                  
+                  return (
+                    <tr key={req.id} className="hover:bg-gray-50/50 transition-colors">
+                      <td className="py-4 px-6">
+                        <div className="font-semibold text-gray-900">{req.profiles?.first_name} {req.profiles?.last_name}</div>
+                        <div className="text-sm text-gray-500">{req.profiles?.email}</div>
+                      </td>
+                      <td className="py-4 px-6 text-sm text-gray-600 capitalize">
+                        {docType.replace('_', ' ')}
+                      </td>
+                      <td className="py-4 px-6">
+                        {docData ? (
+                          <div className="w-16 h-12 rounded border bg-gray-100 overflow-hidden cursor-pointer" onClick={() => window.open(docData)}>
+                            <img src={docData} className="w-full h-full object-cover" alt="Document" />
+                          </div>
+                        ) : (
+                          <div className="text-gray-400 text-sm flex items-center gap-1"><ImageIcon className="w-4 h-4"/> No Image</div>
+                        )}
+                      </td>
+                      <td className="py-4 px-6 text-sm text-gray-500">
+                        {new Date(req.created_at).toLocaleDateString()}
+                      </td>
+                      <td className="py-4 px-6">
+                        <span className={`px-3 py-1 rounded-full text-xs font-semibold ${
+                          req.status === 'pending' ? 'bg-amber-100 text-amber-700' :
+                          req.status === 'completed' ? 'bg-green-100 text-green-700' :
+                          'bg-red-100 text-red-700'
+                        }`}>
+                          {req.status === 'completed' ? 'Approved' : req.status === 'failed' ? 'Rejected' : 'Pending'}
+                        </span>
+                      </td>
+                      <td className="py-4 px-6">
+                        {req.status === 'pending' && (
+                          <div className="flex justify-end gap-2">
+                            <button 
+                              onClick={() => handleAction(req.id, req.user_id, 'approve')}
+                              disabled={processing === req.id}
+                              className="p-2 text-green-600 hover:bg-green-50 rounded-lg transition-colors disabled:opacity-50"
+                              title="Approve"
+                            >
+                              <CheckCircle className="w-5 h-5" />
+                            </button>
+                            <button 
+                              onClick={() => handleAction(req.id, req.user_id, 'reject')}
+                              disabled={processing === req.id}
+                              className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors disabled:opacity-50"
+                              title="Reject"
+                            >
+                              <XCircle className="w-5 h-5" />
+                            </button>
+                          </div>
+                        )}
+                      </td>
+                    </tr>
+                  )
+                })
               )}
             </tbody>
           </table>

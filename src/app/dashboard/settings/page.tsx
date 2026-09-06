@@ -56,12 +56,12 @@ export default function SettingsPage() {
         .single();
 
       if (profileData) {
-        setProfile(profileData);
-        const nameParts = (profileData.full_name || profileData.name || "").split(' ');
-        setFirstName(nameParts[0] || "");
-        setLastName(nameParts.slice(1).join(' ') || "");
-        setPhone(profileData.phone || profileData.phone_number || "");
-        setAvatarUrl(profileData.avatar_url || "");
+        const merged = { ...profileData, ...session.user.user_metadata };
+        setProfile(merged);
+        setFirstName(merged.first_name || "");
+        setLastName(merged.last_name || "");
+        setPhone(merged.phone || "");
+        setAvatarUrl(merged.avatar_url || "");
       }
 
       // Check soft token
@@ -115,14 +115,14 @@ export default function SettingsPage() {
     const { data: { session } } = await supabase.auth.getSession();
     if (session) {
       const { error } = await supabase.from('profiles').update({
-        full_name: `${firstName} ${lastName}`.trim(),
-        phone: phone,
-        phone_number: phone
+        first_name: firstName,
+        last_name: lastName,
+        phone: phone
       }).eq('id', session.user.id);
       
       if (!error) {
         setSaveMsg("Profile updated successfully!");
-        setProfile({...profile, full_name: `${firstName} ${lastName}`.trim(), phone, phone_number: phone});
+        setProfile({...profile, first_name: firstName, last_name: lastName, phone});
       } else {
         setSaveMsg("Failed to update profile.");
       }
@@ -140,18 +140,47 @@ export default function SettingsPage() {
     if (!session) return;
 
     const reader = new FileReader();
-    reader.onloadend = async () => {
-      try {
-        const base64String = reader.result as string;
-        await supabase.from('profiles').update({ avatar_url: base64String }).eq('id', session.user.id);
-        setAvatarUrl(base64String);
-        setProfile({...profile, avatar_url: base64String});
-        setSaveMsg("Picture updated successfully!");
+    reader.onload = (event) => {
+      const img = new Image();
+      img.onload = async () => {
+        const canvas = document.createElement('canvas');
+        const MAX_WIDTH = 150;
+        const MAX_HEIGHT = 150;
+        let width = img.width;
+        let height = img.height;
+        
+        if (width > height) {
+          if (width > MAX_WIDTH) {
+            height *= MAX_WIDTH / width;
+            width = MAX_WIDTH;
+          }
+        } else {
+          if (height > MAX_HEIGHT) {
+            width *= MAX_HEIGHT / height;
+            height = MAX_HEIGHT;
+          }
+        }
+        
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx?.drawImage(img, 0, 0, width, height);
+        
+        const base64String = canvas.toDataURL('image/jpeg', 0.8);
+        
+        try {
+          const { error } = await supabase.auth.updateUser({ data: { avatar_url: base64String } });
+          if (error) throw error;
+          
+          setAvatarUrl(base64String);
+          setProfile({...profile, avatar_url: base64String});
+          setSaveMsg("Picture updated successfully!");
+        } catch (err) {
+          setSaveMsg("Failed to upload picture.");
+        }
         setTimeout(() => setSaveMsg(""), 3000);
-      } catch (err) {
-        setSaveMsg("Failed to upload picture.");
-        setTimeout(() => setSaveMsg(""), 3000);
-      }
+      };
+      img.src = event.target?.result as string;
     };
     reader.readAsDataURL(file);
   };

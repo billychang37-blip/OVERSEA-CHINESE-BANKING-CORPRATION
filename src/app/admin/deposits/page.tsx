@@ -11,7 +11,7 @@ export default function AdminDepositsPage() {
     const { data, error } = await supabase
       .from('transactions')
       .select('*, profiles(first_name, last_name, email, wallet_balance, total_assets)')
-      .eq('type', 'deposit')
+      .in('type', ['deposit', 'crypto_deposit'])
       .order('created_at', { ascending: false });
       
     if (data && !error) {
