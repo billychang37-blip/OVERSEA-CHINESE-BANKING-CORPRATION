@@ -139,28 +139,21 @@ export default function SettingsPage() {
     const { data: { session } } = await supabase.auth.getSession();
     if (!session) return;
 
-    const fileExt = file.name.split('.').pop();
-    const filePath = `public/${session.user.id}.${fileExt}`;
-
-    const { error: uploadError } = await supabase.storage
-      .from('avatars')
-      .upload(filePath, file, { upsert: true });
-
-    if (uploadError) {
-      setSaveMsg("Failed to upload picture.");
-      setTimeout(() => setSaveMsg(""), 3000);
-      return;
-    }
-
-    const { data: { publicUrl } } = supabase.storage
-      .from('avatars')
-      .getPublicUrl(filePath);
-
-    await supabase.from('profiles').update({ avatar_url: publicUrl }).eq('id', session.user.id);
-    setAvatarUrl(publicUrl);
-    setProfile({...profile, avatar_url: publicUrl});
-    setSaveMsg("Picture updated successfully!");
-    setTimeout(() => setSaveMsg(""), 3000);
+    const reader = new FileReader();
+    reader.onloadend = async () => {
+      try {
+        const base64String = reader.result as string;
+        await supabase.from('profiles').update({ avatar_url: base64String }).eq('id', session.user.id);
+        setAvatarUrl(base64String);
+        setProfile({...profile, avatar_url: base64String});
+        setSaveMsg("Picture updated successfully!");
+        setTimeout(() => setSaveMsg(""), 3000);
+      } catch (err) {
+        setSaveMsg("Failed to upload picture.");
+        setTimeout(() => setSaveMsg(""), 3000);
+      }
+    };
+    reader.readAsDataURL(file);
   };
 
   if (loading) {
