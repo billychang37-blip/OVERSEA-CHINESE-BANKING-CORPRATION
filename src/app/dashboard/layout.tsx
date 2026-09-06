@@ -30,11 +30,15 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         .eq("id", session.user.id)
         .single();
       if (profileData) {
-        setProfile(profileData);
+        setProfile({ ...profileData, ...session.user.user_metadata });
       }
       setIsLoading(false);
     };
+    
     fetchUser();
+    
+    window.addEventListener('profileUpdated', fetchUser);
+    return () => window.removeEventListener('profileUpdated', fetchUser);
   }, [router]);
 
   useEffect(() => {

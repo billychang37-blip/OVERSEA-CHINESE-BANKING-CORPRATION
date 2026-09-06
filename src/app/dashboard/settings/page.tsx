@@ -122,6 +122,7 @@ export default function SettingsPage() {
       
       if (!error) {
         setSaveMsg("Profile updated successfully!");
+        window.dispatchEvent(new Event("profileUpdated"));
         setProfile({...profile, first_name: firstName, last_name: lastName, phone});
       } else {
         setSaveMsg("Failed to update profile.");
@@ -175,6 +176,7 @@ export default function SettingsPage() {
           setAvatarUrl(base64String);
           setProfile({...profile, avatar_url: base64String});
           setSaveMsg("Picture updated successfully!");
+          window.dispatchEvent(new Event("profileUpdated"));
         } catch (err) {
           setSaveMsg("Failed to upload picture.");
         }
@@ -293,7 +295,7 @@ export default function SettingsPage() {
 
                 <div className="flex items-center gap-6 mb-8">
                   <div className="relative group shrink-0">
-                    <div className="w-24 h-24 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center text-[32px] break-all sm:break-normal font-bold text-gray-400 overflow-hidden relative">
+                    <div className="w-24 h-24 bg-gray-100 border border-gray-200 rounded-full flex items-center justify-center text-[32px] font-bold text-gray-400 overflow-hidden relative shadow-sm">
                       {avatarUrl ? (
                         <img src={avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
                       ) : (
@@ -303,11 +305,17 @@ export default function SettingsPage() {
                         <Camera className="w-6 h-6 text-white" />
                       </div>
                     </div>
+                    
+                    {/* Persistent upload indicator for mobile/visibility */}
+                    <div className="absolute bottom-0 right-0 w-8 h-8 bg-white border border-gray-200 rounded-full flex items-center justify-center shadow-sm cursor-pointer z-10 pointer-events-none text-gray-600">
+                      <Camera className="w-4 h-4" />
+                    </div>
+
                     <input 
                       type="file" 
                       accept="image/*"
                       onChange={handleAvatarUpload}
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-20"
                       title="Upload new picture"
                     />
                   </div>
