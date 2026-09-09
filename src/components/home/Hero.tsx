@@ -46,11 +46,11 @@ export default function Hero() {
         <FourPointStar className="absolute top-[65%] right-[4%] w-8 h-8 text-ocbc-red z-10 opacity-80" />
       </div>
 
-      <div className="w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 h-full flex flex-col justify-end">
+      <div className="w-full max-w-[1300px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full flex flex-col justify-center mt-[-5%]">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-0 h-full relative">
           
           {/* Left Content - Elegantly spaced, Ennex-style typography */}
-          <div className="lg:col-span-6 pb-[30vh] md:pb-[45vh] lg:pb-32 z-20 pt-4 lg:self-end self-start">
+          <div className="lg:col-span-6 pb-20 md:pb-10 lg:pb-0 z-20 pt-4 self-center lg:self-center">
             
             {/* Pill */}
             <div className="inline-flex items-center space-x-2 bg-white text-ocbc-red px-3 py-1.5 rounded-full text-[12px] font-semibold mb-6 shadow-[0_2px_10px_rgba(0,0,0,0.05)] border border-gray-50">
@@ -104,7 +104,7 @@ export default function Hero() {
         Right Content - ENNEX STYLE SAFE WRAPPER 
         We drastically reduce her maximum height to ensure massive breathing room above her head.
       */}
-      <div className="absolute right-0 bottom-0 w-full md:w-[70%] lg:w-[50%] h-[30vh] md:h-[45vh] lg:h-[65%] pointer-events-none z-20 flex justify-end lg:justify-end items-end pr-0 lg:pr-12">
+      <div className="absolute right-0 bottom-0 w-full md:w-[70%] lg:w-[50%] h-[400px] md:h-[500px] lg:h-[700px] pointer-events-none z-20 flex justify-end lg:justify-end items-end pr-0 lg:pr-12">
         
         {/* The Lady Image - Strictly constrained to 90% of the 75% wrapper */}
         <img 
