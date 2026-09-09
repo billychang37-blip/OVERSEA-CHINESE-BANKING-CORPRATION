@@ -33,7 +33,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased scroll-smooth`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} h-full antialiased scroll-smooth`}>
       <head>
         <script type="text/javascript" dangerouslySetInnerHTML={{
           __html: `
@@ -49,7 +49,7 @@ window.smartsupp||(function(d) {
         }} />
         <noscript>Powered by <a href="https://www.smartsupp.com" target="_blank">Smartsupp</a></noscript>
       </head>
-      <body className="min-h-full flex flex-col font-sans overflow-x-hidden w-full">
+      <body className="min-h-full flex flex-col font-sans overflow-x-hidden w-full" suppressHydrationWarning>
         {children}
       </body>
     </html>
