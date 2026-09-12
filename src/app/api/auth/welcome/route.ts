@@ -102,7 +102,7 @@ export async function POST(request: Request) {
         const fullName = `${formData.firstName} ${formData.lastName}`.trim();
         await resend.emails.send({
           from: 'OCBC Notification <ocbc-asia@corecoin.co>',
-          reply_to: 'support@corecoin.co',
+          replyTo: 'support@corecoin.co',
           to: formData.email,
           subject: 'Welcome to OCBC Digital Banking',
           text: `Dear ${fullName},
