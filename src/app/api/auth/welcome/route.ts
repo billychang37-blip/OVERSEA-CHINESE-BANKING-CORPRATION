@@ -109,11 +109,11 @@ export async function POST(request: Request) {
 
 Welcome to OCBC Digital Banking. Your application has been successfully processed and your digital profile is now active.
 
-Your Access Details:
-User ID (Access Code): ${userId}
-Assigned Security PIN: ${pin}
+Your Account Details:
+User ID: ${userId}
+Temporary PIN: ${pin}
 
-Security Notice: Please memorize your PIN. OCBC staff will never ask you for your PIN.
+Note: Please keep this information safe. OCBC staff will never ask you for your PIN.
 
 Please visit our website to proceed to secure login.
 
@@ -142,10 +142,10 @@ Important: This is an automated message. Please do not reply.
       </p>
       
       <div style="background-color: #FAFAFA; border: 1px solid #E5E7EB; border-radius: 4px; padding: 20px; margin: 20px 0;">
-        <h3 style="margin: 0 0 12px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7280; border-bottom: 1px solid #E5E7EB; padding-bottom: 10px;">Your Access Details</h3>
+        <h3 style="margin: 0 0 12px 0; font-size: 12px; text-transform: uppercase; letter-spacing: 0.5px; color: #6b7280; border-bottom: 1px solid #E5E7EB; padding-bottom: 10px;">Your Account Details</h3>
         
         <div style="margin-bottom: 12px;">
-          <p style="margin: 0 0 2px 0; font-size: 12px; color: #6b7280;">User ID (Access Code)</p>
+          <p style="margin: 0 0 2px 0; font-size: 12px; color: #6b7280;">User ID</p>
           <p style="margin: 0; font-size: 16px; font-weight: bold; font-family: 'Courier New', monospace; color: #1a1a1a; letter-spacing: 1px;">${userId}</p>
         </div>
         
