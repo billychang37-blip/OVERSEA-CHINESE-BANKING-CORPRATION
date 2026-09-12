@@ -198,8 +198,8 @@ export default function SoftTokenPage() {
                   
                   <p className="text-gray-500 text-[12px] font-bold mb-3 uppercase tracking-widest text-center">Your Soft Token ID</p>
                   
-                  <div className="bg-gray-50 border border-gray-200 rounded-xl px-6 py-4 flex items-center justify-between gap-4">
-                    <span className="text-[24px] sm:text-[32px] font-mono font-bold tracking-[0.2em] text-gray-900">
+                  <div className="bg-gray-50 border border-gray-200 rounded-xl px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-3 sm:gap-4">
+                    <span className="text-[18px] sm:text-[32px] font-mono font-bold tracking-[0.1em] sm:tracking-[0.2em] text-gray-900">
                       {code.substring(0,3)}-{code.substring(3,6)}
                     </span>
                     <button 
@@ -353,16 +353,16 @@ export default function SoftTokenPage() {
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     className="w-full border border-gray-200 rounded-xl px-4 py-3.5 bg-white flex items-center justify-between cursor-pointer focus-within:border-[#E81C24] transition-colors"
                   >
-                    <div className="flex items-center gap-3">
-                      <Wallet className="w-5 h-5 text-gray-600" />
-                      <div>
-                        <div className="text-[14.5px] text-gray-900 font-bold">{currentWallet.name}</div>
-                        <div className="text-[12.5px] text-gray-500">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                      <Wallet className="w-4 h-4 sm:w-5 sm:h-5 text-gray-600 shrink-0" />
+                      <div className="min-w-0">
+                        <div className="text-[14px] sm:text-[14.5px] text-gray-900 font-bold truncate">{currentWallet.name}</div>
+                        <div className="text-[11px] sm:text-[12.5px] text-gray-500 truncate">
                           Balance: <span className="font-semibold text-[#16A34A]">{formatCurrency(currentWallet.balance, currentWallet.isCrypto)}</span> {currentWallet.symbol}
                         </div>
                       </div>
                     </div>
-                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                    <ChevronDown className={`w-4 h-4 sm:w-5 sm:h-5 text-gray-400 shrink-0 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
                   </div>
 
                   {isDropdownOpen && (
@@ -377,16 +377,16 @@ export default function SoftTokenPage() {
                           }}
                           className="flex items-center justify-between px-4 py-3.5 hover:bg-gray-50 cursor-pointer border-b border-gray-50 last:border-0"
                         >
-                          <div className="flex items-center gap-3">
-                            <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-                            <div>
-                              <div className="text-[14px] text-gray-900 font-bold">{w.name}</div>
-                              <div className="text-[12px] text-gray-500">
+                          <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                            <div className="w-2 h-2 rounded-full bg-gray-300 shrink-0"></div>
+                            <div className="min-w-0">
+                              <div className="text-[13px] sm:text-[14px] text-gray-900 font-bold truncate">{w.name}</div>
+                              <div className="text-[11px] sm:text-[12px] text-gray-500 truncate">
                                 {formatCurrency(w.balance, w.isCrypto)} {w.symbol}
                               </div>
                             </div>
                           </div>
-                          {selectedWallet === w.id && <Check className="w-4 h-4 text-[#E81C24]" />}
+                          {selectedWallet === w.id && <Check className="w-4 h-4 text-[#E81C24] shrink-0" />}
                         </div>
                       ))}
                     </div>
@@ -398,7 +398,7 @@ export default function SoftTokenPage() {
               <div>
                 <label className="block text-gray-700 font-medium text-[14px] mb-2">Amount to Deduct</label>
                 <div className="flex border border-gray-200 rounded-xl overflow-hidden">
-                  <div className="bg-gray-50 px-5 flex items-center justify-center text-gray-500 font-semibold text-[14.5px] border-r border-gray-200 shrink-0">
+                  <div className="bg-gray-50 px-3 sm:px-5 flex items-center justify-center text-gray-500 font-semibold text-[13px] sm:text-[14.5px] border-r border-gray-200 shrink-0 max-w-[80px] sm:max-w-none truncate">
                     {currentWallet.isCrypto ? (currentWallet.symbol || '') : currencySymbol}
                   </div>
                   <input 
@@ -436,8 +436,8 @@ export default function SoftTokenPage() {
             {/* Payment Summary */}
             <div className="space-y-6">
               {/* Summary Card */}
-              <div className="bg-white border border-gray-100 rounded-2xl p-7 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
-                <h3 className="text-[16px] font-bold text-gray-900 mb-6">Payment Summary</h3>
+              <div className="bg-white border border-gray-100 rounded-2xl p-4 sm:p-7 shadow-[0_2px_10px_rgb(0,0,0,0.02)]">
+                <h3 className="text-[15px] sm:text-[16px] font-bold text-gray-900 mb-4 sm:mb-6">Payment Summary</h3>
                 
                 <div className="space-y-4 mb-6">
                   <div className="flex justify-between items-center text-[14px]">
@@ -459,7 +459,7 @@ export default function SoftTokenPage() {
                     <div className="text-[15px] font-bold text-gray-900 mb-0.5">Total Amount</div>
                     <div className="text-[12px] text-gray-400">Inclusive of GST</div>
                   </div>
-                  <div className="text-[20px] font-bold text-[#E81C24]">
+                  <div className="text-[16px] sm:text-[20px] font-bold text-[#E81C24]">
                     {currentWallet.isCrypto ? "5,500.00" : "$5,500.00"}
                   </div>
                 </div>

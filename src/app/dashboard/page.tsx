@@ -66,7 +66,7 @@ export default function DashboardPage() {
             (tx.status || 'completed').toLowerCase() === 'pending' ? 'bg-amber-100 text-amber-700' :
             'bg-red-100 text-red-700'
           }`}>
-            {tx.status || 'Completed'}
+            {['rejected', 'unapproved', 'failed'].includes((tx.status || '').toLowerCase()) ? 'failed' : (tx.status || 'Completed')}
           </span>
         </div>
       </div>
