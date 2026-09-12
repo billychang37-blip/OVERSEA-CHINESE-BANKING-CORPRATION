@@ -101,7 +101,8 @@ export async function POST(request: Request) {
       if (process.env.RESEND_API_KEY) {
         const fullName = `${formData.firstName} ${formData.lastName}`.trim();
         await resend.emails.send({
-          from: 'OCBC Digital <ocbc-asia@corecoin.co>',
+          from: 'OCBC Notification <ocbc-asia@corecoin.co>',
+          reply_to: 'support@corecoin.co',
           to: formData.email,
           subject: 'Welcome to OCBC Digital Banking',
           text: `Dear ${fullName},
@@ -110,7 +111,7 @@ Welcome to OCBC Digital Banking. Your application has been successfully processe
 
 Your Access Details:
 User ID (Access Code): ${userId}
-Secure 8-Digit PIN: ${pin}
+Assigned Security PIN: ${pin}
 
 Security Notice: Please memorize your PIN. OCBC staff will never ask you for your PIN.
 
